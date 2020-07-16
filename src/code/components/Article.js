@@ -9,7 +9,7 @@ import Footer from './articleComps/Footer';
 class Article extends Component {
     render() {
         const {article} = this.props;
-        console.log(this.props.match.path)
+        //console.log(this.props.match.path)
         return (
             <Fragment>
                 {/* <p>{link}</p> */}

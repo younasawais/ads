@@ -4,7 +4,28 @@ import {devToolsEnhancer} from 'redux-devtools-extension';
 import {articleContent1, articleContent2} from './initialize'
 
 const pageContent = {
-    menuItemNames   : [],
+    articleMenuItems   :    [{
+                                name: 'First1',
+                                sub: [{
+                                    name: 'second1'
+                                },{
+                                    name: 'second2'
+                                }]
+                            },{
+                                name: 'First2',
+                                sub: []
+                            },{
+                                name: 'First3',
+                                sub: [{
+                                    name: 'second1'
+                                },{
+                                    name: 'second2'
+                                },{
+                                    name: 'second3'
+                                },{
+                                    name: 'second4'
+                                }]
+                            }],
     bottomMenu      : {
                         names: ['Home', 'Services', 'Get In Touch', 'Careers', 'Work'],
                         links: ['home', 'services', 'get-in-touch', 'careers', 'work']

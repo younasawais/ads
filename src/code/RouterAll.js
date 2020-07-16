@@ -12,7 +12,7 @@ class RouterAll extends Component {
         const {bottomMenu} = this.props.article;
         return (
             <Fragment>            
-                <Menu/>
+                <Menu {...props}/>
                 <Switch>
                     {bottomMenu.links.map((link, index)=> {return(
                         <Route
@@ -21,11 +21,15 @@ class RouterAll extends Component {
                         />
                     )})}
                     <Route
-                        path='/article'
+                        path='/article' 
                         render={({location, match}) => <Article {...props}/>}    
                     />
                     <Route
                         path='/home'
+                        render={({location, match}) => <Home {...props}/>}    
+                    />
+                    <Route
+                        path='/' exact
                         render={({location, match}) => <Home {...props}/>}    
                     />
                 </Switch>
