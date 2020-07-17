@@ -5,26 +5,45 @@ import {articleContent1, articleContent2} from './initialize'
 
 const pageContent = {
     articleMenuItems   :    [{
-                                name: 'First1',
+                                name: 'First one',
+                                router : 'first-one',
                                 sub: [{
-                                    name: 'second1'
+                                    name: 'Second one',
+                                    router : 'second-one'
                                 },{
-                                    name: 'second2'
+                                    name: 'Sub Second two',
+                                    router : 'sub-second-two'
                                 }]
                             },{
-                                name: 'First2',
+                                name: 'First Two',
+                                router : 'first2',
                                 sub: []
                             },{
-                                name: 'First3',
+                                name: 'Awais Younas',
+                                router : 'awais-younas',
                                 sub: [{
-                                    name: 'second1'
+                                    name: 'Mohammad Younas',
+                                    router : 'Mohammad-younas'
                                 },{
-                                    name: 'second2'
-                                },{
-                                    name: 'second3'
-                                },{
-                                    name: 'second4'
+                                    name: 'Awais Ahmed',
+                                    router : 'awais-ahmed'
                                 }]
+                            },{
+                                name: 'First Three',
+                                router : 'first-3',
+                                sub: [{
+                                    name: 'second one',
+                                    router : 'first-1'
+                                },{
+                                    name: 'second two',
+                                    router : 'second-2'
+                                },{
+                                    name: 'second three',
+                                    router : 'second-3'
+                                },{
+                                    name: 'second four',
+                                    router : 'second-four'
+                                },]
                             }],
     bottomMenu      : {
                         names: ['Home', 'Services', 'Get In Touch', 'Careers', 'Work'],

@@ -4,7 +4,6 @@ class TitleShortDetails extends Component {
 
     render() {
         const {articleTitle, articleTitle2} = this.props.article;
-        let test = '<p>this is a test</p><hr><p>next line</p>';
         return (
             <section className="mbr-section content4 cid-s4p9RW4dTj" id="content4-a">  
             <div className="container">
@@ -13,6 +12,7 @@ class TitleShortDetails extends Component {
                         <h2 className="align-center pb-3 mbr-fonts-style display-2"><strong>{articleTitle}</strong></h2>
                         <h3 className="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5">
                             {articleTitle2}</h3>
+                            <h2>{this.props.path}</h2>
                     </div>
                 </div>
             </div>

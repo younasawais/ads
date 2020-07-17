@@ -780,44 +780,44 @@
             }
         });
 
-        if (!isBuilder) {
-            // open dropdown menu on hover
-            if (!$.isMobile()) {
-                var $menu = $('section.menu'),
-                    $width = $(window).width(),
-                    $collapsed = $menu.find('.navbar').hasClass('collapsed');
-                // check if collapsed on
-                if (!$collapsed ){
-                    // check width device
-                    if ($width > 991) {
-                        $menu.find('ul.navbar-nav li.dropdown').hover(
-                            function() {
-                                if (!$(this).hasClass('open')) {
-                                    $(this).find('a')[0].click();
-                                }
-                            },
-                            function() {
-                                if ($(this).hasClass('open')) {
-                                    $(this).find('a')[0].click();
-                                }
-                            }
-                        );
-                        $menu.find('ul.navbar-nav li.dropdown .dropdown-menu .dropdown').hover(
-                            function() {
-                                if (!$(this).hasClass('open')) {
-                                    $(this).find('a')[0].click();
-                                }
-                            },
-                            function() {
-                                if ($(this).hasClass('open')) {
-                                    $(this).find('a')[0].click();
-                                }
-                            }
-                        );
-                    }
-                }    
-            }
-        }
+        // if (!isBuilder) {
+        //     // open dropdown menu on hover
+        //     if (!$.isMobile()) {
+        //         var $menu = $('section.menu'),
+        //             $width = $(window).width(),
+        //             $collapsed = $menu.find('.navbar').hasClass('collapsed');
+        //         // check if collapsed on
+        //         if (!$collapsed ){
+        //             // check width device
+        //             if ($width > 991) {
+        //                 $menu.find('ul.navbar-nav li.dropdown').hover(
+        //                     function() {
+        //                         if (!$(this).hasClass('open')) {
+        //                             $(this).find('a')[0].click();
+        //                         }
+        //                     },
+        //                     function() {
+        //                         if ($(this).hasClass('open')) {
+        //                             $(this).find('a')[0].click();
+        //                         }
+        //                     }
+        //                 );
+        //                 $menu.find('ul.navbar-nav li.dropdown .dropdown-menu .dropdown').hover(
+        //                     function() {
+        //                         if (!$(this).hasClass('open')) {
+        //                             $(this).find('a')[0].click();
+        //                         }
+        //                     },
+        //                     function() {
+        //                         if ($(this).hasClass('open')) {
+        //                             $(this).find('a')[0].click();
+        //                         }
+        //                     }
+        //                 );
+        //             }
+        //         }    
+        //     }
+        // }
 
         // Functions from plugins for
         // compatible with old projects 

@@ -7,15 +7,17 @@ class MenuLinkSub extends Component {
         const {item} = this.props;
         return (
             <li className="nav-item dropdown">
-                <NavLink className="nav-link link text-black dropdown-toggle display-4" to='/article' data-toggle="dropdown-submenu" aria-expanded="false">
+                <li className="nav-link link text-black dropdown-toggle display-4"  data-toggle="dropdown-submenu" aria-expanded="false">
                     {item.name}
-                </NavLink>
+                </li>
+                
+                {/* <li className="nav-link link text-black dropdown-toggle display-4"  data-toggle="dropdown-submenu" aria-expanded="false">
+                    {item.name}
+                </li> */}
                 <div className="dropdown-menu">
                     {item.sub.map(subItem=>{return(
-                        <MenuLinkSecond name={subItem.name}/>
+                        <MenuLinkSecond item={subItem}/>
                     )})}
-                    <MenuLinkSecond />
-                    <MenuLinkSecond />
                 </div>
             </li>
         );

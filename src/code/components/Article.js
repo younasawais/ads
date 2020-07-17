@@ -13,7 +13,7 @@ class Article extends Component {
         return (
             <Fragment>
                 {/* <p>{link}</p> */}
-                <TitleShortDetails article={article}/>
+                <TitleShortDetails article={article} path={this.props.match.path}/>
                 <ArticleText1 article={article}/>
                 <ArticlePicture article={article}/>
                 <ArticleText2 article={article}/>

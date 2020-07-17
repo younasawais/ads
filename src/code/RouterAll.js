@@ -7,9 +7,31 @@ import Home from './components/Home';
 
 
 class RouterAll extends Component {
+    extractArray(arr){
+        console.log(arr);
+        let names = [];
+        let routes = [];
+
+        for (let i = 0; i < arr.length; i++) {
+            if(arr[i].sub.length > 0){
+                for (let j = 0; j < arr[i].sub.length; j++) {
+                    names.push(arr[i].sub[j].name);
+                    routes.push(arr[i].sub[j].router);
+                }
+            }
+            names.push(arr[i].name);
+            routes.push(arr[i].router);
+            
+        }    
+        console.log(names);
+        console.log(routes);
+        return [names, routes];
+    }
+
     render() {
         const {props} = this;
-        const {bottomMenu} = this.props.article;
+        const {bottomMenu,articleMenuItems} = this.props.article;
+        const pages = this.extractArray(articleMenuItems);
         return (
             <Fragment>            
                 <Menu {...props}/>
@@ -20,14 +42,28 @@ class RouterAll extends Component {
                             render={({location, match}) => <Article {...props} match={match}/>}    
                         />
                     )})}
-                    <Route
-                        path='/article' 
-                        render={({location, match}) => <Article {...props}/>}    
-                    />
-                    <Route
-                        path='/home'
-                        render={({location, match}) => <Home {...props}/>}    
-                    />
+
+                    {pages[1].map(link=>{return(
+                        <Route
+                            path={'/'+link}
+                            render={({location, match}) => <Article {...props} match={match}/>}    
+                        />
+                    )})}
+                    {/* {articleMenuItems.map((link, index)=> {
+                        {link.sub.length > 0 ? link.map(subLink=>{return(
+                            <Route
+                            path={'/'+link.router}
+                            render={({location, match}) => <Article {...props} match={match}/>}    
+                        />
+                        )}) : ""}
+                        return(
+                        <Route
+                            path={'/'+link.router}
+                            render={({location, match}) => <Article {...props} match={match}/>}    
+                        />
+                    )
+                    })} */}
+
                     <Route
                         path='/' exact
                         render={({location, match}) => <Home {...props}/>}    
