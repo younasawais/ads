@@ -14,11 +14,12 @@ class Logo extends Component {
                     </button>
                     <div className="menu-logo">
                         <div className="navbar-brand">
-                            <span className="navbar-logo">
+                            {/* <span className="navbar-logo">
                                 <a href="https://qouh.com">
                                     <img src="assets/images/logo2.png" alt="Qouh" title="Qouh" style={{height: '3.8rem'}}/>
                                 </a>
-                            </span>
+                            </span> */}
+                            <h2 style={{fontFamily: "Squada One"}}>QOUH.com</h2>
                             
                         </div>
                     </div>

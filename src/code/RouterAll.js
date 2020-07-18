@@ -4,7 +4,7 @@ import {Route, Switch} from 'react-router-dom';
 import Article from './components/Article';
 import Menu from './components/Menu';
 import Home from './components/Home';
-
+import Admin from './components/Admin';
 
 class RouterAll extends Component {
     extractArray(arr){
@@ -34,7 +34,7 @@ class RouterAll extends Component {
         const pages = this.extractArray(articleMenuItems);
         return (
             <Fragment>            
-                <Menu {...props}/>
+                {/* <Menu {...props}/> */}
                 <Switch>
                     {bottomMenu.links.map((link, index)=> {return(
                         <Route
@@ -49,23 +49,14 @@ class RouterAll extends Component {
                             render={({location, match}) => <Article {...props} match={match}/>}    
                         />
                     )})}
-                    {/* {articleMenuItems.map((link, index)=> {
-                        {link.sub.length > 0 ? link.map(subLink=>{return(
-                            <Route
-                            path={'/'+link.router}
-                            render={({location, match}) => <Article {...props} match={match}/>}    
-                        />
-                        )}) : ""}
-                        return(
-                        <Route
-                            path={'/'+link.router}
-                            render={({location, match}) => <Article {...props} match={match}/>}    
-                        />
-                    )
-                    })} */}
 
                     <Route
-                        path='/' exact
+                        path='/admin' exact
+                        render={({location, match}) => <Admin {...props}/>}    
+                    />
+                    {/* change home when page done */}
+                    <Route
+                        path='/sub-second-two' exact   
                         render={({location, match}) => <Home {...props}/>}    
                     />
                 </Switch>

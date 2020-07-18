@@ -43,11 +43,63 @@ const pageContent = {
                                 },{
                                     name: 'second four',
                                     router : 'second-four'
+                                },{
+                                    name: 'second one',
+                                    router : 'first-1'
+                                },{
+                                    name: 'second two',
+                                    router : 'second-2'
+                                },{
+                                    name: 'second three',
+                                    router : 'second-3'
+                                },{
+                                    name: 'second four',
+                                    router : 'second-four'
+                                },{
+                                    name: 'second one',
+                                    router : 'first-1'
+                                },{
+                                    name: 'second two',
+                                    router : 'second-2'
+                                },{
+                                    name: 'second three',
+                                    router : 'second-3'
+                                },{
+                                    name: 'second four',
+                                    router : 'second-four'
+                                },{
+                                    name: 'second one',
+                                    router : 'first-1'
+                                },{
+                                    name: 'second two',
+                                    router : 'second-2'
+                                },{
+                                    name: 'second three',
+                                    router : 'second-3'
+                                },{
+                                    name: 'second four',
+                                    router : 'second-four'
+                                },{
+                                    name: 'second one',
+                                    router : 'first-1'
+                                },{
+                                    name: 'second two',
+                                    router : 'second-2'
+                                },{
+                                    name: 'second three',
+                                    router : 'second-3'
+                                },{
+                                    name: 'second four',
+                                    router : 'second-four'
                                 },]
                             }],
     bottomMenu      : {
                         names: ['Home', 'Services', 'Get In Touch', 'Careers', 'Work'],
-                        links: ['home', 'services', 'get-in-touch', 'careers', 'work']
+                        links: ['home', 'services', 'get-in-touch', 'careers', 'work',]
+                    },
+    adminMenu      : {
+                        names: ['Manage Articles', 'Manage menus', 'Settings', 'Add Article',],
+                        links: ['manage-articles','add-article', 'manage-menus', 'settings']
                     },
     menuId          : [],
     ArticleTags     : ['Pakistan', 'Geography', 'progress', 'space', 'science', 'military'],

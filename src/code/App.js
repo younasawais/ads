@@ -9,7 +9,7 @@ function App() {
   return (
       <Provider store={store}>
         <BrowserRouter>
-            <RouterAll />
+            <RouterAll/>
         </BrowserRouter>
       </Provider>
   );

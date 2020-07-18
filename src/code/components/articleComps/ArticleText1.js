@@ -18,3 +18,5 @@ class ArticleText1 extends Component {
 }
 
 export default ArticleText1;
+
+//style={{fontFfamily: "Squada One"}}

@@ -5,6 +5,7 @@ import ArticlePicture from './articleComps/ArticlePicture';
 import ArticleText2 from './articleComps/ArticleText2';
 import ReferenceAndTags from './articleComps/ReferenceAndTags';
 import Footer from './articleComps/Footer';
+import Menu from './Menu';
 
 class Article extends Component {
     render() {
@@ -12,6 +13,7 @@ class Article extends Component {
         //console.log(this.props.match.path)
         return (
             <Fragment>
+                <Menu {...this.props}/>
                 {/* <p>{link}</p> */}
                 <TitleShortDetails article={article} path={this.props.match.path}/>
                 <ArticleText1 article={article}/>
