@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 
-class AddArticles extends Component {
+class ModifyArticle extends Component {
     render() {
         return (
             <div>
-                <p>dd
-                    
-                </p>
+                <p>Modify Article</p>
             </div>
         );
     }
 }
 
-export default AddArticles;
+export default ModifyArticle;

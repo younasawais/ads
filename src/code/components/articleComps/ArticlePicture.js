@@ -7,11 +7,11 @@ class ArticlePicture extends Component {
             <div className="container images-container">
                     <div className="media-container-row" style={{width: "80%"}}>
                         <div className="img-item item1" style={{width: '177%'}}>
-                            <img src="assets/images/background2.jpg"/>
+                            <img alt='' src="assets/images/background2.jpg"/>
                             
                         </div>
                         <div className="img-item">
-                            <img src="assets/images/background9.jpg"/>
+                            <img alt='' src="assets/images/background9.jpg"/>
                             
                         </div>
                     </div>

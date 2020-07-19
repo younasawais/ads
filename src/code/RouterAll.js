@@ -5,9 +5,10 @@ import Article from './components/Article';
 import Home from './components/Home';
 import Admin from './components/Admin';
 import ManageArticles from './components/cms/managearticles/ManageArticles';
-import AddArticles from './components/cms/managearticles/AddArticles';
+import AddArticle from './components/cms/managearticles/AddArticle';
 import ManageMenus from    './components/cms/managemenus/ManageMenus';
 import SettingsCms from    './components/cms/settingscms/SettingsCms';
+import ModifyArticle from './components/cms/managearticles/ModifyArticle';
 
 class RouterAll extends Component {
     extractArray(arr){
@@ -30,7 +31,7 @@ class RouterAll extends Component {
 
     render() {
         const {props} = this;
-        const {bottomMenu,articleMenuItems, adminMenu} = this.props.article;
+        const {bottomMenu,articleMenuItems} = this.props.article;
         const pages = this.extractArray(articleMenuItems);
         return (
             <Fragment>            
@@ -38,13 +39,15 @@ class RouterAll extends Component {
                 <Switch>
                     {bottomMenu.links.map((link, index)=> {return(
                         <Route
+                            key = {index}
                             path={'/'+link}
                             render={({location, match}) => <Article {...props} match={match}/>}    
                         />
                     )})}
 
-                    {pages[1].map(link=>{return(
+                    {pages[1].map((link, index)=>{return(
                         <Route
+                            key = {index}
                             path={'/'+link}
                             render={({location, match}) => <Article {...props} match={match}/>}    
                         />
@@ -74,8 +77,12 @@ class RouterAll extends Component {
                         render={({location, match}) => <SettingsCms {...props}/>}    
                     />
                     <Route
-                        path='/add-articles' exact   
-                        render={({location, match}) => <AddArticles {...props}/>}    
+                        path='/add-article' exact   
+                        render={({location, match}) => <AddArticle {...props}/>}    
+                    />
+                    <Route
+                        path='/modify-article' exact   
+                        render={({location, match}) => <ModifyArticle {...props}/>}    
                     />
                 </Switch>
             </Fragment>

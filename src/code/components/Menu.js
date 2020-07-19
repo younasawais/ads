@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Logo from './generalComps/Logo';
 import MenuLinkFirst from './menuComps/MenuLinkFirst';
 import MenuLinkSub from './menuComps/MenuLinkSub';
-import {Link} from 'react-router-dom';
 
 
 class Menu extends Component {

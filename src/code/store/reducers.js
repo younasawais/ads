@@ -2,10 +2,6 @@ import { createStore } from 'redux';
 import { combineReducers }  from 'redux';
 import {devToolsEnhancer} from 'redux-devtools-extension';
 import {articleContent1, articleContent2} from './initialize';
-import ManageArticles from '../components/cms/managearticles/ManageArticles';
-import ManageMenus from '../components/cms/managemenus/ManageMenus';
-import SettingsCms from '../components/cms/settingscms/SettingsCms';
-import AddArticles from '../components/cms/managearticles/AddArticles';
 
 const pageContent = {
     articleMenuItems   :    [{
@@ -103,7 +99,7 @@ const pageContent = {
                     },
     adminMenu      : {
                         names: ['Manage Articles', 'Manage menus', 'Settings', 'Add Article',],
-                        links: ['manage-articles', , 'manage-menus', 'settings', 'add-article'],
+                        links: ['manage-articles', 'manage-menus', 'settings', 'add-article'],
                         component : ['ManageArticles', 'ManageMenus', 'SettingsCms', 'AddArticles']
                     },
     menuId          : [],
