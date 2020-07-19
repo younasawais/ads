@@ -2,13 +2,15 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
 import Article from './components/Article';
-import Menu from './components/Menu';
 import Home from './components/Home';
 import Admin from './components/Admin';
+import ManageArticles from './components/cms/managearticles/ManageArticles';
+import AddArticles from './components/cms/managearticles/AddArticles';
+import ManageMenus from    './components/cms/managemenus/ManageMenus';
+import SettingsCms from    './components/cms/settingscms/SettingsCms';
 
 class RouterAll extends Component {
     extractArray(arr){
-        console.log(arr);
         let names = [];
         let routes = [];
 
@@ -22,15 +24,13 @@ class RouterAll extends Component {
             names.push(arr[i].name);
             routes.push(arr[i].router);
             
-        }    
-        console.log(names);
-        console.log(routes);
+        }
         return [names, routes];
     }
 
     render() {
         const {props} = this;
-        const {bottomMenu,articleMenuItems} = this.props.article;
+        const {bottomMenu,articleMenuItems, adminMenu} = this.props.article;
         const pages = this.extractArray(articleMenuItems);
         return (
             <Fragment>            
@@ -54,10 +54,28 @@ class RouterAll extends Component {
                         path='/admin' exact
                         render={({location, match}) => <Admin {...props}/>}    
                     />
+                    
+
                     {/* change home when page done */}
                     <Route
                         path='/sub-second-two' exact   
                         render={({location, match}) => <Home {...props}/>}    
+                    />
+                    <Route
+                        path='/manage-articles' exact   
+                        render={({location, match}) => <ManageArticles {...props}/>}    
+                    />
+                    <Route
+                        path='/manage-menus' exact   
+                        render={({location, match}) => <ManageMenus {...props}/>}    
+                    />
+                    <Route
+                        path='/settings-cms' exact   
+                        render={({location, match}) => <SettingsCms {...props}/>}    
+                    />
+                    <Route
+                        path='/add-articles' exact   
+                        render={({location, match}) => <AddArticles {...props}/>}    
                     />
                 </Switch>
             </Fragment>
