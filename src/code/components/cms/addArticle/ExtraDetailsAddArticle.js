@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import InputText from './InputText';
 import UploadPicAddArticle from './UploadPicAddArticle';
 import TextAndLabel from '../elements/TextAndLabel';
+import TextAndCheckbox from '../elements/TextAndCheckbox';
 
 class ExtraDetailsAddArticle extends Component {
     render() {
@@ -10,8 +11,7 @@ class ExtraDetailsAddArticle extends Component {
                 <TextAndLabel labelName='Link ID: ' />
                 <TextAndLabel labelName='Tags: ' />
                 <TextAndLabel labelName='Reference: ' />
-                <p>Active?</p>
-                <input type="checkbox"/> 
+                <TextAndCheckbox text='Active?'/>
                 <UploadPicAddArticle text={'Upload 1'}/>
                 <UploadPicAddArticle text={'Upload 2'}/>
             </Fragment>

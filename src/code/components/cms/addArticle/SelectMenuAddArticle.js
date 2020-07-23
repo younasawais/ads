@@ -59,25 +59,16 @@ class SelectMenuAddArticle extends Component {
                         <TextAndLabel labelName='Menu Name: '/>
                         <TextAndLabel labelName='Menu Item name: '/>
                         <TextAndCheckbox handleFunction={this.addSubItemToNewMenu} text='Add as a subitem?' />
-                        {addSubItemToNewMenu ? 
-                        <Fragment>
-                            <TextAndLabel labelName='SubItem Name: '/><hr/>
-                        </Fragment>: ""}
+                        {addSubItemToNewMenu ? <TextAndLabel labelName='SubItem Name: '/> : ""}
                     </Fragment>
                     :
                     <Fragment>
-                        <p>Add item to menu</p>
-                        <DropDownAddArticle />
-                        <div style={{display:'flex'}}>
-                            <p>Add as a subItem?</p>
-                            <input style={{margin: '5px 0 0 10px'}} type="checkbox"/>
-                        </div>
-                        <p>Menu item name for adding sub item</p>
-                        <DropDownAddArticle />
+                        <DropDownAddArticle text='Add item to Menu' />
+                        <TextAndCheckbox text='Add as a subItem?' />
+                        <DropDownAddArticle text='Add subItem to' />
                     </Fragment>
-                }
+                    }
                 </div>
-                
             </Fragment>
         );
     }

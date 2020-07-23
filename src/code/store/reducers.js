@@ -14,7 +14,6 @@ const pageContent = {
                         links: ['manage-articles', 'manage-menus', 'settings', 'add-article'],
                         component : ['ManageArticles', 'ManageMenus', 'SettingsCms', 'AddArticles']
                     },
-    menuId          : [],
     ArticleTags     : ['Pakistan', 'Geography', 'progress', 'space', 'science', 'military'],
     articleContent1 : articleContent1,
     articleContent2 : articleContent2,
