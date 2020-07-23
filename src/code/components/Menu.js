@@ -6,7 +6,7 @@ import MenuLinkSub from './menuComps/MenuLinkSub';
 
 class Menu extends Component {
     render() {
-        const {articleMenuItems} = this.props.article;
+        const {articleMenuItems} = this.props.addArticle;
         console.log(articleMenuItems);
         return (
         <section className="menu cid-s4lUbDTTEI" once="menu" id="menu2-3">                    

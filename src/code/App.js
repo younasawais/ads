@@ -1,8 +1,8 @@
 import React from 'react';
 import RouterAll from './RouterAll';
-import store from './store/reducers';
+import store from './store/store';
 import {Provider} from 'react-redux';
-import {BrowserRouter} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   console.log('App Called');

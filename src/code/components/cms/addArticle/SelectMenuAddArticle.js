@@ -49,7 +49,7 @@ class SelectMenuAddArticle extends Component {
     }
 
     render() {
-        const {checkBoxCreateMenu, addSubItemToNewMenu} = this.props.addNewArticle;
+        const {checkBoxCreateMenu, addSubItemToNewMenu} = this.props.addArticle;
         return (
             <Fragment>
                 <div className='createNewMenu'>
