@@ -60,3 +60,94 @@ Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Accumsan sit 
 In iaculis nunc sed augue lacus viverra vitae congue eu. Nunc lobortis mattis aliquam faucibus purus in. 
 Fermentum leo vel orci porta non pulvinar neque. Ipsum suspendisse ultrices gravida dictum fusce ut. 
 Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros.`
+
+
+export const articleMenuItems =  [{
+  name: 'First one',
+  router : 'first-one',
+  sub: [{
+      name: 'Second one',
+      router : 'second-one'
+  },{
+      name: 'Sub Second two',
+      router : 'sub-second-two'
+  }]
+},{
+  name: 'First Two',
+  router : 'first2',
+  sub: []
+},{
+  name: 'Awais Younas',
+  router : 'awais-younas',
+  sub: [{
+      name: 'Mohammad Younas',
+      router : 'Mohammad-younas'
+  },{
+      name: 'Awais Ahmed',
+      router : 'awais-ahmed'
+  }]
+},{
+  name: 'First Three',
+  router : 'first-3',
+  sub: [{
+      name: 'second one',
+      router : 'first-1'
+  },{
+      name: 'second two',
+      router : 'second-2'
+  },{
+      name: 'second three',
+      router : 'second-3'
+  },{
+      name: 'second four',
+      router : 'second-four'
+  },{
+      name: 'second one',
+      router : 'first-1'
+  },{
+      name: 'second two',
+      router : 'second-2'
+  },{
+      name: 'second three',
+      router : 'second-3'
+  },{
+      name: 'second four',
+      router : 'second-four'
+  },{
+      name: 'second one',
+      router : 'first-1'
+  },{
+      name: 'second two',
+      router : 'second-2'
+  },{
+      name: 'second three',
+      router : 'second-3'
+  },{
+      name: 'second four',
+      router : 'second-four'
+  },{
+      name: 'second one',
+      router : 'first-1'
+  },{
+      name: 'second two',
+      router : 'second-2'
+  },{
+      name: 'second three',
+      router : 'second-3'
+  },{
+      name: 'second four',
+      router : 'second-four'
+  },{
+      name: 'second one',
+      router : 'first-1'
+  },{
+      name: 'second two',
+      router : 'second-2'
+  },{
+      name: 'second three',
+      router : 'second-3'
+  },{
+      name: 'second four',
+      router : 'second-four'
+  },]
+}]

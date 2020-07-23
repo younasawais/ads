@@ -1,98 +1,10 @@
 import { createStore } from 'redux';
 import { combineReducers }  from 'redux';
 import {devToolsEnhancer} from 'redux-devtools-extension';
-import {articleContent1, articleContent2} from './initialize';
+import {articleContent1, articleContent2, articleMenuItems} from './initialize';
 
 const pageContent = {
-    articleMenuItems   :    [{
-                                name: 'First one',
-                                router : 'first-one',
-                                sub: [{
-                                    name: 'Second one',
-                                    router : 'second-one'
-                                },{
-                                    name: 'Sub Second two',
-                                    router : 'sub-second-two'
-                                }]
-                            },{
-                                name: 'First Two',
-                                router : 'first2',
-                                sub: []
-                            },{
-                                name: 'Awais Younas',
-                                router : 'awais-younas',
-                                sub: [{
-                                    name: 'Mohammad Younas',
-                                    router : 'Mohammad-younas'
-                                },{
-                                    name: 'Awais Ahmed',
-                                    router : 'awais-ahmed'
-                                }]
-                            },{
-                                name: 'First Three',
-                                router : 'first-3',
-                                sub: [{
-                                    name: 'second one',
-                                    router : 'first-1'
-                                },{
-                                    name: 'second two',
-                                    router : 'second-2'
-                                },{
-                                    name: 'second three',
-                                    router : 'second-3'
-                                },{
-                                    name: 'second four',
-                                    router : 'second-four'
-                                },{
-                                    name: 'second one',
-                                    router : 'first-1'
-                                },{
-                                    name: 'second two',
-                                    router : 'second-2'
-                                },{
-                                    name: 'second three',
-                                    router : 'second-3'
-                                },{
-                                    name: 'second four',
-                                    router : 'second-four'
-                                },{
-                                    name: 'second one',
-                                    router : 'first-1'
-                                },{
-                                    name: 'second two',
-                                    router : 'second-2'
-                                },{
-                                    name: 'second three',
-                                    router : 'second-3'
-                                },{
-                                    name: 'second four',
-                                    router : 'second-four'
-                                },{
-                                    name: 'second one',
-                                    router : 'first-1'
-                                },{
-                                    name: 'second two',
-                                    router : 'second-2'
-                                },{
-                                    name: 'second three',
-                                    router : 'second-3'
-                                },{
-                                    name: 'second four',
-                                    router : 'second-four'
-                                },{
-                                    name: 'second one',
-                                    router : 'first-1'
-                                },{
-                                    name: 'second two',
-                                    router : 'second-2'
-                                },{
-                                    name: 'second three',
-                                    router : 'second-3'
-                                },{
-                                    name: 'second four',
-                                    router : 'second-four'
-                                },]
-                            }],
+    articleMenuItems   :   articleMenuItems,
     bottomMenu      : {
                         names: ['Home', 'Services', 'Get In Touch', 'Careers', 'Work'],
                         links: ['home', 'services', 'get-in-touch', 'careers', 'work',]
@@ -112,6 +24,11 @@ const pageContent = {
     articleId       : '' 
 }
 
+const addArticle = { 
+    checkBoxCreateMenu      : false,
+    addSubItemToNewMenu     : false
+}
+
 function article(state = pageContent, action){
     switch(action.type){
         case 'test' :
@@ -124,8 +41,25 @@ function article(state = pageContent, action){
     }
 }
 
+function addNewArticle(state = addArticle, action){
+    switch(action.type){
+        case 'createNewMenu' :
+            const copyState = Object.assign(state);
+            copyState.checkBoxCreateMenu = action.payload.val;
+            console.log(copyState);
+            return {...copyState}
+        case 'addSubItemToNewMenu' :
+            const copyState2 = Object.assign(state);
+            copyState2.addSubItemToNewMenu = action.payload.val;
+            console.log(copyState2);
+            return {...copyState2}
+        default: return state
+    }
+}
+
 const rootReducer = combineReducers({
-    article : article
+    article : article,
+    addNewArticle : addNewArticle
   });
 
 const store = createStore(

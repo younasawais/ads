@@ -3,6 +3,8 @@ import SelectMenuAddArticle from '../addArticle/SelectMenuAddArticle';
 import ArticleTextAddArticle from '../addArticle/ArticleTextAddArticle';
 import InputText from '../addArticle/InputText';
 import ExtraDetailsAddArticle from '../addArticle/ExtraDetailsAddArticle';
+import TextAndLabel from '../elements/TextAndLabel';
+import TextAndCheckbox from '../elements/TextAndCheckbox';
 
 class AddArticles extends Component {
     render() {
@@ -12,17 +14,12 @@ class AddArticles extends Component {
                 <div className="alert alert-success" role="alert">
                     Article created succesfully (TODO: add error alert)
                 </div>
-                <div>
                     <button type="button" className="btn btn-primary">Save Changes</button>
-                    <button type="button" className="btn btn-warning">Close</button>
-                </div><hr/>
-                <div>
-                    <p>Title :</p>
-                    <InputText placeHolder='Title:' />
-                    <p>Item name inside menu:</p>
-                    <InputText placeHolder='Menu Item name' />
-                </div>
-                    <SelectMenuAddArticle />
+                    <button type="button" className="btn btn-warning">Close</button><hr/>
+                    <TextAndCheckbox />
+                    <TextAndLabel labelName='Title: ' />
+                    <TextAndLabel labelName='Item name inside menu: ' />
+                    <SelectMenuAddArticle {...this.props} />
                     <ExtraDetailsAddArticle />
                     <ArticleTextAddArticle label='Text 1'/>
                     <ArticleTextAddArticle label='Text 2'/>

@@ -1,17 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import InputText from './InputText';
 import UploadPicAddArticle from './UploadPicAddArticle';
+import TextAndLabel from '../elements/TextAndLabel';
 
 class ExtraDetailsAddArticle extends Component {
     render() {
         return (
             <Fragment>  
-                <p>Link ID</p>
-                <InputText placeholder='Link ID' />
-                <p>Tags</p>
-                <InputText placeholder='Tags' />
-                <p>Reference</p>
-                <InputText placeholder='Reference' />
+                <TextAndLabel labelName='Link ID: ' />
+                <TextAndLabel labelName='Tags: ' />
+                <TextAndLabel labelName='Reference: ' />
                 <p>Active?</p>
                 <input type="checkbox"/> 
                 <UploadPicAddArticle text={'Upload 1'}/>

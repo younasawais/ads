@@ -5,9 +5,9 @@ class ArticleTextAddArticle extends Component {
 
         return (
             <div>
-                    <div class="form-group">
-                    <label for="exampleFormControlTextarea1">{this.props.label}</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <div className="form-group">
+                    <label >{this.props.label}</label>
+                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>   
             </div>
         );
