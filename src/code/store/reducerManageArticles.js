@@ -1,19 +1,23 @@
-const addArticle = { 
-    checkBoxCreateMenu      : false,
-    addSubItemToNewMenu     : false,
-    menus                   : ['Phiysic', 'Islamic system','space exploration'],
-    menuItems               : ['Chaper 1', 'chaper 2', 'chapter 3', 'chapter 4', 'chapter 5']
+const manageArticles = { 
+    nrs                 : [],
+    ids                 : [],
+    names               : [],
+    publshed            : [],
+    menu                : [],
+    dateCreated         : [],
+    pics                : [],
+    totalWord           : []
 }
 
 
-function reducerAddArticle(state = addArticle, action){
+function reducerManageArticles(state = manageArticles, action){
     switch(action.type){
-        case 'createNewMenu' :
+        case 'temp1' :
             const copyState = Object.assign(state);
             copyState.checkBoxCreateMenu = action.payload.val;
             console.log(copyState);
             return {...copyState}
-        case 'addSubItemToNewMenu' :
+        case 'temp2' :
             const copyState2 = Object.assign(state);
             copyState2.addSubItemToNewMenu = action.payload.val;
             console.log(copyState2);
@@ -22,4 +26,4 @@ function reducerAddArticle(state = addArticle, action){
     }
 }
 
-export default reducerAddArticle;
+export default reducerManageArticles;

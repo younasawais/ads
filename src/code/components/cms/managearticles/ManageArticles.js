@@ -3,10 +3,12 @@ import {Link} from 'react-router-dom';
 
 class ManageArticles extends Component {
     render() {
+        const {manageArticles} = this.props;
+        console.log(manageArticles);
         return (
             <Fragment>
                 <div  className="row" style={{paddingLeft:10, paddingRight:10}}>
-                    <Link type="button" to='/add-articles' className="btn col btn-primary">New Article</Link>
+                    <Link type="button" to='/add-article' className="btn col btn-primary">New Article</Link>
                     <Link type="button" to='/modify-article' className="btn col btn-primary">Modify</Link>
                     <button type="button" className="btn col btn-primary">Publish</button>
                     <button type="button" className="btn col btn-primary">Unpublish</button>

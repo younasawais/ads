@@ -3,10 +3,13 @@ import { combineReducers }  from 'redux';
 import {devToolsEnhancer} from 'redux-devtools-extension';
 import reducerPageContent from './reducerPageContent';
 import reducerAddArticle from './reducerAddArticle';
+import reducerManageArticles from './reducerManageArticles';
+
 
 const rootReducer = combineReducers({
-    pageContent : reducerPageContent,
-    addArticle : reducerAddArticle
+    pageContent     : reducerPageContent,
+    addArticle      : reducerAddArticle,
+    manageArticles  : reducerManageArticles
   });
 
 const store = createStore(

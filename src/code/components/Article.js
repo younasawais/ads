@@ -9,18 +9,18 @@ import Menu from './Menu';
 
 class Article extends Component {
     render() {
-        const {article} = this.props;
+        const {pageContent} = this.props;
+        console.log(this.props);
         //console.log(this.props.match.path)
         return (
             <Fragment>
                 <Menu {...this.props}/>
-                {/* <p>{link}</p> */}
-                <TitleShortDetails article={article} path={this.props.match.path}/>
-                <ArticleText1 article={article}/>
-                <ArticlePicture article={article}/>
-                <ArticleText2 article={article}/>
-                <ReferenceAndTags article={article}/>
-                <Footer article={article}/>
+                <TitleShortDetails article={pageContent} path={this.props.match.path}/>
+                <ArticleText1 article={pageContent}/>
+                <ArticlePicture article={pageContent}/>
+                <ArticleText2 article={pageContent}/>
+                <ReferenceAndTags article={pageContent}/>
+                <Footer article={pageContent}/>
             </Fragment>
         );
     }

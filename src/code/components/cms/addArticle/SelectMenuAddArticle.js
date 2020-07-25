@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import InputText from './InputText';
-import DropDownAddArticle from './DropDownAddArticle';
+import DropDown from '../elements/DropDown';
 import { connect } from 'react-redux';
 import TextAndLabel from '../elements/TextAndLabel';
 import TextAndCheckbox from '../elements/TextAndCheckbox';
@@ -49,7 +49,7 @@ class SelectMenuAddArticle extends Component {
     }
 
     render() {
-        const {checkBoxCreateMenu, addSubItemToNewMenu} = this.props.addArticle;
+        const {checkBoxCreateMenu, addSubItemToNewMenu, menus, menuItems} = this.props.addArticle;
         return (
             <Fragment>
                 <div className='createNewMenu'>
@@ -63,9 +63,9 @@ class SelectMenuAddArticle extends Component {
                     </Fragment>
                     :
                     <Fragment>
-                        <DropDownAddArticle text='Add item to Menu' />
+                        <DropDown items={menus} text='Add item to Menu' />
                         <TextAndCheckbox text='Add as a subItem?' />
-                        <DropDownAddArticle text='Add subItem to' />
+                        <DropDown items={menuItems} text='Add subItem to' />
                     </Fragment>
                     }
                 </div>
