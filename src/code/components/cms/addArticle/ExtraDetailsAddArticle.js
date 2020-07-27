@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import InputText from './InputText';
 import UploadPicAddArticle from './UploadPicAddArticle';
 import TextAndLabel from '../elements/TextAndLabel';
 import TextAndCheckbox from '../elements/TextAndCheckbox';

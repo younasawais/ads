@@ -18,10 +18,10 @@ class DropDown extends Component {
     }
 }
 
-const styles = {
-    divDropDown : {
-        padding : 0
-    }
-}
+// const styles = {
+//     divDropDown : {
+//         padding : 0
+//     }
+// }
 
 export default DropDown;

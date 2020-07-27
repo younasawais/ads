@@ -1,12 +1,13 @@
 const manageArticles = { 
-    nrs                 : [],
-    ids                 : [],
-    names               : [],
-    publshed            : [],
-    menu                : [],
-    dateCreated         : [],
-    pics                : [],
-    totalWord           : []
+    columnNames         : ['#', 'id', 'Name', 'Published', 'Menu', 'Date Created', 'Pics', 'ParentItem', 'Total words'],
+    ids                 : ['id1343', 'id1231', 'id1232', 'id1233','id2331','id2331'],
+    names               : ['The khilafah system', 'Jannah', 'Jibriel aslm', 'Muhammad sas', 'Khilafa Rachida', 'Islam'],
+    publshed            : ['yes', 'no', 'yes', 'no', 'yes', 'yes'],
+    menu                : ['The khilafah', 'The khilafah', 'Jannah', 'Jannah', 'Mobiles', 'The khilafah'],
+    dateCreated         : ['010620','051020', '090811', '240818', '091221', '090714'],
+    pics                : [ 1, 2, 2, 1, 1, 2],
+    parentItem          : ['menu', 'menu','menu','menu','The Khilafah', 'menu'],
+    totalWord           : [453, 232, 2342, 433, 456, 2322]
 }
 
 

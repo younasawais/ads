@@ -2,9 +2,19 @@ import React, { Component, Fragment } from 'react';
 import {Link} from 'react-router-dom';
 
 class ManageArticles extends Component {
+    constructor(props){
+        super(props);
+        this.handelCheckBox = this.handelCheckBox.bind(this);
+    }
+    
+
+    handelCheckBox(e){
+        console.log(e.currentTarget.id);
+        console.log('Checked? : ' + e.target.checked)
+    }
+
     render() {
         const {manageArticles} = this.props;
-        console.log(manageArticles);
         return (
             <Fragment>
                 <div  className="row" style={{paddingLeft:10, paddingRight:10}}>
@@ -18,47 +28,25 @@ class ManageArticles extends Component {
                 <table className="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Published</th>
-                            <th scope="col">Menu</th>
-                            <th scope="col">Date created</th>
-                            <th scope="col">Pics</th>
-                            <th scope="col">Total words</th>
+                            {manageArticles.columnNames.map((article, index)=> {return(
+                                <th key={index} scope="col">{article}</th>
+                            )})}
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td>97768</td>
-                            <td>Khilafah state</td>
-                            <td>yes</td>
-                            <td>Islam--khilafah</td>
-                            <td>12-june-20</td>
-                            <td>2</td>
-                            <td>3454</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td>97768</td>
-                            <td>Khilafah state</td>
-                            <td>yes</td>
-                            <td>Islam--khilafah</td>
-                            <td>12-june-20</td>
-                            <td>2</td>
-                            <td>3454</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox"/></th>
-                            <td>97768</td>
-                            <td>Khilafah state</td>
-                            <td>yes</td>
-                            <td>Islam--khilafah</td>
-                            <td>12-june-20</td>
-                            <td>2</td>
-                            <td>3454</td>
-                        </tr>
+                        {manageArticles.ids.map((id, index)=>{return(
+                            <tr key={index}>
+                                <th onChange={this.handelCheckBox} key={index} id={manageArticles.ids[index]} scope="row"><input type="checkbox"/></th>
+                                <td>{manageArticles.ids[index]}</td>
+                                <td>{manageArticles.names[index]}</td>
+                                <td>{manageArticles.publshed[index]}</td>
+                                <td>{manageArticles.menu[index]}</td>
+                                <td>{manageArticles.dateCreated[index]}</td>
+                                <td>{manageArticles.pics[index]}</td>
+                                <td>{manageArticles.parentItem[index]}</td>
+                                <td>{manageArticles.totalWord[index]}</td>
+                            </tr>
+                        )})}
                     </tbody>
                 </table>
                 </div>

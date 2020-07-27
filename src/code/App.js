@@ -5,7 +5,6 @@ import {Provider} from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {
-  console.log('App Called');
   return (
       <Provider store={store}>
         <BrowserRouter>

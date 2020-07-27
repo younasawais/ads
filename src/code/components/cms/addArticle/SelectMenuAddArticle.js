@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import InputText from './InputText';
 import DropDown from '../elements/DropDown';
 import { connect } from 'react-redux';
 import TextAndLabel from '../elements/TextAndLabel';
