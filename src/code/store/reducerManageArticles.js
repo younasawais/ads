@@ -7,15 +7,22 @@ const manageArticles = {
     dateCreated         : ['010620','051020', '090811', '240818', '091221', '090714'],
     pics                : [ 1, 2, 2, 1, 1, 2],
     parentItem          : ['menu', 'menu','menu','menu','The Khilafah', 'menu'],
-    totalWord           : [453, 232, 2342, 433, 456, 2322]
+    totalWord           : [453, 232, 2342, 433, 456, 2322],
+    changes             : []
+    // changes             : [{
+    //     id: '',
+    //     command : 'delete',
+    //     checkbox : 'checked'
+    // }]
 }
 
 
 function reducerManageArticles(state = manageArticles, action){
     switch(action.type){
-        case 'temp1' :
+        case 'selectArticles' :
             const copyState = Object.assign(state);
-            copyState.checkBoxCreateMenu = action.payload.val;
+            handleCheckBox(copyState, action.payload);
+            copyState.changes.push(action.payload);
             console.log(copyState);
             return {...copyState}
         case 'temp2' :
@@ -25,6 +32,21 @@ function reducerManageArticles(state = manageArticles, action){
             return {...copyState2}
         default: return state
     }
+}
+
+function handleCheckBox(state, payload){
+    const {changes} = state;
+    if(changes.length > 0){
+        for (let i = 0; i < changes.length; i++) {
+            if(changes[i].id === payload.id){
+                state.changes[i].checked = payload.checked
+            };
+        }
+    }else{
+        state.changes.push(payload)
+    }
+    console.log(state);
+    return state;
 }
 
 export default reducerManageArticles;
