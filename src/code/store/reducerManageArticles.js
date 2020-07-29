@@ -21,8 +21,9 @@ function reducerManageArticles(state = manageArticles, action){
     switch(action.type){
         case 'selectArticles' :
             const copyState = Object.assign(state);
-            handleCheckBox(copyState, action.payload);
-            return {...copyState}
+            const processState = handleCheckBox(copyState, action.payload);
+            console.log(processState);
+            return {...processState}
         case 'temp2' :
             const copyState2 = Object.assign(state);
             copyState2.addSubItemToNewMenu = action.payload.val;
@@ -35,6 +36,7 @@ function reducerManageArticles(state = manageArticles, action){
 function handleCheckBox(state, payload){
     const {changes} = state;
     let found = false;
+    let newState = {...state};
     if(changes.length > 0){
         for (let i = 0; i < changes.length; i++) {
             if(changes[i].id === payload.id){
@@ -44,13 +46,21 @@ function handleCheckBox(state, payload){
             };
         }
         if(!found){
-            state.changes.push(payload);
+            newState.changes.push(payload);
         }
     }else{
-        state.changes.push(payload);
+        newState.changes.push(payload);
     }
-    console.log(state);
-    return state;
+    //console.log(state);
+    let allChanges = newState.changes.filter((change,index)=>{
+        //console.log(change);
+        if(change.checked){
+            return true
+        }
+    })
+    newState.changes = allChanges;
+    //console.log(newState);
+    return newState;
 }
 
 export default reducerManageArticles;
