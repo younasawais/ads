@@ -9,8 +9,6 @@ class ManageArticlesTable extends Component {
     
 
     handelCheckBox(e){
-        console.log(e.currentTarget.id);
-        console.log('Checked? : ' + e.target.checked);
         this.props.dispatch({
             type:'selectArticles',
             payload:{
@@ -53,4 +51,3 @@ class ManageArticlesTable extends Component {
 }
 
 export default connect(state=>state)(ManageArticlesTable);
-//export default ManageArticlesTable;

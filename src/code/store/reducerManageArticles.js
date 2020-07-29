@@ -1,6 +1,6 @@
 const manageArticles = { 
     columnNames         : ['#', 'id', 'Name', 'Published', 'Menu', 'Date Created', 'Pics', 'ParentItem', 'Total words'],
-    ids                 : ['id1343', 'id1231', 'id1232', 'id1233','id2331','id2331'],
+    ids                 : ['id1343', 'id1231', 'id1232', 'id1233','id2331','id2338'],
     names               : ['The khilafah system', 'Jannah', 'Jibriel aslm', 'Muhammad sas', 'Khilafa Rachida', 'Islam'],
     publshed            : ['yes', 'no', 'yes', 'no', 'yes', 'yes'],
     menu                : ['The khilafah', 'The khilafah', 'Jannah', 'Jannah', 'Mobiles', 'The khilafah'],
@@ -22,8 +22,6 @@ function reducerManageArticles(state = manageArticles, action){
         case 'selectArticles' :
             const copyState = Object.assign(state);
             handleCheckBox(copyState, action.payload);
-            copyState.changes.push(action.payload);
-            console.log(copyState);
             return {...copyState}
         case 'temp2' :
             const copyState2 = Object.assign(state);
@@ -36,14 +34,20 @@ function reducerManageArticles(state = manageArticles, action){
 
 function handleCheckBox(state, payload){
     const {changes} = state;
+    let found = false;
     if(changes.length > 0){
         for (let i = 0; i < changes.length; i++) {
             if(changes[i].id === payload.id){
                 state.changes[i].checked = payload.checked
+                found = true;
+                break;
             };
         }
+        if(!found){
+            state.changes.push(payload);
+        }
     }else{
-        state.changes.push(payload)
+        state.changes.push(payload);
     }
     console.log(state);
     return state;
