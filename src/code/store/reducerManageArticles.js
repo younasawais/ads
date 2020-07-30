@@ -1,8 +1,9 @@
 const manageArticles = { 
-    columnNames         : ['#', 'id', 'Name', 'Published', 'Menu', 'Date Created', 'Pics', 'ParentItem', 'Total words'],
+    columnNames         : ['#', 'id', 'Name', 'link', 'Published', 'Menu', 'Date Created', 'Pics', 'ParentItem', 'Total words'],
     ids                 : ['id1343', 'id1231', 'id1232', 'id1233','id2331','id2338'],
     names               : ['The khilafah system', 'Jannah', 'Jibriel aslm', 'Muhammad sas', 'Khilafa Rachida', 'Islam'],
     publshed            : ['yes', 'no', 'yes', 'no', 'yes', 'yes'],
+    links               : ['the-khilafah-system', 'jannah', 'jibriel-aslm', 'Muhammad-sas', 'khilafa-rachida', 'islam'],
     menu                : ['The khilafah', 'The khilafah', 'Jannah', 'Jannah', 'Mobiles', 'The khilafah'],
     dateCreated         : ['010620','051020', '090811', '240818', '091221', '090714'],
     pics                : [ 1, 2, 2, 1, 1, 2],

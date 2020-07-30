@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 
 class ManageArticlesTable extends Component {
     constructor(props){
         super(props);
         this.handelCheckBox = this.handelCheckBox.bind(this);
     }
-    
 
     handelCheckBox(e){
         this.props.dispatch({
@@ -35,7 +35,8 @@ class ManageArticlesTable extends Component {
                             <th onChange={this.handelCheckBox} key={index} id={manageArticles.ids[index]} 
                                                                 scope="row"><input type="checkbox"/></th>
                             <td>{manageArticles.ids[index]}</td>
-                            <td>{manageArticles.names[index]}</td>
+                            <td><Link type="button" to={'/home'} >{manageArticles.names[index]}</Link></td>
+                            <td>{manageArticles.links[index]}</td>
                             <td>{manageArticles.publshed[index]}</td>
                             <td>{manageArticles.menu[index]}</td>
                             <td>{manageArticles.dateCreated[index]}</td>

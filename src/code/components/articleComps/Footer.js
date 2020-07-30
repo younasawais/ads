@@ -12,7 +12,7 @@ class Footer extends Component {
                     <ul className="foot-menu">
                         {names.map((name, index) => {
                             return(
-                                <NavLink style={{paddingLeft:5, paddingRight:5 }} to={'/' + links[index]} className="foot-menu-item mbr-fonts-style display-7">
+                                <NavLink key={index} style={{paddingLeft:5, paddingRight:5 }} to={'/' + links[index]} className="foot-menu-item mbr-fonts-style display-7">
                                     <p className="text-white mbr-bold" href="#">{name}</p>
                                 </NavLink>
                             )
