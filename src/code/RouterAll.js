@@ -45,13 +45,18 @@ class RouterAll extends Component {
                         />
                     )})}
 
-                    {pages[1].map((link, index)=>{return(
+                    {/* {pages[1].map((link, index)=>{return(
                         <Route
                             key = {index}
                             path={'/'+link}
                             render={({location, match}) => <Article {...props} match={match}/>}    
                         />
-                    )})}
+                    )})} */}
+
+                    <Route
+                        path={'/article/:link?'}
+                        render={({location, match}) => <Article {...props} match={match}/>}    
+                    />
 
                     <Route
                         path='/admin' exact

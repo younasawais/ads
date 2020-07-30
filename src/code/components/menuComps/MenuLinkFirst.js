@@ -6,7 +6,7 @@ class MenuLinkFirst extends Component {
         const {name, router} = this.props.item;
         return (
             <li className="nav-item">
-                <NavLink className="nav-link link text-black display-4" to={'/' + router}>
+                <NavLink className="nav-link link text-black display-4" to={'/article/' + router}>
                     {name}
                 </NavLink>
             </li>

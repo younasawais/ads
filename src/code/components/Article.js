@@ -10,12 +10,13 @@ import Menu from './Menu';
 class Article extends Component {
     render() {
         const {pageContent} = this.props;
-        console.log(this.props);
+        const {params} = this.props.match;
+        console.log(params.link);
         //console.log(this.props.match.path)
         return (
             <Fragment>
                 <Menu {...this.props}/>
-                <TitleShortDetails article={pageContent} path={this.props.match.path}/>
+                <TitleShortDetails article={pageContent} link={params.link}/>
                 <ArticleText1 article={pageContent}/>
                 <ArticlePicture article={pageContent}/>
                 <ArticleText2 article={pageContent}/>

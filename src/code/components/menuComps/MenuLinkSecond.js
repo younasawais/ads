@@ -5,7 +5,7 @@ class MenuLinkSecond extends Component {
     render() {
         const {name, router} = this.props.item;
         return (
-            <NavLink className="text-black dropdown-item display-4" to={'/'+ router} aria-expanded="false">
+            <NavLink className="text-black dropdown-item display-4" to={'/article/'+ router} aria-expanded="false">
                 {name}
             </NavLink>
         );

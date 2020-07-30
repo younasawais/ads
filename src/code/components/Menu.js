@@ -10,7 +10,8 @@ class Menu extends Component {
         console.log(this.props);
         return (
         <section className="menu cid-s4lUbDTTEI" id="menu2-3">                    
-                <nav className="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
+                <nav className="navbar navbar-expand beta-menu navbar-dropdown align-items-center 
+                navbar-fixed-top navbar-toggleable-sm bg-color transparent">
                     <Logo />
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav nav-dropdown" >
