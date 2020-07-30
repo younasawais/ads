@@ -19,30 +19,31 @@ class ManageArticlesTable extends Component {
     }
 
     render() {
-        const {manageArticles} = this.props;
+        const {ids, links, publshed, menu, dateCreated, pics, 
+                parentItem, totalWord, columnNames, names } = this.props.manageArticles;
         return (
             <table className="table table-bordered">
                 <thead>
                     <tr>
-                        {manageArticles.columnNames.map((article, index)=> {return(
+                        {columnNames.map((article, index)=> {return(
                             <th key={index} scope="col">{article}</th>
                         )})}
                     </tr>
                 </thead>
                 <tbody>
-                    {manageArticles.ids.map((id, index)=>{return(
-                        <tr key={index}>
-                            <th onChange={this.handelCheckBox} key={index} id={manageArticles.ids[index]} 
+                    {ids.map((id, i)=>{return(
+                        <tr key={i}>
+                            <th onChange={this.handelCheckBox} key={i} id={ids[i]} 
                                                                 scope="row"><input type="checkbox"/></th>
-                            <td>{manageArticles.ids[index]}</td>
-                            <td><Link type="button" to={'/home'} >{manageArticles.names[index]}</Link></td>
-                            <td>{manageArticles.links[index]}</td>
-                            <td>{manageArticles.publshed[index]}</td>
-                            <td>{manageArticles.menu[index]}</td>
-                            <td>{manageArticles.dateCreated[index]}</td>
-                            <td>{manageArticles.pics[index]}</td>
-                            <td>{manageArticles.parentItem[index]}</td>
-                            <td>{manageArticles.totalWord[index]}</td>
+                            <td>{ids[i]}</td>
+                            <td><Link type="button" to={'/modifyarticle/'+links[i]}>{names[i]}</Link></td>
+                            <td>{links[i]}</td>
+                            <td>{publshed[i]}</td>
+                            <td>{menu[i]}</td>
+                            <td>{dateCreated[i]}</td>
+                            <td>{pics[i]}</td>
+                            <td>{parentItem[i]}</td>
+                            <td>{totalWord[i]}</td>
                         </tr>
                     )})}
                 </tbody>

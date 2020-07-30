@@ -5,10 +5,10 @@ import Article from './components/Article';
 import Home from './components/Home';
 import Admin from './components/Admin';
 import ManageArticles from './components/cms/managearticles/ManageArticles';
-import AddArticle from './components/cms/managearticles/AddArticle';
+import AddArticle from './components/cms/addArticle/AddArticle';
 import ManageMenus from    './components/cms/managemenus/ManageMenus';
 import SettingsCms from    './components/cms/settingscms/SettingsCms';
-import ModifyArticle from './components/cms/managearticles/ModifyArticle';
+import ModifyArticle from './components/cms/modifyArticle/ModifyArticle';
 
 class RouterAll extends Component {
     extractArray(arr){
@@ -24,7 +24,6 @@ class RouterAll extends Component {
             }
             names.push(arr[i].name);
             routes.push(arr[i].router);
-            
         }
         return [names, routes];
     }
@@ -59,6 +58,11 @@ class RouterAll extends Component {
                     />
 
                     <Route
+                        path={'/modifyarticle/:link?'}
+                        render={({location, match}) => <ModifyArticle {...props} match={match}/>}    
+                    />
+
+                    <Route
                         path='/admin' exact
                         render={({location, match}) => <Admin {...props}/>}    
                     />
@@ -84,10 +88,6 @@ class RouterAll extends Component {
                     <Route
                         path='/add-article' exact   
                         render={({location, match}) => <AddArticle {...props}/>}    
-                    />
-                    <Route
-                        path='/modify-article' exact   
-                        render={({location, match}) => <ModifyArticle {...props}/>}    
                     />
                 </Switch>
             </Fragment>

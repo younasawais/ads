@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import SelectMenuAddArticle from '../addArticle/SelectMenuAddArticle';
-import ArticleTextAddArticle from '../addArticle/ArticleTextAddArticle';
-import ExtraDetailsAddArticle from '../addArticle/ExtraDetailsAddArticle';
+import SelectMenuAddArticle from './SelectMenuAddArticle';
+import ArticleTextAddArticle from './ArticleTextAddArticle';
+import ExtraDetailsAddArticle from './ExtraDetailsAddArticle';
 import TextAndLabel from '../elements/TextAndLabel';
 import AlertMessage from '../elements/AlertMessage';
 import ButtonCustom from '../elements/ButtonCustom';
