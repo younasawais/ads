@@ -9,12 +9,12 @@ import SelectMenuModifyArticle from './SelectMenuModifyArticle';
 class ModifyArticle extends Component {
     render() {
         const {link} = this.props.match.params;
-        console.log('ModifyArticle.ks : '+ link);
+        console.log(this.props.modifyArticle);
         return (
             <Fragment>
             <div style={{maxWidth:"1100px", marginLeft: 'auto', marginRight: 'auto', paddingLeft: '10px', paddingRight: '10px'}}>
                     <AlertMessage text='test' />
-                    <ButtonCustom text='Save Changes'/>
+                    <ButtonCustom text='Update Changes'/>
                     <ButtonCustom text='Close' type='warning'/><hr/>
                     <TextAndLabel labelName='Title: ' />
                     <TextAndLabel labelName='Item name inside menu: ' />

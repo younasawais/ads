@@ -4,12 +4,13 @@ import {devToolsEnhancer} from 'redux-devtools-extension';
 import reducerPageContent from './reducerPageContent';
 import reducerAddArticle from './reducerAddArticle';
 import reducerManageArticles from './reducerManageArticles';
-
+import reducerModifyArticle from './reducerModifyArticle';
 
 const rootReducer = combineReducers({
     pageContent     : reducerPageContent,
     addArticle      : reducerAddArticle,
-    manageArticles  : reducerManageArticles
+    manageArticles  : reducerManageArticles,
+    modifyArticle   : reducerModifyArticle
   });
 
 const store = createStore(

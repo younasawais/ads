@@ -7,6 +7,7 @@ class ExtraDetailsModifyArticle extends Component {
     render() {
         return (
             <Fragment>  
+                <TextAndCheckbox text={'Change'}/>
                 <TextAndLabel labelName='Link ID: ' />
                 <TextAndLabel labelName='Tags: ' />
                 <TextAndLabel labelName='Reference: ' />
