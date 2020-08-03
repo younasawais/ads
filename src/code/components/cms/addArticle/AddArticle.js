@@ -13,6 +13,7 @@ class AddArticles extends Component {
     // TODO:: add props to ExtraDetails.....
 
     render() {
+        const {dispatch, addArticle} = this.props;
         return (
             <Fragment>
             <div style={{maxWidth:"1100px", marginLeft: 'auto', marginRight: 'auto', paddingLeft: '10px', paddingRight: '10px'}}>
@@ -20,17 +21,23 @@ class AddArticles extends Component {
                     <ButtonCustom text='Save Changes'/>
                     <ButtonCustom text='Close' type='warning'/><hr/>
                     <TextAndLabel labelName='Title: ' 
-                        dispatch={this.props.dispatch} 
+                        dispatch={dispatch} 
                         reducerType='titleAddArticle' 
-                        value={this.props.addArticle.title}/>
+                        value={addArticle.title}/>
                     <TextAndLabel labelName='Item name inside menu: '
-                        dispatch={this.props.dispatch} 
+                        dispatch={dispatch} 
                         reducerType='menuItemNameAddArticle' 
-                        value={this.props.addArticle.menuItemName}/>
+                        value={addArticle.menuItemName}/>
                     <SelectMenuAddArticle {...this.props} />
                     <ExtraDetailsAddArticle {...this.props} />
-                    <ArticleTextAddArticle label='Text 1'/>
-                    <ArticleTextAddArticle label='Text 2'/>
+                    <ArticleTextAddArticle label='Text 1'
+                        dispatch={dispatch} 
+                        reducerType='text1AddArticle' 
+                        value={addArticle.text1}/>
+                    <ArticleTextAddArticle label='Text 2'
+                        dispatch={dispatch} 
+                        reducerType='text2AddArticle' 
+                        value={addArticle.text2}/>
             </div>
             </Fragment>
         );

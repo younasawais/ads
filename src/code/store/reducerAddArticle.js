@@ -4,12 +4,25 @@ const addArticle = {
     menus                   : ['Phiysic', 'Islamic system','space exploration'],
     menuItems               : ['Chaper 1', 'chaper 2', 'chapter 3', 'chapter 4', 'chapter 5'],
     title                   : '',
-    menuItemName            : "",
+    menuItemName            : '',
+    linkId                  : '',
+    tags                    : '',
+    text1                   : '',
+    text2                   : ''
 }
 
 
 function reducerAddArticle(state = addArticle, action){
     switch(action.type){
+        case 'text1AddArticle' :
+            console.log(action.payload.input);
+            return {...state, text1 : action.payload.input}
+        case 'text2AddArticle' :
+            console.log(action.payload.input);
+            return {...state, text2 : action.payload.input}
+        case 'tagsAddArticle' :
+            console.log(action.payload.input);
+            return {...state,tags : action.payload.input}
         case 'menuItemNameAddArticle' :
             console.log(action.payload.input);
             return {...state,menuItemName : action.payload.input}
