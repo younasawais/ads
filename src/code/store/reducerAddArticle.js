@@ -2,21 +2,27 @@ const addArticle = {
     checkBoxCreateMenu      : false,
     addSubItemToNewMenu     : false,
     menus                   : ['Phiysic', 'Islamic system','space exploration'],
-    menuItems               : ['Chaper 1', 'chaper 2', 'chapter 3', 'chapter 4', 'chapter 5']
+    menuItems               : ['Chaper 1', 'chaper 2', 'chapter 3', 'chapter 4', 'chapter 5'],
+    title                   : '',
+    menuItemName            : "",
 }
 
 
 function reducerAddArticle(state = addArticle, action){
     switch(action.type){
+        case 'menuItemNameAddArticle' :
+            console.log(action.payload.input);
+            return {...state,menuItemName : action.payload.input}
+        case 'titleAddArticle' :
+            console.log(action.payload.input);
+            return {...state,title : action.payload.input}
         case 'createNewMenu' :
             const copyState = Object.assign(state);
             copyState.checkBoxCreateMenu = action.payload.val;
-            console.log(copyState);
             return {...copyState}
         case 'addSubItemToNewMenu' :
             const copyState2 = Object.assign(state);
             copyState2.addSubItemToNewMenu = action.payload.val;
-            console.log(copyState2);
             return {...copyState2}
         default: return state
     }

@@ -7,6 +7,11 @@ import AlertMessage from '../elements/AlertMessage';
 import ButtonCustom from '../elements/ButtonCustom';
 
 class AddArticles extends Component {
+    // constructor(props){
+    //     super(props);
+    // }
+    // TODO:: add props to ExtraDetails.....
+
     render() {
         return (
             <Fragment>
@@ -14,10 +19,16 @@ class AddArticles extends Component {
                     <AlertMessage text='test' />
                     <ButtonCustom text='Save Changes'/>
                     <ButtonCustom text='Close' type='warning'/><hr/>
-                    <TextAndLabel labelName='Title: ' />
-                    <TextAndLabel labelName='Item name inside menu: ' />
+                    <TextAndLabel labelName='Title: ' 
+                        dispatch={this.props.dispatch} 
+                        reducerType='titleAddArticle' 
+                        value={this.props.addArticle.title}/>
+                    <TextAndLabel labelName='Item name inside menu: '
+                        dispatch={this.props.dispatch} 
+                        reducerType='menuItemNameAddArticle' 
+                        value={this.props.addArticle.menuItemName}/>
                     <SelectMenuAddArticle {...this.props} />
-                    <ExtraDetailsAddArticle />
+                    <ExtraDetailsAddArticle {...this.props} />
                     <ArticleTextAddArticle label='Text 1'/>
                     <ArticleTextAddArticle label='Text 2'/>
             </div>

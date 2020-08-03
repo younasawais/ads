@@ -7,7 +7,6 @@ import MenuLinkSub from './menuComps/MenuLinkSub';
 class Menu extends Component {
     render() {
        const {articleMenuItems} = this.props.pageContent;
-        console.log(this.props);
         return (
         <section className="menu cid-s4lUbDTTEI" id="menu2-3">                    
                 <nav className="navbar navbar-expand beta-menu navbar-dropdown align-items-center 
