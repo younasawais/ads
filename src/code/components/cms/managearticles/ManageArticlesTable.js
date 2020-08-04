@@ -33,8 +33,9 @@ class ManageArticlesTable extends Component {
                 <tbody>
                     {ids.map((id, i)=>{return(
                         <tr key={i}>
-                            <th onChange={this.handelCheckBox} key={i} id={ids[i]} 
-                                                                scope="row"><input type="checkbox"/></th>
+                            <th onChange={this.handelCheckBox} key={i} id={ids[i]} scope="row">
+                                <input type="checkbox"/>
+                            </th>
                             <td>{ids[i]}</td>
                             <td><Link type="button" to={'/modifyarticle/'+links[i]}>{names[i]}</Link></td>
                             <td>{links[i]}</td>

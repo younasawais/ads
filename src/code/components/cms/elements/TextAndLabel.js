@@ -9,13 +9,15 @@ class TextAndLabel extends Component {
 
     handleInputText(e){
         e.preventDefault();
-        console.log('change input');
-        this.props.dispatch({
-            type: this.props.reducerType,
-            payload:{
-                input : e.target.value
-            }
-        })
+        const {reducerType} = this.props;
+        if(typeof reducerType !== 'undefined'){
+            this.props.dispatch({
+                type: reducerType,
+                payload:{
+                    input : e.target.value
+                }
+            })
+        }
     }
 
     render() {
@@ -29,7 +31,7 @@ class TextAndLabel extends Component {
                     <input 
                         type="text" 
                         onChange={this.handleInputText}  
-                        placeholder='testval' 
+                        placeholder=''
                         className="form-control" 
                         value={value}
                         aria-label={labelName} 
@@ -40,5 +42,9 @@ class TextAndLabel extends Component {
     }
 }
 
+TextAndLabel.defaultProps = {
+    labelName   : 'undefined',
+    value       : ''
+}
+
 export default connect(state => state)(TextAndLabel);
-//export default TextAndLabel;

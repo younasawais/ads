@@ -8,21 +8,32 @@ class ExtraDetailsAddArticle extends Component {
         const {dispatch, addArticle} = this.props;
         return (
             <Fragment>  
-                <TextAndLabel labelName='Link ID: ' 
+                <TextAndLabel 
+                        labelName='Link ID: ' 
                         dispatch={dispatch} 
                         reducerType='linkIdAddArticle' 
                         value={addArticle.linkId}/>
-                <TextAndLabel labelName='Tags: ' 
+                <TextAndLabel 
+                        labelName='Tags: ' 
                         dispatch={dispatch} 
                         reducerType='tagsAddArticle' 
                         value={addArticle.tags}/>
-                <TextAndLabel labelName='Reference: ' />
-                <TextAndCheckbox text='Active?'/>
+                <TextAndLabel 
+                        labelName='Reference: '
+                        dispatch={dispatch} 
+                        reducerType='referenceAddArticle' 
+                        value={addArticle.reference} />
+                <TextAndCheckbox 
+                        checked={addArticle.active}
+                        text='Active?'
+                        dispatch={dispatch}
+                        reducerType='activeAddArticle' />
                 <UploadPicAddArticle text={'Upload 1'}/>
                 <UploadPicAddArticle text={'Upload 2'}/>
             </Fragment>
         );
     }
 }
+
 
 export default ExtraDetailsAddArticle;
