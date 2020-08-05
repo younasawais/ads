@@ -12,6 +12,7 @@ class ExtraDetailsAddArticle extends Component {
                         labelName='Link ID: ' 
                         dispatch={dispatch} 
                         reducerType='linkIdAddArticle' 
+                        placeholder='auto generated'
                         value={addArticle.linkId}/>
                 <TextAndLabel 
                         labelName='Tags: ' 

@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 
 class DropDown extends Component {
+    constructor(props){
+        super(props);
+        this.handleSelection = this.handleSelection.bind(this);
+    }
+
+    handleSelection(val){
+        console.log(val);
+    }
+
     render() {
         const { text, items } = this.props;
         return (
@@ -10,18 +19,12 @@ class DropDown extends Component {
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     {items.map((item, index) => {return(
-                        <li key={index} className="dropdown-item">{item}</li>
+                        <li onClick={()=>{this.handleSelection(item)}} key={index} className="dropdown-item">{item}</li>
                     )})}
                 </div>
             </div>
         );
     }
 }
-
-// const styles = {
-//     divDropDown : {
-//         padding : 0
-//     }
-// }
 
 export default DropDown;

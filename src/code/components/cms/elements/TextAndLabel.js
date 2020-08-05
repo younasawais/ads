@@ -21,7 +21,7 @@ class TextAndLabel extends Component {
     }
 
     render() {
-        const {labelName, value} = this.props;
+        const {labelName, value, placeholder} = this.props;
         return (
             <Fragment>
                 <div className="input-group mb-3">
@@ -31,7 +31,7 @@ class TextAndLabel extends Component {
                     <input 
                         type="text" 
                         onChange={this.handleInputText}  
-                        placeholder=''
+                        placeholder={placeholder}
                         className="form-control" 
                         value={value}
                         aria-label={labelName} 
@@ -44,7 +44,8 @@ class TextAndLabel extends Component {
 
 TextAndLabel.defaultProps = {
     labelName   : 'undefined',
-    value       : ''
+    value       : '',
+    placeholder : '' 
 }
 
 export default connect(state => state)(TextAndLabel);

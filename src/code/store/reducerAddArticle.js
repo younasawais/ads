@@ -5,7 +5,8 @@ const addArticle = {
     menuItemName            : '',
     newMenu                 : '',
     menuItem                : '',
-    subItem                 : '',
+    parentItem              : '',
+    createParent            : '',
     linkId                  : '',
     tags                    : '',
     text1                   : '',
@@ -14,15 +15,20 @@ const addArticle = {
     active                  : false,
     checkBoxCreateMenu      : false,
     addSubItemToParent      : false,
+    checkBoxCreateParent    : false
 }
 
 
 function reducerAddArticle(state = addArticle, action){
     switch(action.type){
+        case 'checkBoxCreateParentAddArticle' :
+            return {...state, checkBoxCreateParent : action.payload.input}
+        case 'createParentAddArticle' :
+            return {...state, createParent : action.payload.input}
         case 'linkIdAddArticle' :
             return {...state, linkId : action.payload.input}
-        case 'subItemAddArticle' :
-            return {...state, subItem : action.payload.input}
+        case 'parentItemAddArticle' :
+            return {...state, parentItem : action.payload.input}
         case 'menuItemAddArticle' :
             return {...state, menuItem : action.payload.input}
         case 'newMenuAddArticle' :
