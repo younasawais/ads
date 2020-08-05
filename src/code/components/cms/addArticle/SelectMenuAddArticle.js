@@ -6,8 +6,8 @@ import TextAndCheckbox from '../elements/TextAndCheckbox';
 
 class SelectMenuAddArticle extends Component {
   render() {
-    const {checkBoxCreateMenu, addSubItemToNewMenu, menus, menuItems} = this.props.addArticle;
-    const {dispatch} = this.props;
+    const {checkBoxCreateMenu, addSubItemToParent, menus, menuItems} = this.props.addArticle;
+    const {dispatch, addArticle} = this.props;
     return (
       <Fragment>
         <div className='createNewMenu'>
@@ -18,25 +18,36 @@ class SelectMenuAddArticle extends Component {
             reducerType='createNewMenu'/> {/* <TextAndCheckbox handleFunction={this.createNewMenu} text='Create new Menu? ' /> */}
           {checkBoxCreateMenu
             ? <Fragment>
-                <TextAndLabel labelName='Menu Name: '/>
-                <TextAndLabel labelName='Menu Item name: '/>
+                <TextAndLabel labelName='Menu Name: ' 
+                    dispatch={dispatch} 
+                    reducerType='newMenuAddArticle' 
+                    value={addArticle.newMenu}/>
+                <TextAndLabel labelName='Menu Item name: ' 
+                    dispatch={dispatch} 
+                    reducerType='menuItemAddArticle' 
+                    value={addArticle.menuItem}/>
                 <TextAndCheckbox
-                  checked={addSubItemToNewMenu}
+                  checked={addSubItemToParent}
                   text='Add as a subitem?'
                   dispatch={dispatch}
-                  reducerType='addSubItemToNewMenu'/> {/* <TextAndCheckbox handleFunction={this.addSubItemToNewMenu} text='Add as a subitem?' /> */}
-                {addSubItemToNewMenu
-                  ? <TextAndLabel labelName='SubItem Name: '/>
+                  reducerType='addSubItemToParent'/> {/* <TextAndCheckbox handleFunction={this.addSubItemToParent} text='Add as a subitem?' /> */}
+                {addSubItemToParent
+                  ? 
+                  <TextAndLabel labelName='SubItem Name: ' 
+                      dispatch={dispatch} 
+                      reducerType='subItemAddArticle' 
+                      value={addArticle.subItem}/>
                   : ""}
               </Fragment>
             : <Fragment>
               <DropDown items={menus} text='Add item to Menu'/>
               <TextAndCheckbox
-                checked={addSubItemToNewMenu}
+                checked={addSubItemToParent}
                 text='Add as a subitem?'
                 dispatch={dispatch}
-                reducerType='addSubItemToNewMenu'/> {/* <TextAndCheckbox text='Add as a subItem?' /> */}
-              <DropDown items={menuItems} text='Add subItem to'/>
+                reducerType='addSubItemToParent'/> {/* <TextAndCheckbox text='Add as a subItem?' /> */}
+                {addSubItemToParent ? <DropDown items={menuItems} text='Add subItem to'/> : ""}
+              
             </Fragment>
 }
         </div>

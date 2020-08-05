@@ -3,6 +3,9 @@ const addArticle = {
     menuItems               : ['Chaper 1', 'chaper 2', 'chapter 3', 'chapter 4', 'chapter 5'],
     title                   : '',
     menuItemName            : '',
+    newMenu                 : '',
+    menuItem                : '',
+    subItem                 : '',
     linkId                  : '',
     tags                    : '',
     text1                   : '',
@@ -10,14 +13,21 @@ const addArticle = {
     reference               : '',
     active                  : false,
     checkBoxCreateMenu      : false,
-    addSubItemToNewMenu     : false,
+    addSubItemToParent      : false,
 }
 
 
 function reducerAddArticle(state = addArticle, action){
     switch(action.type){
+        case 'linkIdAddArticle' :
+            return {...state, linkId : action.payload.input}
+        case 'subItemAddArticle' :
+            return {...state, subItem : action.payload.input}
+        case 'menuItemAddArticle' :
+            return {...state, menuItem : action.payload.input}
+        case 'newMenuAddArticle' :
+            return {...state, newMenu : action.payload.input}
         case 'activeAddArticle' :
-            console.log(action.payload.input);
             return {...state, active : action.payload.input}
         case 'referenceAddArticle' :
             return {...state, reference : action.payload.input}
@@ -33,8 +43,8 @@ function reducerAddArticle(state = addArticle, action){
             return {...state,title : action.payload.input}
         case 'createNewMenu' :
             return {...state,checkBoxCreateMenu : action.payload.input}
-        case 'addSubItemToNewMenu' :
-            return {...state,addSubItemToNewMenu : action.payload.input}
+        case 'addSubItemToParent' :
+            return {...state,addSubItemToParent : action.payload.input}
         default: return state
     }
 }
