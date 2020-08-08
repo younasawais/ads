@@ -1,13 +1,13 @@
 const manageArticles = { 
     columnNames         : ['#', 'id', 'Name', 'link', 'Published', 'Menu', 'Date Created', 'Pics', 'ParentItem', 'Total words'],
     ids                 : ['id1343', 'id1231', 'id1232', 'id1233','id2331','id2338'],
-    names               : ['The khilafah system', 'Jannah', 'Jibriel aslm', 'Muhammad sas', 'Khilafa Rachida', 'Islam'],
+    names               : ['Moon size', 'Console design', 'Stars', 'Ram memory', 'Screens', 'Games'],
     publshed            : ['yes', 'no', 'yes', 'no', 'yes', 'yes'],
-    links               : ['the-khilafah-system', 'jannah', 'jibriel-aslm', 'Muhammad-sas', 'khilafa-rachida', 'islam'],
-    menu                : ['The khilafah', 'The khilafah', 'Jannah', 'Jannah', 'Mobiles', 'The khilafah'],
+    links               : ['moon-size', 'console-design', 'stars', 'ram-memory', 'screens', 'games'],
+    menu                : ['Space', 'Playstation', 'Space', 'PC', 'PC', 'Playstation'],
     dateCreated         : ['010620','051020', '090811', '240818', '091221', '090714'],
     pics                : [ 1, 2, 2, 1, 1, 2],
-    parentItem          : ['menu', 'menu','menu','menu','The Khilafah', 'menu'],
+    parentItem          : ['stars', 'menu','menu','menu','menu', 'menu'],
     totalWord           : [453, 232, 2342, 433, 456, 2322],
     changes             : []
     // changes             : [{

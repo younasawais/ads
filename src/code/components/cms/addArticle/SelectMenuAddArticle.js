@@ -6,7 +6,7 @@ import TextAndCheckbox from '../elements/TextAndCheckbox';
 
 class SelectMenuAddArticle extends Component {
   render() {
-    const {checkBoxCreateMenu, addSubItemToParent, menus, menuItems, checkBoxCreateParent, createParentName} = this.props.addArticle;
+    const {checkBoxCreateMenu, addSubItemToParent, menus, checkBoxCreateParent,} = this.props.addArticle;
     const {dispatch, addArticle} = this.props;
     return (
       <Fragment>
@@ -34,16 +34,10 @@ class SelectMenuAddArticle extends Component {
                   dispatch={dispatch}
                   reducerType='addSubItemToParent'/> 
                 {addSubItemToParent
-                  ? 
-                  <DropDown items={menus} text='Add item to Parent'/>
-                  // <TextAndLabel labelName='Parent item Name: ' 
-                  //     dispatch={dispatch} 
-                  //     reducerType='parentItemAddArticle' 
-                  //     value={addArticle.parentItem}/>
-                  : ""}
+                  ? <DropDown items={addArticle.currentParents} reducerType='parentItemAddArticle' text={addArticle.parentItem}/>: ""}
               </Fragment>
             : <Fragment>
-              <DropDown items={menus} text='Add item to Menu'/>
+              <DropDown items={menus} reducerType='selectMenuAddArticle' text={addArticle.selectedMenu}/>
               <TextAndCheckbox
                 checked={checkBoxCreateParent}
                 text='Create new Parent?'
@@ -54,7 +48,7 @@ class SelectMenuAddArticle extends Component {
                     dispatch={dispatch} 
                     reducerType='createParentAddArticle' 
                     value={addArticle.createParent}/> :
-                    <DropDown items={menus} text='Add item to Parent'/>
+                    <DropDown items={addArticle.currentParents} reducerType='parentItemAddArticle' text={addArticle.parentItem}/>
               }
               
             </Fragment>

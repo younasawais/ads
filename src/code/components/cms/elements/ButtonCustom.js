@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 class ButtonCustom extends Component {
     render() {
-        const {text, type} = this.props; 
+        const {text, type, handleSaveChanges} = this.props; 
         return (
-            <button style={style} type="button" className={"btn btn-" + type}>{text}</button>
+            <button style={style} type="button" onClick={handleSaveChanges} className={"btn btn-" + type}>{text}</button>
         );
     }
 }

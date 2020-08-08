@@ -9,7 +9,6 @@ class TextAndCheckbox extends Component {
 
     handleCheckbox(e){
         const {reducerType} = this.props;
-        console.log(reducerType);
         if(typeof reducerType !== 'undefined'){
             this.props.dispatch({
                 type: reducerType,

@@ -1,11 +1,12 @@
 const addArticle = { 
-    menus                   : ['Phiysic', 'Islamic system','space exploration'],
+    menus                   : ['Space', 'Playstation','PC'],
     menuItems               : ['Chaper 1', 'chaper 2', 'chapter 3', 'chapter 4', 'chapter 5'],
+    currentParents          : ['Console design', 'Stars', 'Ram memory', 'Screens', 'Games'],
     title                   : '',
     menuItemName            : '',
     newMenu                 : '',
-    menuItem                : '',
     parentItem              : '',
+    selectedMenu            : '',
     createParent            : '',
     linkId                  : '',
     tags                    : '',
@@ -21,6 +22,8 @@ const addArticle = {
 
 function reducerAddArticle(state = addArticle, action){
     switch(action.type){
+        case 'selectMenuAddArticle' :
+            return {...state, selectedMenu : action.payload.input}
         case 'checkBoxCreateParentAddArticle' :
             return {...state, checkBoxCreateParent : action.payload.input}
         case 'createParentAddArticle' :
