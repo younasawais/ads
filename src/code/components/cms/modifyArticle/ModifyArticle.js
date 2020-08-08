@@ -4,11 +4,11 @@ import AlertMessage from '../elements/AlertMessage';
 import ButtonCustom from '../elements/ButtonCustom';
 import ExtraDetailsModifyArticle from '../modifyArticle/ExtraDetailsModifyArticle';
 import ArticleTextModifyArticle from './ArticleTextModifyArticle';
-import SelectMenuModifyArticle from './SelectMenuModifyArticle';
+//import SelectMenuModifyArticle from './SelectMenuModifyArticle';
 
 class ModifyArticle extends Component {
     render() {
-        const {link} = this.props.match.params;
+        //const {link} = this.props.match.params;
         console.log(this.props.modifyArticle); // 31 July
         return (
             <Fragment>

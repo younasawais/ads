@@ -14,31 +14,29 @@ class AddArticles extends Component {
     }
 
     async handleSaveChanges(){
-        console.log(this.props.addArticle);
-        const response = await axios.post("http://localhost:4000/saveAddArticle",this.props.addArticle);
-        // const {
-        //     title, menuItemName, newMenu, parentItem, selectedMenu, 
-        //     createParent, linkId, tags, text1, text2, reference, active, 
-        //     checkBoxCreateMenu, addSubItemToParent, checkBoxCreateParent} 
-        //     = this.props.AddArticles;
-        // const response = await axios.post("http://localhost:4000/mongoose",
-        // {   title                   : title,
-        //     menuItemName            : menuItemName,
-        //     newMenu                 : newMenu,
-        //     parentItem              : parentItem,
-        //     selectedMenu            : selectedMenu,
-        //     createParent            : createParent,
-        //     linkId                  : linkId,
-        //     tags                    : tags,
-        //     text1                   : text1,
-        //     text2                   : text2,
-        //     reference               : reference,
-        //     active                  : active,
-        //     checkBoxCreateMenu      : checkBoxCreateMenu,
-        //     addSubItemToParent      : addSubItemToParent,
-        //     checkBoxCreateParent    : checkBoxCreateParent
-        // });
-        console.log(response);
+        const {title, menuItemName} = this.props.addArticle;
+        const {dispatch} = this.props;
+        if(title !== '' || menuItemName !== ''){
+            const response = await axios.post("http://localhost:4000/saveAddArticle",this.props.addArticle);
+            console.log(response);
+        }else{
+                dispatch({
+                type :'updateAlertAddArticle', 
+                payload : {
+                    input : 'Check Title and/or menu item name',
+                    alertType : 'warning'
+                }
+            });
+            setTimeout(function() {
+                dispatch({
+                    type :'updateAlertAddArticle', 
+                    payload : {
+                        input : '',
+                        alertType : ''
+                    }
+                });
+            }, 3000);
+        }
     }
 
     render() {
@@ -46,7 +44,7 @@ class AddArticles extends Component {
         return (
             <Fragment>
             <div style={{maxWidth:"1100px", marginLeft: 'auto', marginRight: 'auto', paddingLeft: '10px', paddingRight: '10px'}}>
-                    <AlertMessage text='test' />
+                    {(addArticle.statusArticle !== '') ? <AlertMessage text={addArticle.statusArticle} type={addArticle.alertType} /> : '' }
                     <ButtonCustom text='Save Changes' handleSaveChanges={this.handleSaveChanges} />
                     <ButtonCustom text='Close' type='warning'/><hr/>
                     <TextAndLabel labelName='Title: ' 
@@ -67,6 +65,9 @@ class AddArticles extends Component {
                         dispatch={dispatch} 
                         reducerType='text2AddArticle' 
                         value={addArticle.text2}/>
+                    {(addArticle.statusArticle !== '') ? <AlertMessage text={addArticle.statusArticle} type={addArticle.alertType} /> : '' }
+                    <ButtonCustom text='Save Changes' handleSaveChanges={this.handleSaveChanges} />
+                    <ButtonCustom text='Close' type='warning'/>
             </div>
             </Fragment>
         );

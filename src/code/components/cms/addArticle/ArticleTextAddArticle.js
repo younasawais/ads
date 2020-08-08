@@ -27,10 +27,11 @@ class ArticleTextAddArticle extends Component {
                 <div className="form-group">
                 <label >{this.props.label}</label>
                     <textarea 
+                        value={value}
                         onChange={this.handleInputText}  
                         className="form-control" 
                         id="exampleFormControlTextarea1" 
-                        rows="3">{value}
+                        rows="3">
                     </textarea>
                 </div>   
             </div>

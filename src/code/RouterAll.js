@@ -30,8 +30,7 @@ class RouterAll extends Component {
 
     render() {
         const {props} = this;
-        const {bottomMenu,articleMenuItems} = this.props.pageContent;
-        const pages = this.extractArray(articleMenuItems);
+        const {bottomMenu} = this.props.pageContent;
         return (
             <Fragment>            
                 {/* <Menu {...props}/> */}

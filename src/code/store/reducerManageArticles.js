@@ -52,15 +52,12 @@ function handleCheckBox(state, payload){
     }else{
         newState.changes.push(payload);
     }
-    //console.log(state);
     let allChanges = newState.changes.filter((change,index)=>{
-        //console.log(change);
         if(change.checked){
             return true
         }
     })
     newState.changes = allChanges;
-    //console.log(newState);
     return newState;
 }
 

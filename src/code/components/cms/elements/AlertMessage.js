@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class AlertMessage extends Component {
     render() {
-        const {text, type} = this.props;
+        let {text, type} = this.props;
+        if(typeof(type==='')){type='success'};
         return (
             <div style={{padding:'6px', marginTop:0, marginBotom:0}} className={"alert alert-" + type} role="alert">
                 {text}

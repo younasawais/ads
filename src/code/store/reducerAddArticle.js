@@ -13,6 +13,8 @@ const addArticle = {
     text1                   : '',
     text2                   : '',
     reference               : '',
+    statusArticle           : '',
+    alertType               : '',
     active                  : false,
     checkBoxCreateMenu      : false,
     addSubItemToParent      : false,
@@ -22,6 +24,8 @@ const addArticle = {
 
 function reducerAddArticle(state = addArticle, action){
     switch(action.type){
+        case 'updateAlertAddArticle' :
+            return {...state, statusArticle : action.payload.input, alertType : action.payload.alertType}
         case 'selectMenuAddArticle' :
             return {...state, selectedMenu : action.payload.input}
         case 'checkBoxCreateParentAddArticle' :
