@@ -22,19 +22,6 @@ class SelectMenuAddArticle extends Component {
                     dispatch={dispatch} 
                     reducerType='newMenuAddArticle' 
                     value={addArticle.newMenu}/>
-                <TextAndLabel labelName='Menu Item name: ' 
-                    dispatch={dispatch} 
-                    reducerType='menuItemAddArticle' 
-                    placeholder='auto generated'
-                    value={addArticle.menuItem}/>
-                <hr/>
-                <TextAndCheckbox
-                  checked={addSubItemToParent}
-                  text='Add as a subitem?'
-                  dispatch={dispatch}
-                  reducerType='addSubItemToParent'/> 
-                {addSubItemToParent
-                  ? <DropDown items={addArticle.currentParents} reducerType='parentItemAddArticle' text={addArticle.parentItem}/>: ""}
               </Fragment>
             : <Fragment>
               <DropDown items={menus} reducerType='selectMenuAddArticle' text={addArticle.selectedMenu}/>
@@ -48,11 +35,9 @@ class SelectMenuAddArticle extends Component {
                     dispatch={dispatch} 
                     reducerType='createParentAddArticle' 
                     value={addArticle.createParent}/> :
-                    <DropDown items={addArticle.currentParents} reducerType='parentItemAddArticle' text={addArticle.parentItem}/>
+                    <DropDown items={addArticle.currentParents} reducerType='parentItemAddArticleSelected' text={addArticle.parentItemSelected}/>
               }
-              
-            </Fragment>
-}
+            </Fragment>}
         </div>
       </Fragment>
     );

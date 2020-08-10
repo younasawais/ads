@@ -9,12 +9,6 @@ class ExtraDetailsAddArticle extends Component {
         return (
             <Fragment>  
                 <TextAndLabel 
-                        labelName='Link ID: ' 
-                        dispatch={dispatch} 
-                        reducerType='linkIdAddArticle' 
-                        placeholder='auto generated'
-                        value={addArticle.linkId}/>
-                <TextAndLabel 
                         labelName='Tags: ' 
                         dispatch={dispatch} 
                         reducerType='tagsAddArticle' 

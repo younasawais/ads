@@ -5,10 +5,9 @@ const addArticle = {
     title                   : '',
     menuItemName            : '',
     newMenu                 : '',
-    parentItem              : '',
+    parentItemSelected      : '',
     selectedMenu            : '',
     createParent            : '',
-    linkId                  : '',
     tags                    : '',
     text1                   : '',
     text2                   : '',
@@ -29,13 +28,11 @@ function reducerAddArticle(state = addArticle, action){
         case 'selectMenuAddArticle' :
             return {...state, selectedMenu : action.payload.input}
         case 'checkBoxCreateParentAddArticle' :
-            return {...state, checkBoxCreateParent : action.payload.input}
+            return {...state, checkBoxCreateParent : action.payload.input, parentItemSelected : ""}
         case 'createParentAddArticle' :
             return {...state, createParent : action.payload.input}
-        case 'linkIdAddArticle' :
-            return {...state, linkId : action.payload.input}
-        case 'parentItemAddArticle' :
-            return {...state, parentItem : action.payload.input}
+        case 'parentItemAddArticleSelected' :
+            return {...state, parentItemSelected : action.payload.input}
         case 'menuItemAddArticle' :
             return {...state, menuItem : action.payload.input}
         case 'newMenuAddArticle' :
@@ -55,7 +52,12 @@ function reducerAddArticle(state = addArticle, action){
         case 'titleAddArticle' :
             return {...state,title : action.payload.input}
         case 'createNewMenu' :
-            return {...state,checkBoxCreateMenu : action.payload.input}
+            return {
+                ...state,checkBoxCreateMenu : action.payload.input, 
+                selectedMenu : "", 
+                parentItemSelected : "", 
+                checkBoxCreateParent : false, 
+                createParent : ""}
         case 'addSubItemToParent' :
             return {...state,addSubItemToParent : action.payload.input}
         default: return state
