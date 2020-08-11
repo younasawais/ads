@@ -3,11 +3,21 @@ import DropDown from '../elements/DropDown';
 import {connect} from 'react-redux';
 import TextAndLabel from '../elements/TextAndLabel';
 import TextAndCheckbox from '../elements/TextAndCheckbox';
+import axios from 'axios';
 
 class SelectMenuAddArticle extends Component {
+  async componentWillMount(){
+    const response = await axios.post("http://localhost:4000/addArticleMenuData",'Send me menu data');
+    this.props.dispatch(
+      {type : 'updateMenuAddArticle', 
+      payload : { menus : response.data }})
+    console.log(response.data);
+  }
+
   render() {
-    const {checkBoxCreateMenu, addSubItemToParent, menus, checkBoxCreateParent,} = this.props.addArticle;
+    const {checkBoxCreateMenu, menus, checkBoxCreateParent} = this.props.addArticle;
     const {dispatch, addArticle} = this.props;
+
     return (
       <Fragment>
         <div className='createNewMenu'>

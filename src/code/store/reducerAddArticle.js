@@ -1,5 +1,6 @@
 const addArticle = { 
-    menus                   : ['Space', 'Playstation','PC'],
+    menus                   : [],
+    menuIds                 : [],
     menuItems               : ['Chaper 1', 'chaper 2', 'chapter 3', 'chapter 4', 'chapter 5'],
     currentParents          : ['Console design', 'Stars', 'Ram memory', 'Screens', 'Games'],
     title                   : '',
@@ -23,6 +24,10 @@ const addArticle = {
 
 function reducerAddArticle(state = addArticle, action){
     switch(action.type){
+        case 'updateMenuAddArticle' :
+            const menuNames = action.payload.menus.map(menu=>{return( menu.name)})
+            const menuIds = action.payload.menus.map(menu=>{return( menu.id )})
+            return {...state, menus : menuNames, menuIds : menuIds}
         case 'updateAlertAddArticle' :
             return {...state, statusArticle : action.payload.input, alertType : action.payload.alertType}
         case 'selectMenuAddArticle' :
