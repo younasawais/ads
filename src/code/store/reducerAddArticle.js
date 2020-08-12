@@ -9,6 +9,8 @@ const addArticle = {
     parentItemSelected      : '',
     selectedMenu            : '',
     createParent            : '',
+    imageName1              : 'Upload file 1',
+    imageName2              : 'Upload file 2',
     tags                    : '',
     text1                   : '',
     text2                   : '',

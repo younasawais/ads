@@ -23,12 +23,11 @@ class ExtraDetailsAddArticle extends Component {
                         text='Active?'
                         dispatch={dispatch}
                         reducerType='activeAddArticle' />
-                <UploadPicAddArticle text={'Upload 1'}/>
-                <UploadPicAddArticle text={'Upload 2'}/>
+                <UploadPicAddArticle text={addArticle.imageName1}/>
+                <UploadPicAddArticle text={addArticle.imageName2}/>
             </Fragment>
         );
     }
 }
-
 
 export default ExtraDetailsAddArticle;
