@@ -11,6 +11,8 @@ const addArticle = {
     createParent            : '',
     imageName1              : 'Upload file 1',
     imageName2              : 'Upload file 2',
+    imageFile1              : null,
+    imageFile1              : null,
     tags                    : '',
     text1                   : '',
     text2                   : '',

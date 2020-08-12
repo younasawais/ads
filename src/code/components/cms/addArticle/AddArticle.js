@@ -19,6 +19,8 @@ class AddArticles extends Component {
         if(title !== '' || menuItemName !== ''){
             const response = await axios.post("http://localhost:4000/saveAddArticle",this.props.addArticle);
             console.log(response);
+            // const response = await Axios.post('http://localhost:4000/uploadTest', data);
+            // console.log(response);
         }else{
                 dispatch({
                 type :'updateAlertAddArticle', 

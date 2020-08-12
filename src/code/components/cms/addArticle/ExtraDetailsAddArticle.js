@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import UploadPicAddArticle from './UploadPicAddArticle';
 import TextAndLabel from '../elements/TextAndLabel';
 import TextAndCheckbox from '../elements/TextAndCheckbox';
+import UploadMultiPicAddArticle from './UploadMultiPicAddArticle';
 
 class ExtraDetailsAddArticle extends Component {
     render() {
@@ -25,6 +26,7 @@ class ExtraDetailsAddArticle extends Component {
                         reducerType='activeAddArticle' />
                 <UploadPicAddArticle text={addArticle.imageName1}/>
                 <UploadPicAddArticle text={addArticle.imageName2}/>
+                <UploadMultiPicAddArticle />
             </Fragment>
         );
     }
