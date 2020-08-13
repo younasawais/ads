@@ -19,12 +19,23 @@ class UploadMultiPicAddArticle extends Component {
     }
 
     handleSaveFile(e){
+        // console.log(e.target.files[0].name);
+        // console.log(e.target.files[1].name);
+        this.props.dispatch({
+            type: 'selectedImagesNames',
+            payload: {
+                imageName1 : e.target.files[0].name,
+                imageName2 : e.target.files[1].name
+            }
+        })
         this.setState({
             selectedFiles : e.target.files
         });
     }
 
     render() {
+        const {text1, text2} = this.props;
+        const bothTexts = text1 + '; ' + text2
         return (
             <Fragment>
             <div className="input-group mb-3">
@@ -38,7 +49,10 @@ class UploadMultiPicAddArticle extends Component {
                         multiple
                         className="custom-file-input" 
                         id="inputGroupFile01"/>
-                    <label className="custom-file-label" >Test upload</label>
+                        {text2!=="" ? 
+                            <label className="custom-file-label" >{bothTexts}</label> :
+                            <label className="custom-file-label" >{text1}</label>
+                        }
                 </div>
                 <button onClick={this.handleFileUpload}>confirm upload</button>
             </div>

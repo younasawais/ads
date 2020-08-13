@@ -11,7 +11,7 @@ class SelectMenuAddArticle extends Component {
     this.props.dispatch(
       {type : 'updateMenuAddArticle', 
       payload : { menus : response.data }})
-    console.log(response.data);
+    //console.log(response.data);
   }
 
   render() {

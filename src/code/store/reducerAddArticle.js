@@ -9,8 +9,8 @@ const addArticle = {
     parentItemSelected      : '',
     selectedMenu            : '',
     createParent            : '',
-    imageName1              : 'Upload file 1',
-    imageName2              : 'Upload file 2',
+    imageName1              : '',
+    imageName2              : '',
     imageFile1              : null,
     imageFile1              : null,
     tags                    : '',
@@ -30,7 +30,7 @@ function reducerAddArticle(state = addArticle, action){
     switch(action.type){
         case 'updateMenuAddArticle' :
             const menuNames = action.payload.menus.map(menu=>{return( menu.name)})
-            const menuIds = action.payload.menus.map(menu=>{return( menu.id )})
+            const menuIds   = action.payload.menus.map(menu=>{return( menu.id )})
             return {...state, menus : menuNames, menuIds : menuIds}
         case 'updateAlertAddArticle' :
             return {...state, statusArticle : action.payload.input, alertType : action.payload.alertType}
@@ -42,6 +42,9 @@ function reducerAddArticle(state = addArticle, action){
             return {...state, createParent : action.payload.input}
         case 'parentItemAddArticleSelected' :
             return {...state, parentItemSelected : action.payload.input}
+        case 'selectedImagesNames' :
+            const {imageName1, imageName2} = action.payload;
+            return {...state, imageName1 : imageName1, imageName2 : imageName2}//
         case 'menuItemAddArticle' :
             return {...state, menuItem : action.payload.input}
         case 'newMenuAddArticle' :

@@ -24,9 +24,9 @@ class ExtraDetailsAddArticle extends Component {
                         text='Active?'
                         dispatch={dispatch}
                         reducerType='activeAddArticle' />
-                <UploadPicAddArticle text={addArticle.imageName1}/>
-                <UploadPicAddArticle text={addArticle.imageName2}/>
-                <UploadMultiPicAddArticle />
+                <UploadMultiPicAddArticle 
+                    dispatch={dispatch} 
+                    text1={addArticle.imageName1} text2={addArticle.imageName2}/>
             </Fragment>
         );
     }
