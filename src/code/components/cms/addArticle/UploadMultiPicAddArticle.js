@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
 
 class UploadMultiPicAddArticle extends Component {
     constructor(props){
@@ -10,27 +9,23 @@ class UploadMultiPicAddArticle extends Component {
     }
 
     async handleFileUpload(){
-        const data = new FormData();
-        for (let i = 0; i < this.state.selectedFiles.length; i++) {
-            data.append('file', this.state.selectedFiles[i] )
-        }
-        const response = await axios.post('http://localhost:4000/uploadTest', data);
-        console.log(response);
+        // const response = await axios.post('http://localhost:4000/uploadTest', data);
+        // console.log(response);
     }
 
     handleSaveFile(e){
-        // console.log(e.target.files[0].name);
-        // console.log(e.target.files[1].name);
+        const { files } = e.target;
+        const data = new FormData();
+        for (let i = 0; i < files.length; i++) {
+            data.append('file', files[i] )
+        }
         this.props.dispatch({
             type: 'selectedImagesNames',
             payload: {
-                imageName1 : e.target.files[0].name,
-                imageName2 : e.target.files[1].name
-            }
+                imageName1  : files[0].name,
+                imageName2  : files[1].name,
+                imageData   : data}
         })
-        this.setState({
-            selectedFiles : e.target.files
-        });
     }
 
     render() {

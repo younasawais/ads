@@ -11,8 +11,7 @@ const addArticle = {
     createParent            : '',
     imageName1              : '',
     imageName2              : '',
-    imageFile1              : null,
-    imageFile1              : null,
+    imageData               : null,
     tags                    : '',
     text1                   : '',
     text2                   : '',
@@ -43,8 +42,8 @@ function reducerAddArticle(state = addArticle, action){
         case 'parentItemAddArticleSelected' :
             return {...state, parentItemSelected : action.payload.input}
         case 'selectedImagesNames' :
-            const {imageName1, imageName2} = action.payload;
-            return {...state, imageName1 : imageName1, imageName2 : imageName2}//
+            const {imageName1, imageName2, imageData} = action.payload;
+            return {...state, imageName1 : imageName1, imageName2 : imageName2, imageData : imageData}//
         case 'menuItemAddArticle' :
             return {...state, menuItem : action.payload.input}
         case 'newMenuAddArticle' :

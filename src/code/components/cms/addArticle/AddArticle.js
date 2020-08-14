@@ -14,13 +14,17 @@ class AddArticles extends Component {
     }
 
     async handleSaveChanges(){
-        const {title, menuItemName} = this.props.addArticle;
+        const {title, menuItemName, imageData} = this.props.addArticle;
         const {dispatch} = this.props;
+        let ObjWithoutPic = {...this.props.addArticle};
+        delete ObjWithoutPic.imageData;
+
         if(title !== '' || menuItemName !== ''){
-            const response = await axios.post("http://localhost:4000/saveAddArticle",this.props.addArticle);
-            console.log(response);
-            // const response = await Axios.post('http://localhost:4000/uploadTest', data);
-            // console.log(response);
+            
+            const response1 = await axios.post("http://localhost:4000/saveAddArticle",ObjWithoutPic);
+            console.log(response1);
+            const response2 = await axios.post('http://localhost:4000/uploadTest', imageData);
+            console.log(response2);
         }else{
                 dispatch({
                 type :'updateAlertAddArticle', 
