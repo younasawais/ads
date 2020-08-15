@@ -44,7 +44,7 @@ class AddArticles extends Component {
             }, 3000);
         }
     }
-
+    
     render() {
         const {dispatch, addArticle} = this.props;
         return (
