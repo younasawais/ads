@@ -20,10 +20,9 @@ class AddArticles extends Component {
         delete ObjWithoutPic.imageData;
 
         if(title !== '' || menuItemName !== ''){
-            
-            const response1 = await axios.post("http://localhost:4000/saveAddArticle",ObjWithoutPic);
-            console.log(response1);
-            const response2 = await axios.post('http://localhost:4000/uploadTest', imageData);
+            // const response1 = await axios.post("http://localhost:4000/saveAddArticle",ObjWithoutPic);
+            // console.log(response1);
+            const response2 = await axios.post('http://localhost:4000/addArticleData', imageData);
             console.log(response2);
         }else{
                 dispatch({
@@ -44,7 +43,7 @@ class AddArticles extends Component {
             }, 3000);
         }
     }
-    
+
     render() {
         const {dispatch, addArticle} = this.props;
         return (

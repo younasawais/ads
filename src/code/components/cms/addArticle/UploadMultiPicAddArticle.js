@@ -19,6 +19,9 @@ class UploadMultiPicAddArticle extends Component {
         for (let i = 0; i < files.length; i++) {
             data.append('file', files[i] )
         }
+
+        data.append('textData', {...this.props.addArticle});
+
         this.props.dispatch({
             type: 'selectedImagesNames',
             payload: {
