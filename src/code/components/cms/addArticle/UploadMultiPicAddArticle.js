@@ -4,25 +4,38 @@ class UploadMultiPicAddArticle extends Component {
     constructor(props){
         super(props);
         this.state = { selectedFiles : null};
-        this.handleFileUpload = this.handleFileUpload.bind(this);
+        //this.handleFileUpload = this.handleFileUpload.bind(this);
         this.handleSaveFile = this.handleSaveFile.bind(this);
     }
 
-    async handleFileUpload(){
-        // const response = await axios.post('http://localhost:4000/uploadTest', data);
-        // console.log(response);
-    }
+    // async handleFileUpload(){
+    //     const response = await axios.post('http://localhost:4000/uploadTest', data);
+    //     console.log(response);
+    // }
 
     handleSaveFile(e){
+        const {addArticle, dispatch} = this.props;
         const { files } = e.target;
         const data = new FormData();
         for (let i = 0; i < files.length; i++) {
-            data.append('file', files[i] )
+            data.append('file', files[i] )}
+
+        let addArticleValues = [];
+        let addArticleProps  = [];
+        for(let key in addArticle) {
+            console.log(key);
+            addArticleValues.push(addArticle[key]);
+            addArticleProps.push(key);
         }
+        console.log(addArticleValues);
+        console.log(addArticleProps);
+        for (let i = 0; i < addArticleProps.length; i++) {
+            data.append(addArticleProps[i], addArticleValues[i]);
+        }
+        console.log('--- Data ---');
+        console.log(data);
 
-        data.append('textData', {...this.props.addArticle});
-
-        this.props.dispatch({
+        dispatch({
             type: 'selectedImagesNames',
             payload: {
                 imageName1  : files[0].name,
@@ -52,7 +65,7 @@ class UploadMultiPicAddArticle extends Component {
                             <label className="custom-file-label" >{text1}</label>
                         }
                 </div>
-                <button onClick={this.handleFileUpload}>confirm upload</button>
+                {/* <button onClick={this.handleFileUpload}>confirm upload</button> */}
             </div>
             </Fragment>
         );
