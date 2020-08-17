@@ -14,33 +14,15 @@ class UploadMultiPicAddArticle extends Component {
     // }
 
     handleSaveFile(e){
-        const {addArticle, dispatch} = this.props;
+        const {dispatch} = this.props;
         const { files } = e.target;
-        const data = new FormData();
-        for (let i = 0; i < files.length; i++) {
-            data.append('file', files[i] )}
-
-        let addArticleValues = [];
-        let addArticleProps  = [];
-        for(let key in addArticle) {
-            console.log(key);
-            addArticleValues.push(addArticle[key]);
-            addArticleProps.push(key);
-        }
-        console.log(addArticleValues);
-        console.log(addArticleProps);
-        for (let i = 0; i < addArticleProps.length; i++) {
-            data.append(addArticleProps[i], addArticleValues[i]);
-        }
-        console.log('--- Data ---');
-        console.log(data);
-
+       
         dispatch({
             type: 'selectedImagesNames',
             payload: {
                 imageName1  : files[0].name,
                 imageName2  : files[1].name,
-                imageData   : data}
+                files   : files}
         })
     }
 
