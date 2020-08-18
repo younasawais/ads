@@ -11,6 +11,7 @@ class AddArticles extends Component {
     constructor(props){
         super(props);
         this.handleSaveChanges = this.handleSaveChanges.bind(this);
+        this.alertTimeOut       = this.alertTimeOut.bind(this);
     }
 
     async handleSaveChanges(){
@@ -33,32 +34,45 @@ class AddArticles extends Component {
         }
         console.log(addArticleValues);
         console.log(addArticleProps);
+
         for (let i = 0; i < addArticleProps.length; i++) {
             data.append(addArticleProps[i], addArticleValues[i]);
         }
-        console.log(data);
-        
+
         if(title !== '' || menuItemName !== ''){
-            const response2 = await axios.post('http://localhost:4000/addArticleData', data);
-            console.log(response2);
-        }else{
+            const response = await axios.post('http://localhost:4000/addArticleData', data);
+            console.log(response);
+            if(response.status === 200){
                 dispatch({
+                type :'updateAlertAddArticle', 
+                payload : {
+                    input : 'Item succesfully added, check console for details. ',
+                    alertType : 'success'
+                }
+            });
+            this.alertTimeOut(dispatch);
+            }
+        }else{  dispatch({
                 type :'updateAlertAddArticle', 
                 payload : {
                     input : 'Check Title and/or menu item name',
                     alertType : 'warning'
                 }
             });
-            setTimeout(function() {
-                dispatch({
-                    type :'updateAlertAddArticle', 
-                    payload : {
-                        input : '',
-                        alertType : ''
-                    }
-                });
-            }, 3000);
+            this.alertTimeOut(dispatch);
         }
+    }
+
+    alertTimeOut(dispatch){
+        setTimeout(function() {
+            dispatch({
+                type :'updateAlertAddArticleSuccessful', 
+                payload : {
+                    input : '',
+                    alertType : ''
+                }
+            });
+        }, 3000);        
     }
 
     render() {
@@ -68,7 +82,7 @@ class AddArticles extends Component {
             <div style={{maxWidth:"1100px", marginLeft: 'auto', marginRight: 'auto', paddingLeft: '10px', paddingRight: '10px'}}>
                     {(addArticle.statusArticle !== '') ? <AlertMessage text={addArticle.statusArticle} type={addArticle.alertType} /> : '' }
                     <ButtonCustom text='Save Changes' handleSaveChanges={this.handleSaveChanges} />
-                    <ButtonCustom text='Close' type='warning'/><hr/>
+                    <ButtonCustom text='Close' type='warning' link='/manage-articles'/><hr/>
                     <TextAndLabel labelName='Title: ' 
                         dispatch={dispatch} 
                         reducerType='titleAddArticle' 
@@ -78,6 +92,7 @@ class AddArticles extends Component {
                         reducerType='menuItemNameAddArticle' 
                         value={addArticle.menuItemName}/>
                     <SelectMenuAddArticle {...this.props} />
+                    <ExtraDetailsAddArticle {...this.props} />
                     <ArticleTextAddArticle label='Text 1'
                         dispatch={dispatch} 
                         reducerType='text1AddArticle' 
@@ -86,10 +101,12 @@ class AddArticles extends Component {
                         dispatch={dispatch} 
                         reducerType='text2AddArticle' 
                         value={addArticle.text2}/>
-                    {(addArticle.statusArticle !== '') ? <AlertMessage text={addArticle.statusArticle} type={addArticle.alertType} /> : '' }
-                    <ExtraDetailsAddArticle {...this.props} />
+                    {(addArticle.statusArticle !== '') ? 
+                        <AlertMessage 
+                            text={addArticle.statusArticle} 
+                            type={addArticle.alertType} /> : '' }
                     <ButtonCustom text='Save Changes' handleSaveChanges={this.handleSaveChanges} />
-                    <ButtonCustom text='Close' type='warning'/>
+                    <ButtonCustom text='Close' type='warning' link='/manage-articles' />
             </div>
             </Fragment>
         );

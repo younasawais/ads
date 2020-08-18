@@ -33,7 +33,7 @@ class UploadMultiPicAddArticle extends Component {
             <Fragment>
             <div className="input-group mb-3">
                 <div className="input-group-prepend">
-                    <span className="input-group-text">File</span>
+                    <span className="input-group-text">Pictures: </span>
                 </div>
                 <div className="custom-file">
                     <input 

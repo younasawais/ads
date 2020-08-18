@@ -71,6 +71,33 @@ function reducerAddArticle(state = addArticle, action){
                 createParent : ""}
         case 'addSubItemToParent' :
             return {...state,addSubItemToParent : action.payload.input}
+        case 'updateAlertAddArticleSuccessful' :
+            const resetState = { 
+                menus                   : state.menus,
+                menuIds                 : [],
+                menuItems               : state.menuItems,
+                currentParents          : state.currentParents,
+                title                   : '',
+                menuItemName            : '',
+                newMenu                 : '',
+                parentItemSelected      : '',
+                selectedMenu            : '',
+                createParent            : '',
+                imageName1              : '',
+                imageName2              : '',
+                files                   : null,
+                tags                    : '',
+                text1                   : '',
+                text2                   : '',
+                reference               : '',
+                statusArticle           : action.payload.input,
+                alertType               : action.payload.alertType,
+                active                  : false,
+                checkBoxCreateMenu      : false,
+                addSubItemToParent      : false,
+                checkBoxCreateParent    : false
+            }
+            return {...resetState}
         default: return state
     }
 }

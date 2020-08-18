@@ -1,16 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import {Link} from 'react-router-dom';
 
 class ButtonCustom extends Component {
     render() {
-        const {text, type, handleSaveChanges} = this.props; 
+        const {text, type, handleSaveChanges, link} = this.props; 
         return (
-            <button style={style} type="button" onClick={handleSaveChanges} className={"btn btn-" + type}>{text}</button>
+            <Fragment>
+            {  (link) ? 
+                <Link style={style} to={link} type="button" className={"btn btn-" + type}>{text}</Link>
+                :
+                <button style={style} type="button" onClick={handleSaveChanges} className={"btn btn-" + type}>{text}</button>
+            }
+            </Fragment>
         );
     }
 }
 
 ButtonCustom.defaultProps = {
-    type: "primary"
+    type: "primary",
+    link : false,
+
 }
 
 const style = {
