@@ -25,13 +25,62 @@ function reducerManageArticles(state = manageArticles, action){
             const processState = handleCheckBox(copyState, action.payload);
             console.log(processState);
             return {...processState}
-        case 'temp2' :
-            const copyState2 = Object.assign(state);
-            copyState2.addSubItemToNewMenu = action.payload.val;
-            console.log(copyState2);
-            return {...copyState2}
+        case 'articleListManageArticles' :
+            const newObj = objectsToArrays(action.payload.value);
+            console.log(newObj);
+            return {...state, 
+                ids         : newObj.ids, 
+                names       : newObj.names,
+                publshed    : newObj.publshed,
+                links       : newObj.links,
+                menu        : newObj.menu,
+                dateCreated : newObj.dateCreated,
+                pics        : newObj.pics,
+                parentItem  : newObj.parentItem,
+                totalWord   : newObj.totalWord
+            }
         default: return state
     }
+}
+
+function objectsToArrays(data){
+    let newObj = {
+        ids                 : [],
+        names               : [],
+        publshed            : [],
+        links               : [],
+        menu                : [],
+        dateCreated         : [],
+        pics                : [],
+        parentItem          : [],
+        totalWord           : [],
+        changes             : [] }
+
+    for (let i = 0; i < data.length; i++) {
+        newObj.ids.push(data[i].linkId);        
+        newObj.names.push(data[i].title);
+        newObj.publshed.push(data[i].active);
+        newObj.links.push(data[i].linkId);
+        newObj.menu.push(data[i].menu);
+        newObj.dateCreated.push(data[i].creationDate);
+        newObj.pics.push(data[i].imageName1 + ' : ' + data[i].imageName2);
+        newObj.parentItem.push(data[i].parentItem);
+        newObj.totalWord.push(data[i].text1.length + data[i].text2.length);}
+    return newObj;
+        // active: true
+        // creationDate: "16/08/20"
+        // creationTime: "21:37:49"
+        // imageName1: "200816213749-Image-Name19"
+        // imageName2: "200816213749-Image-Name20"
+        // linkId: "200816212749-dat1-sub-of-third"
+        // menu: "Menu 1"
+        // menuItemName: "Dat1 Sub of fourth2"
+        // parentItem: "200816232713-fourth-article"
+        // reference: "Book: reference name"
+        // tags: "tag1, tag2, tag3"
+        // text1: "This is some text stuff"
+        // text2: "More text stuff"
+        // title: "Dat1 Sub of fourth2"
 }
 
 function handleCheckBox(state, payload){

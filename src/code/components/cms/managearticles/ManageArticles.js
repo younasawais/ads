@@ -1,9 +1,24 @@
 import React, { Component, Fragment } from 'react';
 import {Link} from 'react-router-dom';
 import ManageArticlesTable from './ManageArticlesTable';
+import axios from 'axios';
+import {connect} from 'react-redux';
 
 class ManageArticles extends Component {
+    async componentWillMount(){
+        const response = await axios.post('http://localhost:4000/getArticleListManageArticles');
+        console.log(response);
+        this.props.dispatch({
+            type : 'articleListManageArticles',
+            payload : {
+                value : response.data
+            }
+        })
+
+    }
+
     render() {
+
         return (
             <Fragment>
                 <div  className="row" style={{paddingLeft:10, paddingRight:10}}>
@@ -19,4 +34,5 @@ class ManageArticles extends Component {
     }
 }
 
-export default ManageArticles;
+export default connect(state=> state)(ManageArticles);
+//export default ManageArticles;
