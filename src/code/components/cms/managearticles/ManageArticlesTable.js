@@ -9,18 +9,25 @@ class ManageArticlesTable extends Component {
     }
 
     handelCheckBox(e){
+        console.log(e.target.value);
         this.props.dispatch({
             type:'selectArticles',
             payload:{
                 id : e.currentTarget.id,
-                checked : e.target.checked
+                checked : e.target.checked,
+                index: e.currentTarget.value
             }
         })
     }
 
     render() {
         const {ids, links, publshed, menu, dateCreated, pics, 
-                parentItem, totalWord, columnNames, names } = this.props.manageArticles;
+                parentItem, totalWord, columnNames, names, changes, checkBox } = this.props.manageArticles;
+        let clearCheckBoxes;
+        if(changes.length < 1){
+            clearCheckBoxes = false;
+        }
+
         return (
             <table className="table table-bordered">
                 <thead>
@@ -33,8 +40,8 @@ class ManageArticlesTable extends Component {
                 <tbody>
                     {ids.map((id, i)=>{return(
                         <tr key={i}>
-                            <th onChange={this.handelCheckBox} key={i} id={ids[i]} scope="row">
-                                <input type="checkbox"/>
+                            <th scope="row">
+                            <input onChange={this.handelCheckBox} id={ids[i]} type="checkbox" checked={checkBox[i]}/>
                             </th>
                             <td>{ids[i]}</td>
                             <td><Link type="button" to={'/modifyarticle/'+links[i]}>{names[i]}</Link></td>

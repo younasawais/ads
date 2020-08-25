@@ -9,6 +9,7 @@ const manageArticles = {
     pics                : [ 1, 2, 2, 1, 1, 2],
     parentItem          : ['stars', 'menu','menu','menu','menu', 'menu'],
     totalWord           : [453, 232, 2342, 433, 456, 2322],
+    checkBox            : [false, false, false, false, false, false, false],
     changes             : []
     // changes             : [{
     //     id: '',
@@ -27,7 +28,6 @@ function reducerManageArticles(state = manageArticles, action){
             return {...processState}
         case 'articleListManageArticles' :
             const newObj = objectsToArrays(action.payload.value);
-            console.log(newObj);
             return {...state, 
                 ids         : newObj.ids, 
                 names       : newObj.names,
@@ -37,7 +37,9 @@ function reducerManageArticles(state = manageArticles, action){
                 dateCreated : newObj.dateCreated,
                 pics        : newObj.pics,
                 parentItem  : newObj.parentItem,
-                totalWord   : newObj.totalWord
+                totalWord   : newObj.totalWord,
+                checkBox    : newObj.checkBox,
+                changes     : newObj.changes
             }
         default: return state
     }
@@ -54,18 +56,20 @@ function objectsToArrays(data){
         pics                : [],
         parentItem          : [],
         totalWord           : [],
+        checkBox            : [],
         changes             : [] }
 
     for (let i = 0; i < data.length; i++) {
         newObj.ids.push(data[i].linkId);        
         newObj.names.push(data[i].title);
-        newObj.publshed.push(data[i].active);
+        newObj.publshed.push(data[i].active.toString());
         newObj.links.push(data[i].linkId);
         newObj.menu.push(data[i].menu);
         newObj.dateCreated.push(data[i].creationDate);
         newObj.pics.push(data[i].imageName1 + ' : ' + data[i].imageName2);
         newObj.parentItem.push(data[i].parentItem);
-        newObj.totalWord.push(data[i].text1.length + data[i].text2.length);}
+        newObj.totalWord.push(data[i].text1.length + data[i].text2.length);
+        newObj.checkBox.push(false);}
     return newObj;
         // active: true
         // creationDate: "16/08/20"
@@ -107,6 +111,8 @@ function handleCheckBox(state, payload){
         }
     })
     newState.changes = allChanges;
+    let index = newState.links.indexOf(payload.id);
+    newState.checkBox[index] = !newState.checkBox[index];
     return newState;
 }
 
