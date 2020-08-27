@@ -10,6 +10,8 @@ const manageArticles = {
     parentItem          : ['stars', 'menu','menu','menu','menu', 'menu'],
     totalWord           : [453, 232, 2342, 433, 456, 2322],
     checkBox            : [false, false, false, false, false, false, false],
+    alertMessage        : '',
+    alertType           : '',
     changes             : []
     // changes             : [{
     //     id: '',
@@ -21,6 +23,8 @@ const manageArticles = {
 
 function reducerManageArticles(state = manageArticles, action){
     switch(action.type){
+        case 'alertManageArticles' :
+            return {...state, alertMessage : action.payload.alertMessage}
         case 'selectArticles' :
             const copyState = Object.assign(state);
             const processState = handleCheckBox(copyState, action.payload);
