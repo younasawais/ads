@@ -34,14 +34,14 @@ class ManageArticles extends Component {
         dispatch({
             type : 'articleListManageArticles',
             payload : {
-                value : response.data
+                value : response.data.articles
             }
         });
         if(response.status === 200){
             dispatch({
                 type : 'alertManageArticles',
                 payload : {
-                    alertMessage : ' ' + deleteIds.length + ' article(s) succesfully deleted!'
+                    alertMessage : ' ' + response.data.totalDeleted + ' article(s) succesfully deleted!'
                 }
             });
         }
