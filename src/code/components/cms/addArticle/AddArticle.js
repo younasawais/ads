@@ -40,11 +40,11 @@ class AddArticles extends Component {
         }
 
         if(title !== '' || menuItemName !== ''){
-            const response = await axios.post('http://localhost:4000/addArticleData', data);
+            const response = await axios.post('http://localhost:4000/addArticleData', data, {timeout: 10000});
             console.log(response);
             if(response.status === 200){
                 dispatch({
-                type :'updateAlertAddArticle', 
+                type :'updateAlertAddArticleAndReset', 
                 payload : {
                     input : 'Item succesfully added, check console for details. ',
                     alertType : 'success'

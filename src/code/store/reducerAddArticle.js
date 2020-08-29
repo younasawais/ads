@@ -11,6 +11,7 @@ const addArticle = {
     menuItemName            : '',
     newMenu                 : '',
     parentItemSelected      : '',
+    parentItemSelectedId    : '',
     selectedMenu            : '',
     createParent            : '',
     imageName1              : '',
@@ -24,7 +25,7 @@ const addArticle = {
     alertType               : '',
     active                  : false,
     checkBoxCreateMenu      : false,
-    addSubItemToParent      : false,
+    //addSubItemToParent      : false,
     checkBoxCreateParent    : false
 }
 
@@ -40,16 +41,20 @@ function reducerAddArticle(state = addArticle, action){
             const allParentsIds     = parentArticles.map(parent=>{return(parent.linkId)});
             const allParentsMenus   = parentArticles.map(parent=>{return(parent.menu)});
             return {...state, menus : menuNames, menuIds : menuIds, allParents: allParents, allParentsIds: allParentsIds, allParentsMenus: allParentsMenus}
-        case 'updateAlertAddArticle' :
-            return {...state, statusArticle : action.payload.input, alertType : action.payload.alertType}
+        case 'updateAlertAddArticle' :            
+            return {...state, 
+                statusArticle : action.payload.input, 
+                alertType : action.payload.alertType, 
+                currentParents : [], 
+                currentParentsId : []}
+        case 'updateAlertAddArticleAndReset' :            
+            return {...state, statusArticle : action.payload.input, alertType : action.payload.alertType, }
         case 'selectedMenuAddArticle' :
             const {input} = action.payload;
             let currentParents = state.allParents.map((parent, index)=>{
-                console.log(parent);
                 if(state.allParentsMenus[index] === input){return parent}
             });
             let currentParentsId = state.allParentsIds.map((ids, index)=>{
-                console.log(ids);
                 if(state.allParentsMenus[index] === input){return ids}});
 
             return {...state, selectedMenu : input, currentParents: currentParents, currentParentsId: currentParentsId}
@@ -59,7 +64,14 @@ function reducerAddArticle(state = addArticle, action){
         case 'createParentAddArticle' :
             return {...state, createParent : action.payload.input}
         case 'parentItemAddArticleSelected' :
-            return {...state, parentItemSelected : action.payload.input}
+            let parentItemSelectedId = "";
+            for (let i = 0; i < state.currentParents.length; i++) {
+                if(action.payload.input === state.currentParents[i]){
+                    parentItemSelectedId = state.currentParentsId[i]  // get parentID
+                    break;
+                };
+            }
+            return {...state, parentItemSelected : action.payload.input, parentItemSelectedId:parentItemSelectedId}
         case 'selectedImagesNames' :
             const {imageName1, imageName2, files} = action.payload;
             return {...state, imageName1 : imageName1, imageName2 : imageName2, files : files}//
