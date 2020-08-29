@@ -8,9 +8,13 @@ import axios from 'axios';
 class SelectMenuAddArticle extends Component {
   async componentWillMount(){
     const response = await axios.post("http://localhost:4000/addArticleMenuData",'Send me menu data');
+    const {menus, parentArticles} = response.data;
     this.props.dispatch(
       {type : 'updateMenuAddArticle', 
-      payload : { menus : response.data }})
+      payload : { 
+        menus : menus,
+        parentArticles: parentArticles
+       }})
     //console.log(response.data);
   }
 
@@ -34,7 +38,11 @@ class SelectMenuAddArticle extends Component {
                     value={addArticle.newMenu}/>
               </Fragment>
             : <Fragment>
-              <DropDown items={menus} reducerType='selectMenuAddArticle' text={addArticle.selectedMenu}/>
+              <DropDown 
+                items={menus} 
+                reducerType='selectedMenuAddArticle'
+                defaultText='menu'
+                text={addArticle.selectedMenu}/>
               <TextAndCheckbox
                 checked={checkBoxCreateParent}
                 text='Create new Parent?'
@@ -45,7 +53,11 @@ class SelectMenuAddArticle extends Component {
                     dispatch={dispatch} 
                     reducerType='createParentAddArticle' 
                     value={addArticle.createParent}/> :
-                    <DropDown items={addArticle.currentParents} reducerType='parentItemAddArticleSelected' text={addArticle.parentItemSelected}/>
+                <DropDown 
+                  items={addArticle.currentParents} 
+                  reducerType='parentItemAddArticleSelected' 
+                  defaultText='Parent'
+                  text={addArticle.parentItemSelected}/>
               }
             </Fragment>}
         </div>

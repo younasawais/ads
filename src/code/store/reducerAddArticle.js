@@ -1,8 +1,12 @@
 const addArticle = { 
     menus                   : [],
     menuIds                 : [],
-    menuItems               : ['Chaper 1', 'chaper 2', 'chapter 3', 'chapter 4', 'chapter 5'],
-    currentParents          : ['Console design', 'Stars', 'Ram memory', 'Screens', 'Games'],
+    menuItems               : [],
+    currentParents          : [],
+    currentParentsId        : [],
+    allParents              : [],
+    allParentsIds           : [],
+    allParentsMenus         : [],
     title                   : '',
     menuItemName            : '',
     newMenu                 : '',
@@ -28,13 +32,28 @@ const addArticle = {
 function reducerAddArticle(state = addArticle, action){
     switch(action.type){
         case 'updateMenuAddArticle' :
-            const menuNames = action.payload.menus.map(menu=>{return( menu.name)})
-            const menuIds   = action.payload.menus.map(menu=>{return( menu.id )})
-            return {...state, menus : menuNames, menuIds : menuIds}
+            const { menus, parentArticles} = action.payload;
+            console.log(parentArticles);
+            const menuNames         = menus.map(menu=>{return( menu.name)});
+            const menuIds           = menus.map(menu=>{return( menu.id )});
+            const allParents        = parentArticles.map(parent=>{return(parent.title)});
+            const allParentsIds     = parentArticles.map(parent=>{return(parent.linkId)});
+            const allParentsMenus   = parentArticles.map(parent=>{return(parent.menu)});
+            return {...state, menus : menuNames, menuIds : menuIds, allParents: allParents, allParentsIds: allParentsIds, allParentsMenus: allParentsMenus}
         case 'updateAlertAddArticle' :
             return {...state, statusArticle : action.payload.input, alertType : action.payload.alertType}
-        case 'selectMenuAddArticle' :
-            return {...state, selectedMenu : action.payload.input}
+        case 'selectedMenuAddArticle' :
+            const {input} = action.payload;
+            let currentParents = state.allParents.map((parent, index)=>{
+                console.log(parent);
+                if(state.allParentsMenus[index] === input){return parent}
+            });
+            let currentParentsId = state.allParentsIds.map((ids, index)=>{
+                console.log(ids);
+                if(state.allParentsMenus[index] === input){return ids}});
+
+            return {...state, selectedMenu : input, currentParents: currentParents, currentParentsId: currentParentsId}
+
         case 'checkBoxCreateParentAddArticle' :
             return {...state, checkBoxCreateParent : action.payload.input, parentItemSelected : ""}
         case 'createParentAddArticle' :
