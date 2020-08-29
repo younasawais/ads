@@ -16,7 +16,7 @@ class UploadMultiPicAddArticle extends Component {
     handleSaveFile(e){
         const {dispatch} = this.props;
         const { files } = e.target;
-       
+        console.log(files);
         dispatch({
             type: 'selectedImagesNames',
             payload: {

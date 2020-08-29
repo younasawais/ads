@@ -1,7 +1,6 @@
 const addArticle = { 
     menus                   : [],
     menuIds                 : [],
-    menuItems               : [],
     currentParents          : [],
     currentParentsId        : [],
     allParents              : [],
@@ -31,24 +30,31 @@ const addArticle = {
 
 
 function reducerAddArticle(state = addArticle, action){
+    let menuNames         = null;
+    let menuIds           = null;
+    let allParents        = null;
+    let allParentsIds     = null;
+    let allParentsMenus   = null;
     switch(action.type){
         case 'updateMenuAddArticle' :
-            const { menus, parentArticles} = action.payload;
-            console.log(parentArticles);
-            const menuNames         = menus.map(menu=>{return( menu.name)});
-            const menuIds           = menus.map(menu=>{return( menu.id )});
-            const allParents        = parentArticles.map(parent=>{return(parent.title)});
-            const allParentsIds     = parentArticles.map(parent=>{return(parent.linkId)});
-            const allParentsMenus   = parentArticles.map(parent=>{return(parent.menu)});
-            return {...state, menus : menuNames, menuIds : menuIds, allParents: allParents, allParentsIds: allParentsIds, allParentsMenus: allParentsMenus}
+            menuNames         = action.payload.menus.map(menu=>{return( menu.name)});
+            menuIds           = action.payload.menus.map(menu=>{return( menu.id )});
+            allParents        = action.payload.parentArticles.map(parent=>{return(parent.title)});
+            allParentsIds     = action.payload.parentArticles.map(parent=>{return(parent.linkId)});
+            allParentsMenus   = action.payload.parentArticles.map(parent=>{return(parent.menu)});
+            return {
+                ...state, 
+                menus : menuNames, 
+                menuIds : menuIds, 
+                allParents: allParents, 
+                allParentsIds: allParentsIds, 
+                allParentsMenus: allParentsMenus}
         case 'updateAlertAddArticle' :            
             return {...state, 
                 statusArticle : action.payload.input, 
                 alertType : action.payload.alertType, 
                 currentParents : [], 
                 currentParentsId : []}
-        case 'updateAlertAddArticleAndReset' :            
-            return {...state, statusArticle : action.payload.input, alertType : action.payload.alertType, }
         case 'selectedMenuAddArticle' :
             const {input} = action.payload;
             let currentParents = state.allParents.map((parent, index)=>{
@@ -103,11 +109,19 @@ function reducerAddArticle(state = addArticle, action){
         case 'addSubItemToParent' :
             return {...state,addSubItemToParent : action.payload.input}
         case 'updateAlertAddArticleSuccessful' :
+            menuNames         = action.payload.menus.map(menu=>{return( menu.name)});
+            menuIds           = action.payload.menus.map(menu=>{return( menu.id )});
+            allParents        = action.payload.parentArticles.map(parent=>{return(parent.title)});
+            allParentsIds     = action.payload.parentArticles.map(parent=>{return(parent.linkId)});
+            allParentsMenus   = action.payload.parentArticles.map(parent=>{return(parent.menu)});  
             const resetState = { 
-                menus                   : state.menus,
-                menuIds                 : [],
-                menuItems               : state.menuItems,
-                currentParents          : state.currentParents,
+                menus                   : menuNames,
+                menuIds                 : menuIds,
+                currentParents          : [],
+                currentParentsId        : [],
+                allParents              : allParents,
+                allParentsIds           : allParentsIds,
+                allParentsMenus         : allParentsMenus,
                 title                   : '',
                 menuItemName            : '',
                 newMenu                 : '',

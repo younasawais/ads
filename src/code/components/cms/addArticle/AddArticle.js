@@ -43,8 +43,9 @@ class AddArticles extends Component {
             const response = await axios.post('http://localhost:4000/addArticleData', data, {timeout: 10000});
             console.log(response);
             if(response.status === 200){
+                console.log(response.data);
                 dispatch({
-                type :'updateAlertAddArticleAndReset', 
+                type :'updateAlertAddArticle', 
                 payload : {
                     input : 'Item succesfully added, check console for details. ',
                     alertType : 'success'
@@ -64,12 +65,16 @@ class AddArticles extends Component {
     }
 
     alertTimeOut(dispatch){
-        setTimeout(function() {
+        setTimeout(async function() {
+            const response = await axios.post("http://localhost:4000/addArticleMenuData");
+            const {menus, parentArticles} = response.data;
             dispatch({
                 type :'updateAlertAddArticleSuccessful', 
                 payload : {
                     input : '',
-                    alertType : ''
+                    alertType : '',
+                    menus : menus,
+                    parentArticles: parentArticles
                 }
             });
         }, 3000);        
