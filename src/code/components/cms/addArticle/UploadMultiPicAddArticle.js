@@ -16,19 +16,25 @@ class UploadMultiPicAddArticle extends Component {
     handleSaveFile(e){
         const {dispatch} = this.props;
         const { files } = e.target;
-        console.log(files);
+        //console.log(files);
+        let image1;
+        let image2;
+        if((typeof files[0]) === 'undefined'){image1 = ''}else{image1 = files[0].name};
+        if((typeof files[1]) === 'undefined'){image2 = ''}else{image2 = files[1].name};
+        
+        
         dispatch({
             type: 'selectedImagesNames',
             payload: {
-                imageName1  : files[0].name,
-                imageName2  : files[1].name,
-                files   : files}
+                imageName1  : image1,
+                imageName2  : image2,
+                files       : files}
         })
     }
 
     render() {
         const {text1, text2} = this.props;
-        const bothTexts = text1 + '; ' + text2
+        const bothTexts = text1 + '; ' + text2;
         return (
             <Fragment>
             <div className="input-group mb-3">
@@ -42,7 +48,7 @@ class UploadMultiPicAddArticle extends Component {
                         multiple
                         className="custom-file-input" 
                         id="inputGroupFile01"/>
-                        {text2!=="" ? 
+                        {text2 !== "" ? 
                             <label className="custom-file-label" >{bothTexts}</label> :
                             <label className="custom-file-label" >{text1}</label>
                         }
@@ -52,6 +58,11 @@ class UploadMultiPicAddArticle extends Component {
             </Fragment>
         );
     }
+}
+
+UploadMultiPicAddArticle.defaultProps = {
+    type: "primary",
+    link : false,
 }
 
 export default UploadMultiPicAddArticle;

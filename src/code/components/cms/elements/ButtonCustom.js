@@ -19,7 +19,6 @@ class ButtonCustom extends Component {
 ButtonCustom.defaultProps = {
     type: "primary",
     link : false,
-
 }
 
 const style = {

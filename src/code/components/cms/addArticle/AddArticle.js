@@ -19,15 +19,17 @@ class AddArticles extends Component {
         const {dispatch,addArticle} = this.props;
         // let ObjWithoutPic = {...this.props.addArticle};
         // delete ObjWithoutPic.imageData;
-
         const data = new FormData();
-        for (let i = 0; i < files.length; i++) {
-            data.append('file', files[i] )}
-
+        try {
+            for (let i = 0; i < files.length; i++) {
+                data.append('file', files[i] )}    
+        } catch (error) {
+            //console.log(error);
+        }
+    
         let addArticleValues = [];
         let addArticleProps  = [];
 
-        // delete addArticle.files;
         for(let key in addArticle) {
             addArticleValues.push(addArticle[key]);
             addArticleProps.push(key);
