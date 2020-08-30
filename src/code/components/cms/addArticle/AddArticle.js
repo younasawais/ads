@@ -53,7 +53,7 @@ class AddArticles extends Component {
                     alertType : 'success'
                 }
             });
-            this.alertTimeOut(dispatch);
+                this.alertTimeOut(dispatch);
             }
         }else{  dispatch({
                 type :'updateAlertAddArticle', 

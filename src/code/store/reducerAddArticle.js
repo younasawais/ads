@@ -57,13 +57,27 @@ function reducerAddArticle(state = addArticle, action){
                 currentParentsId : []}
         case 'selectedMenuAddArticle' :
             const {input} = action.payload;
-            let currentParents = state.allParents.map((parent, index)=>{
-                if(state.allParentsMenus[index] === input){return parent}
-            });
-            let currentParentsId = state.allParentsIds.map((ids, index)=>{
-                if(state.allParentsMenus[index] === input){return ids}});
+            let currentParents      = [];
+            let currentParentsId    = [];
+            for (let i = 0; i < state.allParents.length; i++) {
+                if(state.allParentsMenus[i] === input){
+                    currentParents.push(state.allParents[i]);
+                    currentParentsId.push(state.allParentsIds[i]);
+                }
+            }
+            // let currentParents = state.allParents.map((parent, index)=>{
+            //     if(state.allParentsMenus[index] === input){return parent}
+            // });
+            // let currentParentsId = state.allParentsIds.map((ids, index)=>{
+            //     if(state.allParentsMenus[index] === input){return ids}});
 
-            return {...state, selectedMenu : input, currentParents: currentParents, currentParentsId: currentParentsId}
+            return {...state, 
+                selectedMenu : input, 
+                currentParents: currentParents, 
+                currentParentsId: currentParentsId,
+                parentItemSelected: '',
+                parentItemSelectedId: ''
+            }
 
         case 'checkBoxCreateParentAddArticle' :
             return {...state, checkBoxCreateParent : action.payload.input, parentItemSelected : ""}
