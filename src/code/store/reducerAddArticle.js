@@ -65,11 +65,6 @@ function reducerAddArticle(state = addArticle, action){
                     currentParentsId.push(state.allParentsIds[i]);
                 }
             }
-            // let currentParents = state.allParents.map((parent, index)=>{
-            //     if(state.allParentsMenus[index] === input){return parent}
-            // });
-            // let currentParentsId = state.allParentsIds.map((ids, index)=>{
-            //     if(state.allParentsMenus[index] === input){return ids}});
 
             return {...state, 
                 selectedMenu : input, 

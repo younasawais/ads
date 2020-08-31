@@ -12,23 +12,30 @@ import axios from 'axios';
 class Article extends Component {
     constructor(props){
         super(props);
-        this.handleAxios = this.handleAxios.bind(this);
+        //this.handleAxios = this.handleAxios.bind(this);
     }
 
-    async handleAxios(){
-        //const response = await axios.post("http://localhost:4000/");
-        const response = await axios.post("http://localhost:4000/mongoose",
-        {   name: 'Title name is here',
-            id          : '0215447',
-            text1       : 'Some sample text for the first part',
-            text2       : 'sample text for second part',
-            pic1        : 'picName1',
-            pic2        : 'picName2',
-            tags        : ['Tag1', 'Tag2', 'Tag3'],
-            reference   : 'Book: The islamic world'
-        });
+    async componentWillMount(){
+        const response = await axios.post('http://localhost:4000/getarticleinfo', {
+            'linkId' : this.props.match.params.link
+        }, {timeout : 20000});
         console.log(response);
     }
+
+    // async handleAxios(){
+    //     //const response = await axios.post("http://localhost:4000/");
+    //     const response = await axios.post("http://localhost:4000/mongoose",
+    //     {   name: 'Title name is here',
+    //         id          : '0215447',
+    //         text1       : 'Some sample text for the first part',
+    //         text2       : 'sample text for second part',
+    //         pic1        : 'picName1',
+    //         pic2        : 'picName2',
+    //         tags        : ['Tag1', 'Tag2', 'Tag3'],
+    //         reference   : 'Book: The islamic world'
+    //     });
+    //     console.log(response);
+    // }
 
     render() {
         const {pageContent} = this.props;
@@ -39,7 +46,7 @@ class Article extends Component {
             <Fragment>
                 <Menu {...this.props}/>
                 <TitleShortDetails article={pageContent} link={params.link}/>
-                <button onClick={this.handleAxios}>Test Axios</button>
+                {/* <button onClick={this.handleAxios}>Test Axios</button> */}
                 <ArticleText1 article={pageContent}/>
                 <ArticlePicture article={pageContent}/>
                 <ArticleText2 article={pageContent}/>
