@@ -28,6 +28,8 @@ function reducerPageContent(state = pageContent, action){
             copyState.articleId = val;
             console.log(copyState);
             return {...copyState}
+        case 'updateMenuItems' :
+            return {...state, articleMenuItems : action.payload.val}
         default: return state
     }
 }

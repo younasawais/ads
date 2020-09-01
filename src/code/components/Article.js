@@ -19,6 +19,12 @@ class Article extends Component {
         const response = await axios.post('http://localhost:4000/getarticleinfo', {
             'linkId' : this.props.match.params.link
         }, {timeout : 20000});
+        this.props.dispatch({
+            type: 'updateMenuItems',
+            payload : {
+                val : response.data.articleMenuItems
+            }
+        })
         console.log(response);
     }
 
