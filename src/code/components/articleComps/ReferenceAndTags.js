@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class ReferenceAndTags extends Component {
     render() {
-        const {ArticleTags, articleReference} = this.props.article;
+        const {articleTags, articleReference} = this.props.article;
         return (
             <section className="mbr-section content4 cid-s4p9QCcNtp" id="content4-9">
             <div className="container">
@@ -12,7 +12,7 @@ class ReferenceAndTags extends Component {
                             Reference book:</strong> '{articleReference}'</h2>
                         <h3 className="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-7"><strong>
                             Tags</strong>:  
-                            {ArticleTags.map(tag => {
+                            {articleTags.map(tag => {
                                 return(' ' + tag + ', ')
                             })}
                             </h3>

@@ -4,6 +4,7 @@ import ArticleText1 from './articleComps/ArticleText1';
 import ArticlePicture from './articleComps/ArticlePicture';
 import ArticleText2 from './articleComps/ArticleText2';
 import ReferenceAndTags from './articleComps/ReferenceAndTags';
+import { connect } from 'react-redux';
 import Footer from './articleComps/Footer';
 import Menu from './Menu';
 import axios from 'axios';
@@ -19,29 +20,16 @@ class Article extends Component {
         const response = await axios.post('http://localhost:4000/getarticleinfo', {
             'linkId' : this.props.match.params.link
         }, {timeout : 20000});
+        console.log(this.props);
         this.props.dispatch({
-            type: 'updateMenuItems',
+            type: 'updateArticlePage',
             payload : {
-                val : response.data.articleMenuItems
+                val : response.data.articleMenuItems,
+                articleInfo : response.data.articleInfo
             }
         })
         console.log(response);
     }
-
-    // async handleAxios(){
-    //     //const response = await axios.post("http://localhost:4000/");
-    //     const response = await axios.post("http://localhost:4000/mongoose",
-    //     {   name: 'Title name is here',
-    //         id          : '0215447',
-    //         text1       : 'Some sample text for the first part',
-    //         text2       : 'sample text for second part',
-    //         pic1        : 'picName1',
-    //         pic2        : 'picName2',
-    //         tags        : ['Tag1', 'Tag2', 'Tag3'],
-    //         reference   : 'Book: The islamic world'
-    //     });
-    //     console.log(response);
-    // }
 
     render() {
         const {pageContent} = this.props;
@@ -63,4 +51,4 @@ class Article extends Component {
     }
 }
 
-export default Article;
+export default connect(state=>state)(Article);
