@@ -20,19 +20,24 @@ const pageContent = {
 }
 
 function reducerPageContent(state = pageContent, action){
-    console.log(action);
+    let articleInfo = null;
     switch(action.type){
-        case 'test' :
-            let val = action.payload.val;
-            const copyState = Object.assign(state);
-            copyState.articleId = val;
-            console.log(copyState);
-            return {...copyState}
-        case 'updateArticlePage' :
-            const {articleInfo} = action.payload;
+        case 'updateArticlePageWithMenu' :
+            articleInfo = action.payload.articleInfo;
             return {
                 ...state, 
-                articleMenuItems : action.payload.val,
+                articleMenuItems : action.payload.menuItems,
+                articleContent1 : articleInfo.text1,
+                articleContent2 : articleInfo.text2,
+                articleTitle    : articleInfo.title,
+                articleTitle2   : articleInfo.title2,
+                articleReference: articleInfo.reference,
+                articleTags     : tagsStringToArray(articleInfo.tags)
+            }
+        case 'updateArticlePage' :
+            articleInfo = action.payload.articleInfo;
+            return {
+                ...state, 
                 articleContent1 : articleInfo.text1,
                 articleContent2 : articleInfo.text2,
                 articleTitle    : articleInfo.title,

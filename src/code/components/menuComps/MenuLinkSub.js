@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MenuLinkSecond from './MenuLinkSecond';
 
-class MenuLinkSub extends Component {
+class MenuLinkSub extends Component {    
     render() {
         const {item} = this.props;
         return (
