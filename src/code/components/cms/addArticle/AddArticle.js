@@ -88,31 +88,47 @@ class AddArticles extends Component {
             <Fragment>
             <div style={{maxWidth:"1100px", marginLeft: 'auto', marginRight: 'auto', paddingLeft: '10px', paddingRight: '10px'}}>
                     {(addArticle.statusArticle !== '') ? <AlertMessage text={addArticle.statusArticle} type={addArticle.alertType} /> : '' }
+                    
                     <ButtonCustom text='Save Changes' handleSaveChanges={this.handleSaveChanges} />
+
                     <ButtonCustom text='Close' type='warning' link='/manage-articles'/><hr/>
+
                     <TextAndLabel labelName='Title: ' 
                         dispatch={dispatch} 
                         reducerType='titleAddArticle' 
                         value={addArticle.title}/>
+
                     <TextAndLabel labelName='Item name inside menu: '
                         dispatch={dispatch} 
                         reducerType='menuItemNameAddArticle' 
                         value={addArticle.menuItemName}/>
+
+                    <TextAndLabel labelName='Short detail: ' 
+                        dispatch={dispatch} 
+                        reducerType='title2AddArticle' 
+                        value={addArticle.title2}/>
+
                     <SelectMenuAddArticle {...this.props} />
+
                     <ExtraDetailsAddArticle {...this.props} />
+
                     <ArticleTextAddArticle label='Text 1'
                         dispatch={dispatch} 
                         reducerType='text1AddArticle' 
                         value={addArticle.text1}/>
+
                     <ArticleTextAddArticle label='Text 2'
                         dispatch={dispatch} 
                         reducerType='text2AddArticle' 
                         value={addArticle.text2}/>
+
                     {(addArticle.statusArticle !== '') ? 
                         <AlertMessage 
                             text={addArticle.statusArticle} 
                             type={addArticle.alertType} /> : '' }
+
                     <ButtonCustom text='Save Changes' handleSaveChanges={this.handleSaveChanges} />
+
                     <ButtonCustom text='Close' type='warning' link='/manage-articles' />
             </div>
             </Fragment>

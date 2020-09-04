@@ -14,6 +14,8 @@ const pageContent = {
     articleTags     : ['Pakistan', 'Geography', 'progress', 'space', 'science', 'military'],
     articleContent1 : articleContent1,
     articleContent2 : articleContent2,
+    imageName1      : '',
+    imageName2      : '',
     articleTitle    : 'Title of the Article',
     articleTitle2   : 'Short description article. Around 1 - 2 paragraphs',
     articleReference: 'The establishment of the devine idea'
@@ -27,6 +29,8 @@ function reducerPageContent(state = pageContent, action){
             return {
                 ...state, 
                 articleMenuItems : action.payload.menuItems,
+                imageName1      : articleInfo.imageName1,
+                imageName2      : articleInfo.imageName2,
                 articleContent1 : articleInfo.text1,
                 articleContent2 : articleInfo.text2,
                 articleTitle    : articleInfo.title,
@@ -40,6 +44,8 @@ function reducerPageContent(state = pageContent, action){
                 ...state, 
                 articleContent1 : articleInfo.text1,
                 articleContent2 : articleInfo.text2,
+                imageName1      : articleInfo.imageName1,
+                imageName2      : articleInfo.imageName2,
                 articleTitle    : articleInfo.title,
                 articleTitle2   : articleInfo.title2,
                 articleReference: articleInfo.reference,

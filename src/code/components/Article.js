@@ -19,7 +19,7 @@ class Article extends Component {
     console.log(this.props.match.params)
     const response = await axios.post('http://localhost:4000/getarticleinfowithmenuitems', {
       'linkId': this.props.match.params.link
-    }, {timeout: 20000});
+    }, {timeout: 5000});
     console.log(response);
     this
       .props
@@ -30,20 +30,7 @@ class Article extends Component {
           articleInfo: response.data.articleInfo
         }
       })
-    console.log(response);
   }
-
-  // componentWillReceiveProps(nextProps) {     // You don't have to do this check
-  // first, but it can help prevent an unneeded render     if
-  // (nextProps.startTime !== this.state.startTime) {       this.setState({
-  // startTime: nextProps.startTime });     }   } async componentDidUpdate(){
-  // console.log(this.props);     const response = await
-  // axios.post('http://localhost:4000/getarticleinfo', {         'linkId' :
-  // this.props.match.params.link     }, {timeout : 20000});
-  // console.log(this.props);     this.props.dispatch({         type:
-  // 'updateArticlePage',         payload : {             val :
-  // response.data.articleMenuItems,             articleInfo :
-  // response.data.articleInfo         }     })     console.log(response); }
 
   render() {
     const {pageContent} = this.props;

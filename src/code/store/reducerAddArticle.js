@@ -7,6 +7,7 @@ const addArticle = {
     allParentsIds           : [],
     allParentsMenus         : [],
     title                   : '',
+    title2                  : '',
     menuItemName            : '',
     newMenu                 : '',
     parentItemSelected      : '',
@@ -108,6 +109,8 @@ function reducerAddArticle(state = addArticle, action){
             return {...state,menuItemName : action.payload.input}
         case 'titleAddArticle' :
             return {...state,title : action.payload.input}
+        case 'title2AddArticle' :
+            return {...state,title2 : action.payload.input}
         case 'createNewMenu' :
             return {
                 ...state,checkBoxCreateMenu : action.payload.input, 
@@ -132,6 +135,7 @@ function reducerAddArticle(state = addArticle, action){
                 allParentsIds           : allParentsIds,
                 allParentsMenus         : allParentsMenus,
                 title                   : '',
+                title2                  : '',
                 menuItemName            : '',
                 newMenu                 : '',
                 parentItemSelected      : '',
