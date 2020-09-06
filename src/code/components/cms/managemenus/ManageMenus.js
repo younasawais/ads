@@ -14,8 +14,6 @@ class ManageMenus extends Component {
     }
 
     async componentWillMount(){
-        // const response = await axios.post('http://localhost:4000/test');
-        // console.log(response);
         const response = await axios.post('http://localhost:4000/getMenuList');
         console.log(response);
         const {children, parents, menus} = response.data;
@@ -55,22 +53,25 @@ class ManageMenus extends Component {
     
     async handlePublishButton(active){
         const { dispatch } = this.props;
-        let publishIds = this.props.manageArticles.changes;
+        let publishIds = this.props.manageMenus.changes;
         const response = await axios.post(
-            'http://localhost:4000/publishArticlesgetUpdatedList', 
+            'http://localhost:4000/publishMenusgetUpdatedList', 
             {'publishIds' : publishIds, 'active': active});
         console.log(response);
+        const { children, parents, menus } = response.data;
         dispatch({
-            type : 'articleListManageArticles',
+            type : 'menusListManageMenus',
             payload : {
-                value : response.data
+                children    : children,
+                parents     : parents,
+                menus       : menus
             }
         });
         if(response.status === 200){
             dispatch({
-                type : 'alertManageArticles',
+                type : 'alertManageMenus',
                 payload : {
-                    alertMessage : ' ' + publishIds.length + ' article(s) succesfully (un)published!'
+                    alertMessage : ' ' + publishIds.length + ' menu(s) succesfully (un)published!'
                 }
             });
         }
@@ -80,7 +81,7 @@ class ManageMenus extends Component {
     alertTimeOut(dispatch){
         setTimeout(function() {
             dispatch({
-                type :'alertManageArticles', 
+                type :'alertManageMenus', 
                 payload : {
                     alertMessage : ''
                 }

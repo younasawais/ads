@@ -14,8 +14,8 @@ class ManageArticlesTable extends Component {
             type:'selectArticles',
             payload:{
                 id : e.currentTarget.id,
-                checked : e.target.checked,
-                index: e.currentTarget.value
+                checked : e.target.checked
+                //index: e.currentTarget.value
             }
         })
     }

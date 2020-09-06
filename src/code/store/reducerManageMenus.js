@@ -1,5 +1,5 @@
 const manageMenus = { 
-    columnNames         : ['#', 'id', 'Name', 'Published', 'Date Created', 'Total Articles', 'Total Parent Art.', 'Total SubArt.'],
+    columnNames         : ['#', 'id', 'Name', 'Published', 'Date Created', 'Total Art. Parents', 'Total Art. Children'],
     ids                 : ['id1343', 'id1231', 'id1232', 'id1233','id2331','id2338'],
     names               : ['Moon size', 'Console design', 'Stars', 'Ram memory', 'Screens', 'Games'],
     publshed            : ['yes', 'no', 'yes', 'no', 'yes', 'yes'],
@@ -23,12 +23,13 @@ function reducerManageMenus(state = manageMenus, action){
     switch(action.type){
         case 'alertManageMenus' :
             return {...state, alertMessage : action.payload.alertMessage}
-        case 'temp' :
+        case 'selectMenus' :
             const copyState = Object.assign(state);
             const processState = handleCheckBox(copyState, action.payload);
             console.log(processState);
             return {...processState}
         case 'menusListManageMenus' :
+            console.log(action.payload.menus);
             const newObj = objectsToArrays(action.payload.menus);
             return {...state, 
                 ids             : newObj.ids, 
@@ -45,6 +46,7 @@ function reducerManageMenus(state = manageMenus, action){
 }
 
 function objectsToArrays(data){
+    console.log(data);
     let newObj = {
         ids                 : [],
         names               : [],
@@ -60,6 +62,7 @@ function objectsToArrays(data){
         newObj.publshed.push(data[i].active.toString());
         newObj.dateCreated.push(data[i].creationDate);
         newObj.checkBox.push(false);}
+        console.log(newObj);
     return newObj;
 }
 
@@ -87,7 +90,7 @@ function handleCheckBox(state, payload){
         }
     })
     newState.changes = allChanges;
-    let index = newState.links.indexOf(payload.id);
+    let index = newState.ids.indexOf(payload.id);
     newState.checkBox[index] = !newState.checkBox[index];
     return newState;
 }

@@ -9,13 +9,14 @@ class ManageMenusTable extends Component {
     }
 
     handelCheckBox(e){
-        console.log(e.target.value);
+        console.log(e.currentTarget.id);
+        console.log(e.target.checked);
+        console.log(e.currentTarget.value);
         this.props.dispatch({
-            type:'selectArticles',
+            type:'selectMenus',
             payload:{
                 id : e.currentTarget.id,
-                checked : e.target.checked,
-                index: e.currentTarget.value
+                checked : e.target.checked
             }
         })
     }
@@ -47,7 +48,6 @@ class ManageMenusTable extends Component {
                             <td>{names[i]}</td>
                             <td>{publshed[i]}</td>
                             <td>{dateCreated[i]}</td>
-                            <td>{totalParents[i] + totalChildren[i]}</td>
                             <td>{totalParents[i]}</td>
                             <td>{totalChildren[i]}</td>
                         </tr>
