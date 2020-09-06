@@ -9,6 +9,7 @@ import AddArticle from './components/cms/addArticle/AddArticle';
 import ManageMenus from    './components/cms/managemenus/ManageMenus';
 import SettingsCms from    './components/cms/settingscms/SettingsCms';
 import ModifyArticle from './components/cms/modifyArticle/ModifyArticle';
+import Login from './components/login';
 
 class RouterAll extends Component {
     extractArray(arr){
@@ -45,7 +46,7 @@ class RouterAll extends Component {
 
                     <Route
                         path='/' exact   
-                        render={({location, match}) => <Home {...props}/>}    
+                        render={({location, match}) => <Home match={match}/>}    
                     />
                     <Route
                         path={'/article/:link?'}
@@ -59,9 +60,14 @@ class RouterAll extends Component {
 
                     <Route
                         path='/admin' exact
-                        render={({location, match}) => <Admin {...props}/>}    
+                        render={({location, match}) => <Admin {...props} match={match}/>}    
                     />
                     
+
+                    <Route
+                        path='/login' exact
+                        render={({location, match}) => <Login {...props} match={match}/>}    
+                    />
 
                     {/* change home when page done */}
                     <Route

@@ -1,6 +1,12 @@
 import React, { Component, Fragment } from 'react';
+import {connect} from 'react-redux';
 
 class Home extends Component {
+
+    componentWillMount(){
+        const response = await axios.post('http://localhost:4000/getmenunamesandlinks');
+    }
+
     render() {
         return (
             <Fragment>
@@ -33,4 +39,10 @@ class Home extends Component {
     }
 }
 
-export default Home;
+function mapStateToProps(state) {
+    return {
+        home : state.home
+    }
+  }
+  
+export default connect(mapStateToProps)(Home)

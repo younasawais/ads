@@ -6,13 +6,17 @@ import reducerAddArticle from './reducerAddArticle';
 import reducerManageArticles from './reducerManageArticles';
 import reducerManageMenus from './reducerManageMenus';
 import reducerModifyArticle from './reducerModifyArticle';
+import reducerLogin from './reducerLogin';
+import reducerHome from './reducerHome';
 
 const rootReducer = combineReducers({
     pageContent     : reducerPageContent,
     addArticle      : reducerAddArticle,
     manageArticles  : reducerManageArticles,
     modifyArticle   : reducerModifyArticle,
-    manageMenus     : reducerManageMenus
+    manageMenus     : reducerManageMenus,
+    login           : reducerLogin,
+    home            : reducerHome
   });
 
 const store = createStore(
