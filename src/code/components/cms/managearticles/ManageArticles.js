@@ -92,6 +92,7 @@ class ManageArticles extends Component {
                     <AlertMessage text={alertMessage}/> : ''
                 }
                 <div  className="row" style={{paddingLeft:10, paddingRight:10}}>
+                    <Link type="button" to='/admin' className="btn col btn-dark">Back</Link>
                     <Link type="button" to='/add-article' className="btn col btn-primary">New Article</Link>
                     <Link type="button" to='/modify-article' className="btn col btn-primary">Modify</Link>
                     <button type="button" onClick={()=>{this.handlePublishButton(true)}} className="btn col btn-primary">Publish</button>
