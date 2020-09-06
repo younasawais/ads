@@ -43,14 +43,10 @@ class RouterAll extends Component {
                         />
                     )})}
 
-                    {/* {pages[1].map((link, index)=>{return(
-                        <Route
-                            key = {index}
-                            path={'/'+link}
-                            render={({location, match}) => <Article {...props} match={match}/>}    
-                        />
-                    )})} */}
-
+                    <Route
+                        path='/' exact   
+                        render={({location, match}) => <Home {...props}/>}    
+                    />
                     <Route
                         path={'/article/:link?'}
                         render={({location, match}) => <Article {...props} match={match}/>}    
@@ -68,10 +64,6 @@ class RouterAll extends Component {
                     
 
                     {/* change home when page done */}
-                    <Route
-                        path='/sub-second-two' exact   
-                        render={({location, match}) => <Home {...props}/>}    
-                    />
                     <Route
                         path='/manage-articles' exact   
                         render={({location, match}) => <ManageArticles {...props}/>}    

@@ -4,7 +4,7 @@ const pageContent = {
     articleMenuItems   :   articleMenuItems,
     bottomMenu      : {
                         names: ['Home', 'Services', 'Get In Touch', 'Careers', 'Work'],
-                        links: ['home', 'services', 'get-in-touch', 'careers', 'work',]
+                        links: ['temp', 'services', 'get-in-touch', 'careers', 'work',]
                     },
     adminMenu      : {
                         names: ['Manage Articles', 'Manage menus', 'Settings', 'Add Article',],
