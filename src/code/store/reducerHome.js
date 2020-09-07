@@ -1,16 +1,15 @@
 const pageContent = {
-    adminMenu      : {
-                        names: ['Manage Articles', 'Manage menus', 'Settings', 'Add Article',],
-                        links: ['manage-articles', 'manage-menus', 'settings', 'add-article']
-                    },
+    menus       : [],
+    menuLinks   : []
 }
 
 function reducerHome(state = pageContent, action){
-    let articleInfo = null;
+    let menus, menuLinks = null;
     switch(action.type){
-        case 'updateArticlePageWithMenu' :
-            articleInfo = action.payload.articleInfo;
-            return {...state, }
+        case 'homeMenuLinks' :
+            menus       = action.payload.menus;
+            menuLinks   = action.payload.menuLinks;
+            return {...state, menus : menus, menuLinks : menuLinks}
         default: return state
     }
 }
