@@ -61,12 +61,11 @@ class RouterAll extends Component {
                     <Route
                         path='/admin' exact
                         render={({location, match}) => <Admin {...props} match={match}/>}    
-                    />
-                    
+                    />                    
 
                     <Route
                         path='/login' exact
-                        render={({location, match}) => <Login {...props} match={match}/>}    
+                        render={({location, match}) => <Login match={match}/>}    
                     />
 
                     {/* change home when page done */}
