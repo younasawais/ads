@@ -24,6 +24,7 @@ class InputLogin extends Component {
         return (
             <div className="form-group col">
                 <input 
+                    style={{borderRadius: '40px'}}
                     onChange={this.handleInput} 
                     type={type} 
                     name={name} 

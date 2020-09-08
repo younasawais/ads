@@ -1,10 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 
 class Admin extends Component {
-    componentDidMount(){
-        //token = sessionStorage.getItem("token");
+    async componentDidMount(){
+        const token = sessionStorage.getItem("token");
+        const response = await axios.post('http://localhost:4000/checkToken', {token: token});
+        console.log(response);
+        if(!response.data.token){window.location = '/login' }
         //const {data : response} = await axios.post(process.env.REACT_APP_backendAPI + '/getUserSubscriptions',{"token" : token}); 
         //const {data : response} = await axios.post(process.env.REACT_APP_backendAPI + '/getUserSubscriptions',{"token" : token}); 
               

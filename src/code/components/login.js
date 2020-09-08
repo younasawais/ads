@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import InputLogin from './login/InputLogin';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import AlertMessage from './cms/elements/AlertMessage';
 
 class Login extends Component {
     constructor(props){
@@ -32,7 +33,8 @@ class Login extends Component {
     render() {
         return (
 <Fragment>
-    <section className="mbr-section form3 cid-s9NutCT19a" id="form3-i">
+    <AlertMessage text={'Please check your credentials.'}/>
+    <section className="mbr-section form3 cid-s9NutCT19a" style={{paddingBottom: '60%'}} id="form3-i">
         <div className="container">
             <div className="row justify-content-center">
                 <div className="title col-12 col-lg-8">
@@ -45,8 +47,8 @@ class Login extends Component {
                 <div className="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
                     <input type="hidden" name="email" data-form-email="true" 
                     value="sd" />
-                    <div className="row">
-                    </div>
+                    {/* <div className="row">
+                    </div> */}
 
                     <InputLogin 
                         type='email'
