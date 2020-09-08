@@ -3,6 +3,12 @@ import {Link} from 'react-router-dom';
 
 
 class Admin extends Component {
+    componentDidMount(){
+        //token = sessionStorage.getItem("token");
+        //const {data : response} = await axios.post(process.env.REACT_APP_backendAPI + '/getUserSubscriptions',{"token" : token}); 
+        //const {data : response} = await axios.post(process.env.REACT_APP_backendAPI + '/getUserSubscriptions',{"token" : token}); 
+              
+    }
     render() {
         return (
             <Fragment>

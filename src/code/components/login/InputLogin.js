@@ -20,7 +20,7 @@ class InputLogin extends Component {
     }
 
     render() {
-        const {name, type, placeHolder} = this.props;
+        const {name, type, placeHolder, value} = this.props;
         return (
             <div className="form-group col">
                 <input 
@@ -28,6 +28,7 @@ class InputLogin extends Component {
                     type={type} 
                     name={name} 
                     placeholder={placeHolder} 
+                    value={value}
                     className="form-control display-7" />
             </div>
         );
@@ -37,7 +38,8 @@ class InputLogin extends Component {
 InputLogin.defaultProps = {
     name: 'not defined',
     type : '',
-    placeHolder: 'not defined'
+    placeHolder: 'not defined',
+    value: ''
 }
 
 function mapStateToProps(state){

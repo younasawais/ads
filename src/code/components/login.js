@@ -10,8 +10,23 @@ class Login extends Component {
     }
 
     async handleLoginBtn(){
-        const response = await axios.post('http://localhost:3000/loginAdmin');
+        const response = await axios.post('http://localhost:4000/loginAdmin', {
+            email: this.props.login.email,
+            password : this.props.login.password
+        });
         console.log(response);
+        if(response.status === 200){
+            sessionStorage.setItem("token", response.data);
+            window.location = '/admin'; 
+        }else if(response.status === 204){
+            console.log('wrong details');
+            this.props.dispatch({
+                type: 'loginUnsuccessful',
+                payload : {
+                    alert : 'Wrong details'
+                }
+            })
+        }
     }
 
     render() {
@@ -51,7 +66,9 @@ class Login extends Component {
                             type="submit" 
                             onClick={this.handleLoginBtn}
                             style={{borderRadius: '40px'}} 
-                            className="btn btn-primary display-4">Login</button><br/>
+                            className="btn btn-primary display-4">
+                                Login
+                        </button><br/>
                     </div>
                 </div>
             </div>
