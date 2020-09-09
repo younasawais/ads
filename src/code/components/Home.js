@@ -23,7 +23,7 @@ class Home extends Component {
         const { menus, menuLinks } = this.props.home;
         return (
             <Fragment>
-                <section className="header5 cid-s9NcstqoeV mbr-fullscreen" id="header5-h" style={{background: 'linear-gradient(45deg, #55b4d4, #073b4c)'}}>
+                <section className="header5 cid-s9NcstqoeV mbr-fullscreen" id="header5-h" style={{background: 'linear-gradient(0deg, #f3e4cb, #00000091, #59e0ca)'}}>
                     <div className="container">
                         <div className="row justify-content-center">
                             <div className="mbr-white col-md-10">
