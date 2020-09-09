@@ -4,6 +4,7 @@ import ManageArticlesTable from './ManageArticlesTable';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import AlertMessage from '../elements/AlertMessage';
+import {checkCredentials} from '../../generalFunctions';
 
 class ManageArticles extends Component {
     constructor(props){
@@ -14,14 +15,16 @@ class ManageArticles extends Component {
     }
 
     async componentWillMount(){
-        const response = await axios.post('http://localhost:4000/getArticleListManageArticles');
-        //console.log(response);
-        this.props.dispatch({
-            type : 'articleListManageArticles',
-            payload : {
-                value : response.data
-            }
-        })
+        if(await checkCredentials()){
+            const response = await axios.post('http://localhost:4000/getArticleListManageArticles');
+            //console.log(response);
+            this.props.dispatch({
+                type : 'articleListManageArticles',
+                payload : {
+                    value : response.data
+                }
+            })
+        }
     }
 
     async handleDeleteButton(){

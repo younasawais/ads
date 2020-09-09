@@ -4,6 +4,7 @@ import ManageMenusTable from './ManageMenusTable';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import AlertMessage from '../elements/AlertMessage';
+import {checkCredentials} from '../../generalFunctions';
 
 class ManageMenus extends Component {
     constructor(props){
@@ -14,17 +15,19 @@ class ManageMenus extends Component {
     }
 
     async componentWillMount(){
-        const response = await axios.post('http://localhost:4000/getMenuList');
-        console.log(response);
-        const {children, parents, menus} = response.data;
-        this.props.dispatch({
-            type : 'menusListManageMenus',
-            payload : {
-                children    : children,
-                parents     : parents,
-                menus       : menus
-            }
-        })
+        if(await checkCredentials()){
+            const response = await axios.post('http://localhost:4000/getMenuList');
+            console.log(response);
+            const {children, parents, menus} = response.data;
+            this.props.dispatch({
+                type : 'menusListManageMenus',
+                payload : {
+                    children    : children,
+                    parents     : parents,
+                    menus       : menus
+                }
+            })
+        }
     }
 
     async handleDeleteButton(){

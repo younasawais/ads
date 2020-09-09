@@ -1,25 +1,26 @@
 import React, { Component, Fragment } from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
+import {checkCredentials} from './generalFunctions';
 
 
 class Admin extends Component {
     async componentDidMount(){
-        const token = sessionStorage.getItem("token");
-        const response = await axios.post('http://localhost:4000/checkToken', {token: token});
-        console.log(response);
-        if(!response.data.token){window.location = '/login' }
+        checkCredentials();
         //const {data : response} = await axios.post(process.env.REACT_APP_backendAPI + '/getUserSubscriptions',{"token" : token}); 
         //const {data : response} = await axios.post(process.env.REACT_APP_backendAPI + '/getUserSubscriptions',{"token" : token}); 
-              
     }
     render() {
         return (
             <Fragment>
-                <h3>Admin Page</h3>
-                <Link type="button" to={'/manage-articles'} className="btn btn-primary">Manage Article</Link>
-                <Link type="button" to={'/manage-menus'} className="btn btn-primary">Manage menus</Link>
-                <Link type="button" to={'/settings-cms'} className="btn btn-primary">Settings</Link>
+                <div style={{backgroundColor:'#d7f0ff', paddingBottom:'30%' }}>
+                    <div style={{width:'80%', marginLeft:'auto', marginRight:'auto'}}>
+                    <h3>Admin Page</h3>
+                    <Link style={{borderRadius: 20}} type="button" to={'/manage-articles'} className="btn btn-primary btn-lg btn-block">Manage Articles</Link>
+                    <Link style={{borderRadius: 20}} type="button" to={'/manage-menus'} className="btn btn-primary btn-lg btn-block">Manage menus</Link>
+                    <Link style={{borderRadius: 20}} type="button" to={'/manage-users'} className="btn btn-primary btn-lg btn-block">Manage Users</Link>
+                    <Link style={{borderRadius: 20}} type="button" to={'/settings-cms'} className="btn btn-primary btn-lg btn-block">Settings</Link>
+                    </div>
+                </div>
             </Fragment>
         );
     }

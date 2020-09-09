@@ -5,6 +5,7 @@ import ExtraDetailsAddArticle from './ExtraDetailsAddArticle';
 import TextAndLabel from '../elements/TextAndLabel';
 import AlertMessage from '../elements/AlertMessage';
 import ButtonCustom from '../elements/ButtonCustom';
+import {checkCredentials} from '../../generalFunctions';
 import axios from 'axios';
 
 class AddArticles extends Component {
@@ -12,6 +13,10 @@ class AddArticles extends Component {
         super(props);
         this.handleSaveChanges = this.handleSaveChanges.bind(this);
         this.alertTimeOut       = this.alertTimeOut.bind(this);
+    }
+
+    async componentWillMount(){
+        checkCredentials()
     }
 
     async handleSaveChanges(){
