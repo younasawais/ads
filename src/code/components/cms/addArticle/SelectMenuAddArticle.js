@@ -66,4 +66,10 @@ class SelectMenuAddArticle extends Component {
   }
 }
 
-export default connect(state => state)(SelectMenuAddArticle);
+function mapStateToProps(state){
+  return{
+      addArticle : state.addArticle
+  }
+}
+
+export default connect(mapStateToProps)(SelectMenuAddArticle);

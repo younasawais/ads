@@ -41,4 +41,10 @@ DropDown.defaultProps = {
     defaultText: ""
 }
 
-export default connect(state => state)(DropDown);
+function mapStateToProps(state){
+    return{
+        addArticle : state.addArticle
+    }
+}
+
+export default connect(mapStateToProps)(DropDown);

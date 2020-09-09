@@ -131,4 +131,11 @@ class ManageMenus extends Component {
     }
 }
 
-export default connect(state=> state)(ManageMenus);
+function mapStateToProps(state){
+    return{
+        manageArticles : state.manageArticles,
+        manageMenus : state.manageMenus,
+    }
+}
+
+export default connect(mapStateToProps)(ManageMenus);

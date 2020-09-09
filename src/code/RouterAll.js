@@ -49,6 +49,10 @@ class RouterAll extends Component {
                         render={({location, match}) => <Home match={match}/>}    
                     />
                     <Route
+                        path='/home' exact   
+                        render={({location, match}) => <Home match={match}/>}    
+                    />
+                    <Route
                         path={'/article/:link?'}
                         render={({location, match}) => <Article {...props} match={match}/>}    
                     />
@@ -71,19 +75,19 @@ class RouterAll extends Component {
                     {/* change home when page done */}
                     <Route
                         path='/manage-articles' exact   
-                        render={({location, match}) => <ManageArticles {...props}/>}    
+                        render={({location, match}) => <ManageArticles/>}    
                     />
                     <Route
                         path='/manage-menus' exact   
-                        render={({location, match}) => <ManageMenus {...props}/>}    
+                        render={({location, match}) => <ManageMenus/>}    
                     />
                     <Route
                         path='/settings-cms' exact   
-                        render={({location, match}) => <SettingsCms {...props}/>}    
+                        render={({location, match}) => <SettingsCms/>}    
                     />
                     <Route
                         path='/add-article' exact   
-                        render={({location, match}) => <AddArticle {...props}/>}    
+                        render={({location, match}) => <AddArticle/>}    
                     />
                 </Switch>
             </Fragment>

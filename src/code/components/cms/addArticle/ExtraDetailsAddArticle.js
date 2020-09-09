@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import TextAndLabel from '../elements/TextAndLabel';
 import TextAndCheckbox from '../elements/TextAndCheckbox';
 import UploadMultiPicAddArticle from './UploadMultiPicAddArticle';
+import {connect} from 'react-redux';
 
 class ExtraDetailsAddArticle extends Component {
     render() {
@@ -32,4 +33,10 @@ class ExtraDetailsAddArticle extends Component {
     }
 }
 
-export default ExtraDetailsAddArticle;
+function mapStateToProps(state){
+    return{
+        addArticle : state.addArticle
+    }
+}
+
+export default connect(mapStateToProps)(ExtraDetailsAddArticle);

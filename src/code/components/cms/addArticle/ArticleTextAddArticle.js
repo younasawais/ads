@@ -44,4 +44,10 @@ ArticleTextAddArticle.preventDefault = {
     value : ''
 }
 
-export default connect(state => state)(ArticleTextAddArticle);
+function mapStateToProps(state){
+    return{
+        addArticle : state.addArticle
+    }
+}
+
+export default connect(mapStateToProps)(ArticleTextAddArticle);

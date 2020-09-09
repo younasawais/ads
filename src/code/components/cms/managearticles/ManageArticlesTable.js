@@ -60,4 +60,10 @@ class ManageArticlesTable extends Component {
     }
 }
 
-export default connect(state=>state)(ManageArticlesTable);
+function mapStateToProps(state){
+    return{
+        manageArticles : state.manageArticles
+    }
+}
+
+export default connect(mapStateToProps)(ManageArticlesTable);

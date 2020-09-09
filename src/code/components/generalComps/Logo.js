@@ -19,7 +19,10 @@ class Logo extends Component {
                                     <img src="assets/images/logo2.png" alt="Qouh" title="Qouh" style={{height: '3.8rem'}}/>
                                 </a>
                             </span> */}
-                            <h2 style={{fontFamily: "Squada One"}}>QOUH.com</h2>
+                            <a href="/">
+                                <h2 style={{fontFamily: "Squada One", color: '#939393'}}>QOUH.com</h2>
+                            </a>
+                            
                             
                         </div>
                     </div>

@@ -48,4 +48,10 @@ TextAndLabel.defaultProps = {
     placeholder : '' 
 }
 
-export default connect(state => state)(TextAndLabel);
+function mapStateToProps(state){
+    return{
+        addArticle : state.addArticle
+    }
+}
+
+export default connect(mapStateToProps)(TextAndLabel);

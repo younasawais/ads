@@ -5,10 +5,11 @@ import ExtraDetailsAddArticle from './ExtraDetailsAddArticle';
 import TextAndLabel from '../elements/TextAndLabel';
 import AlertMessage from '../elements/AlertMessage';
 import ButtonCustom from '../elements/ButtonCustom';
+import {connect} from 'react-redux';
 import {checkCredentials} from '../../generalFunctions';
 import axios from 'axios';
 
-class AddArticles extends Component {
+class AddArticle extends Component {
     constructor(props){
         super(props);
         this.handleSaveChanges = this.handleSaveChanges.bind(this);
@@ -141,4 +142,10 @@ class AddArticles extends Component {
     }
 }
 
-export default AddArticles;
+function mapStateToProps(state){
+    return{
+        addArticle : state.addArticle
+    }
+}
+
+export default connect(mapStateToProps)(AddArticle);

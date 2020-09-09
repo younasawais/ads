@@ -50,4 +50,10 @@ class Article extends Component {
   }
 }
 
-export default connect(state => state)(Article);
+function mapStateToProps(state){
+  return{
+      addArticle : state.addArticle
+  }
+}
+
+export default connect(mapStateToProps)(Article);

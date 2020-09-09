@@ -46,4 +46,10 @@ TextAndCheckbox.defaultProps = {
     checked     : false
 }
 
-export default connect(state => state)(TextAndCheckbox);
+function mapStateToProps(state){
+    return{
+        addArticle : state.addArticle
+    }
+}
+
+export default connect(mapStateToProps)(TextAndCheckbox);
