@@ -16,7 +16,7 @@ class ManageMenus extends Component {
 
     async componentWillMount(){
         if(await checkCredentials()){
-            const response = await axios.post('http://localhost:4000/getMenuList');
+            const response = await axios.post(process.env.REACT_APP_BACKEND + 'getMenuList');
             console.log(response);
             const {children, parents, menus} = response.data;
             this.props.dispatch({
@@ -34,7 +34,7 @@ class ManageMenus extends Component {
         const { dispatch } = this.props;
         let deleteIds = this.props.manageArticles.changes;
         const response = await axios.post(
-            'http://localhost:4000/deleteArticlesgetUpdatedList', 
+            process.env.REACT_APP_BACKEND + 'deleteArticlesgetUpdatedList', 
             {'deleteIds' : deleteIds});
         console.log(response);
         dispatch({
@@ -58,7 +58,7 @@ class ManageMenus extends Component {
         const { dispatch } = this.props;
         let publishIds = this.props.manageMenus.changes;
         const response = await axios.post(
-            'http://localhost:4000/publishMenusgetUpdatedList', 
+            process.env.REACT_APP_BACKEND + 'publishMenusgetUpdatedList', 
             {'publishIds' : publishIds, 'active': active});
         console.log(response);
         const { children, parents, menus } = response.data;

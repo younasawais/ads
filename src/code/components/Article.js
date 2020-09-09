@@ -10,17 +10,11 @@ import Menu from './Menu';
 import axios from 'axios';
 
 class Article extends Component {
-  constructor(props) {
-    super(props);
-    //this.handleAxios = this.handleAxios.bind(this);
-  }
-
   async componentWillMount() {
-    console.log(this.props.match.params)
-    const response = await axios.post('http://localhost:4000/getarticleinfowithmenuitems', {
+    //console.log(this.props.match.params)
+    const response = await axios.post(process.env.REACT_APP_BACKEND + 'getarticleinfowithmenuitems', {
       'linkId': this.props.match.params.link
     }, {timeout: 5000});
-    console.log(response);
     this
       .props
       .dispatch({
@@ -35,6 +29,7 @@ class Article extends Component {
   render() {
     const {pageContent} = this.props;
     const {params} = this.props.match;
+    console.log(process.env.REACT_APP_BACKEND);
     //console.log(params.link); console.log(this.props.match.path);
     return (
       <Fragment>

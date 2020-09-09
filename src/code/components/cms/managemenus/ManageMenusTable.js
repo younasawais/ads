@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
 
 class ManageMenusTable extends Component {
     constructor(props){
@@ -23,11 +22,11 @@ class ManageMenusTable extends Component {
 
     render() {
         const {ids, publshed, dateCreated, totalParents, totalChildren, 
-            columnNames, names, changes, checkBox } = this.props.manageMenus;
-        let clearCheckBoxes;
-        if(changes.length < 1){
-            clearCheckBoxes = false;
-        }
+            columnNames, names, checkBox } = this.props.manageMenus;
+        // let clearCheckBoxes;
+        // if(changes.length < 1){
+        //     clearCheckBoxes = false;
+        // }
 
         return (
             <table className="table table-bordered">

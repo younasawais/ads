@@ -14,7 +14,7 @@ class TestUpload extends Component {
     }
 
     async handleFileUpload(){
-        const response = await axios.post('http://localhost:4000/uploadTest2', this.state.imageData);
+        const response = await axios.post(process.env.REACT_APP_BACKEND + 'uploadTest2', this.state.imageData);
         console.log(response);
     }
 

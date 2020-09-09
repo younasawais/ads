@@ -48,7 +48,7 @@ class AddArticle extends Component {
         }
 
         if(title !== '' || menuItemName !== ''){
-            const response = await axios.post('http://localhost:4000/addArticleData', data, {timeout: 10000});
+            const response = await axios.post(process.env.REACT_APP_BACKEND + 'addArticleData', data, {timeout: 10000});
             console.log(response);
             if(response.status === 200){
                 console.log(response.data);

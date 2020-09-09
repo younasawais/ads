@@ -22,11 +22,11 @@ class ManageArticlesTable extends Component {
 
     render() {
         const {ids, links, publshed, menu, dateCreated, pics, 
-                parentItem, totalWord, columnNames, names, changes, checkBox } = this.props.manageArticles;
-        let clearCheckBoxes;
-        if(changes.length < 1){
-            clearCheckBoxes = false;
-        }
+                parentItem, totalWord, columnNames, names, checkBox } = this.props.manageArticles;
+        // let clearCheckBoxes;
+        // if(changes.length < 1){
+        //     clearCheckBoxes = false;
+        // }
 
         return (
             <table className="table table-bordered">

@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class ArticlePicture extends Component {
     render() {
         const {imageName1, imageName2} = this.props.article;
-        console.log(this.props);
-        console.log(imageName1);
-        console.log(imageName2);
+        // console.log(this.props);
+        // console.log(imageName1);
+        // console.log(imageName2);
         
         return (
             <section className="cid-s4pgQoHVVp" id="image4-b">

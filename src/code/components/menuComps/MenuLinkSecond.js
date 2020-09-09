@@ -11,7 +11,7 @@ class MenuLinkSecond extends Component {
 
     async linkPressed(link) {
         console.log(link);
-        const response = await axios.post('http://localhost:4000/getarticleinfo', {
+        const response = await axios.post(process.env.REACT_APP_BACKEND + 'getarticleinfo', {
           'linkId': link
         }, {timeout: 20000});
         console.log(this.props);

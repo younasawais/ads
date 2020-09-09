@@ -9,7 +9,7 @@ class UploadMultiPicAddArticle extends Component {
     }
 
     // async handleFileUpload(){
-    //     const response = await axios.post('http://localhost:4000/uploadTest', data);
+    //     const response = await axios.post(process.env.REACT_APP_BACKEND + 'uploadTest', data);
     //     console.log(response);
     // }
 
