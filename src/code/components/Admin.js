@@ -12,9 +12,13 @@ class Admin extends Component {
     render() {
         return (
             <Fragment>
-                <div style={{backgroundColor:'#d7f0ff', paddingBottom:'30%' }}>
+                <div style={{backgroundColor:'#e9f1f6', paddingBottom:'30%' }}>
                     <div style={{width:'80%', marginLeft:'auto', marginRight:'auto'}}>
-                    <h3>Admin Page</h3>
+                    <h3 style={{
+                        fontFamily: 'fantasy',
+                        textAlign: 'center',
+                        color: '#36587f'}}>
+                            Admin Page</h3>
                     <Link style={{borderRadius: 20}} type="button" to={'/manage-articles'} className="btn btn-primary btn-lg btn-block">Manage Articles</Link>
                     <Link style={{borderRadius: 20}} type="button" to={'/manage-menus'} className="btn btn-primary btn-lg btn-block">Manage menus</Link>
                     <Link style={{borderRadius: 20}} type="button" to={'/manage-users'} className="btn btn-primary btn-lg btn-block">Manage Users</Link>
