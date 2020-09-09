@@ -22,18 +22,34 @@ class Login extends Component {
         }else if(response.status === 204){
             console.log('wrong details');
             this.props.dispatch({
-                type: 'loginUnsuccessful',
+                type: 'updateLoginValues',
                 payload : {
-                    alert : 'Wrong details'
+                    value : 'Please check your login details',
+                    inputType : 'alert'
                 }
-            })
+            });
+            this.alertTimeOut(this.props.dispatch);            
         }
     }
 
+    
+    alertTimeOut(dispatch){
+        setTimeout(function() {
+            dispatch({
+                type :'updateLoginValues', 
+                payload : {
+                    value : '',
+                    inputType : 'alert'
+                }
+            });
+        }, 3000);        
+    }
+
     render() {
+        const { email, password, alert } = this.props.login;
         return (
 <Fragment>
-    <AlertMessage text={'Please check your credentials.'}/>
+    {(alert !== '') ? <AlertMessage text={'Please check your credentials.'}/> : '' }
     <section className="mbr-section form3 cid-s9NutCT19a" style={{paddingBottom: '60%'}} id="form3-i">
         <div className="container">
             <div className="row justify-content-center">
@@ -54,13 +70,13 @@ class Login extends Component {
                         type='email'
                         name='email'
                         placeHolder='email'
-                        value={this.props.login.email}
+                        value={email}
                     />
                     <InputLogin 
                         type='password'
                         name='password'
                         placeHolder='password'
-                        value={this.props.login.password}
+                        value={password}
                     />
 
                     <div className="col-auto input-group-btn">
