@@ -7,7 +7,7 @@ import axios from 'axios';
 
 class SelectMenuAddArticle extends Component {
   async componentWillMount(){
-    const response = await axios.post("http://localhost:4000/addArticleMenuData",'Send me menu data');
+    const response = await axios.post(process.env.REACT_APP_BACKEND + "addArticleMenuData",'Send me menu data');
     const {menus, parentArticles} = response.data;
     this.props.dispatch(
       {type : 'updateMenuAddArticle', 

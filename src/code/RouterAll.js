@@ -52,15 +52,6 @@ class RouterAll extends Component {
                         path='/home' exact   
                         render={({location, match}) => <Home match={match}/>}    
                     />
-                    <Route
-                        path={'/article/:link?'}
-                        render={({location, match}) => <Article {...props} match={match}/>}    
-                    />
-
-                    <Route
-                        path={'/modifyarticle/:link?'}
-                        render={({location, match}) => <ModifyArticle {...props} match={match}/>}    
-                    />
 
                     <Route
                         path='/admin' exact
@@ -88,6 +79,15 @@ class RouterAll extends Component {
                     <Route
                         path='/add-article' exact   
                         render={({location, match}) => <AddArticle/>}    
+                    />
+                    <Route
+                        path={'/article/:link?'}
+                        render={({location, match}) => <Article {...props} match={match}/>}    
+                    />
+
+                    <Route
+                        path={'/modifyarticle/:link?'}
+                        render={({location, match}) => <ModifyArticle {...props} match={match}/>}    
                     />
                 </Switch>
             </Fragment>

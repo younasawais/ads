@@ -12,10 +12,10 @@ class ArticlePicture extends Component {
             <div className="container images-container">
                     <div className="media-container-row" style={{width: "80%"}}>
                         <div className="img-item item1" style={{width: '177%'}}>
-                            {(imageName1 !== "") ? <img alt='' src={"http://localhost:4000/images/" + imageName1}/> : ""}                            
+                            {(imageName1 !== "") ? <img alt='' src={process.env.REACT_APP_BACKEND + "images/" + imageName1}/> : ""}                            
                         </div>
                         <div className="img-item">
-                            {(imageName2 !== "") ? <img alt='' src={"http://localhost:4000/images/" + imageName2}/> : ""}
+                            {(imageName2 !== "") ? <img alt='' src={process.env.REACT_APP_BACKEND + "images/" + imageName2}/> : ""}
                         </div>
                     </div>
             </div>

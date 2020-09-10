@@ -42,13 +42,13 @@ class Home extends Component {
                         </div>
                     </div>
 
-                    <div className="mbr-arrow hidden-sm-down" aria-hidden="true">
+                    {/* <div className="mbr-arrow hidden-sm-down" aria-hidden="true">
                         <a href="#next">
                             <i className="mbri-down mbr-iconfont"></i>
                         </a>
                         
                     <Link style={{borderRadius: 20}} type="button" to={'/admin'} className="btn btn-primary btn-lg btn-block">Manage Articles</Link>
-                    </div>
+                    </div> */}
                 </section>
             </Fragment>
         );

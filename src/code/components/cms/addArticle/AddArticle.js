@@ -74,7 +74,7 @@ class AddArticle extends Component {
 
     alertTimeOut(dispatch){
         setTimeout(async function() {
-            const response = await axios.post("http://localhost:4000/addArticleMenuData");
+            const response = await axios.post(process.env.REACT_APP_BACKEND + "/addArticleMenuData");
             const {menus, parentArticles} = response.data;
             dispatch({
                 type :'updateAlertAddArticleSuccessful', 
