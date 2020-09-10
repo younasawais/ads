@@ -19,8 +19,8 @@ class Home extends Component {
     }
 
     render() {
-        console.log(this.props.home);
         const { menus, menuLinks } = this.props.home;
+        console.log(process.env.REACT_APP_BACKEND);
         return (
             <Fragment>
                 <section className="header5 cid-s9NcstqoeV mbr-fullscreen" id="header5-h" style={{background: 'linear-gradient(0deg, #f3e4cb, #00000091, #59e0ca)'}}>
@@ -46,6 +46,8 @@ class Home extends Component {
                         <a href="#next">
                             <i className="mbri-down mbr-iconfont"></i>
                         </a>
+                        
+                    <Link style={{borderRadius: 20}} type="button" to={'/admin'} className="btn btn-primary btn-lg btn-block">Manage Articles</Link>
                     </div>
                 </section>
             </Fragment>

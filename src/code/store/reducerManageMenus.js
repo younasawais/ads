@@ -1,14 +1,15 @@
 const manageMenus = { 
     columnNames         : ['#', 'id', 'Name', 'Published', 'Date Created', 'Total Art. Parents', 'Total Art. Children'],
-    ids                 : ['id1343', 'id1231', 'id1232', 'id1233','id2331','id2338'],
-    names               : ['Moon size', 'Console design', 'Stars', 'Ram memory', 'Screens', 'Games'],
-    publshed            : ['yes', 'no', 'yes', 'no', 'yes', 'yes'],
-    dateCreated         : ['010620','051020', '090811', '240818', '091221', '090714'],
+    ids                 : [],
+    names               : [],
+    publshed            : [],
+    dateCreated         : [],
     totalParents        : [],
     totalChildren       : [],
-    checkBox            : [false, false, false, false, false, false, false],
+    checkBox            : [],
     alertMessage        : '',
     alertType           : '',
+    loading             : true,
     changes             : []
     // changes             : [{
     //     id: '',
@@ -26,8 +27,8 @@ function reducerManageMenus(state = manageMenus, action){
         case 'selectMenus' :
             const copyState = Object.assign(state);
             const processState = handleCheckBox(copyState, action.payload);
-            console.log(processState);
-            return {...processState}
+            //console.log(processState);
+            return {...processState, loading: false}
         case 'menusListManageMenus' :
             console.log(action.payload.menus);
             const newObj = objectsToArrays(action.payload.menus);
@@ -39,7 +40,8 @@ function reducerManageMenus(state = manageMenus, action){
                 totalParents    : action.payload.parents,
                 totalChildren   : action.payload.children,
                 checkBox        : newObj.checkBox,
-                changes         : newObj.changes
+                changes         : newObj.changes,
+                loading         : false
             }
         default: return state
     }

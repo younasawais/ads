@@ -12,6 +12,7 @@ const manageArticles = {
     checkBox            : [],
     alertMessage        : '',
     alertType           : '',
+    loading             : true,
     changes             : []
     // changes             : [{
     //     id: '',
@@ -40,6 +41,7 @@ function reducerManageArticles(state = manageArticles, action){
                 menu        : newObj.menu,
                 dateCreated : newObj.dateCreated,
                 pics        : newObj.pics,
+                loading     : false,
                 parentItem  : newObj.parentItem,
                 totalWord   : newObj.totalWord,
                 checkBox    : newObj.checkBox,
@@ -61,6 +63,7 @@ function objectsToArrays(data){
         parentItem          : [],
         totalWord           : [],
         checkBox            : [],
+        loading             : true,
         changes             : [] }
 
     for (let i = 0; i < data.length; i++) {

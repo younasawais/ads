@@ -1,0 +1,10 @@
+div, p, .btn, button, h1, h2, h3, h4, h5, h6, table, hr, a, select, li, ul, dl{
+    opacity: 1;
+    animation-name: example;
+    animation-duration: 1s;
+  }
+  
+  @keyframes example {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }

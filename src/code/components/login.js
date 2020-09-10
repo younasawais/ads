@@ -11,6 +11,13 @@ class Login extends Component {
     }
 
     async handleLoginBtn(){
+        this.props.dispatch({
+            type: 'loading',
+            payload : {
+                loading : true
+            }
+        });
+
         const response = await axios.post(process.env.REACT_APP_BACKEND + 'loginAdmin', {
             email: this.props.login.email,
             password : this.props.login.password
@@ -25,7 +32,7 @@ class Login extends Component {
                 type: 'updateLoginValues',
                 payload : {
                     value : 'Please check your login details',
-                    inputType : 'alert'
+                    inputType : 'alert',
                 }
             });
             this.alertTimeOut(this.props.dispatch);            
@@ -46,7 +53,7 @@ class Login extends Component {
     }
 
     render() {
-        const { email, password, alert } = this.props.login;
+        const { email, password, alert, loading } = this.props.login;
         return (
 <Fragment>
     {(alert !== '') ? <AlertMessage text={'Please check your credentials.'}/> : '' }
@@ -88,6 +95,13 @@ class Login extends Component {
                                 Login
                         </button><br/>
                     </div>
+                    { loading ? 
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        :
+                        ""
+                    }
                 </div>
             </div>
         </div>

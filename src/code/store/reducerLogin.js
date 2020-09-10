@@ -1,17 +1,16 @@
 
 const pageContent = {
-    email       :   '',
-    password    :   '',
-    alert       :   ''
+    email       : '',
+    password    : '',
+    alert       : '',
+    loading     : false
 }
 
 function reducerLogin(state = pageContent, action){
     switch(action.type){
-        // case 'loginUnsuccessful' :
-        //     let alert   =  action.payload.value;
-        //     return {...state, email : '', password : '', alert : alert}
+        case 'loading' :
+            return {...state, loading : action.payload.loading}
         case 'loginSuccess' :
-            //let input   = {[action.payload.inputType] : action.payload.value};
             return {...state, email : '', password : ''}
         case 'updateLoginValues' :
             let input   = {[action.payload.inputType] : action.payload.value};
