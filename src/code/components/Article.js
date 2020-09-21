@@ -37,7 +37,7 @@ class Article extends Component {
         <TitleShortDetails article={pageContent} link={params.link}/>
         <ArticlePicture article={pageContent} picNr={1}/>
         <ArticleText1 article={pageContent}/>
-        <ArticlePicture article={pageContent} picNr={2}/>
+        {(pageContent.imageName2!=="") ? <ArticlePicture article={pageContent} picNr={2}/> : ""}
         <ArticleText2 article={pageContent}/>
         <ReferenceAndTags article={pageContent}/>
         <Footer article={pageContent}/>
