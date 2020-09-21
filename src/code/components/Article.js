@@ -34,9 +34,10 @@ class Article extends Component {
     return (
       <Fragment>
         <Menu {...this.props}/>
-        <TitleShortDetails article={pageContent} link={params.link}/> {/* <button onClick={this.handleAxios}>Test Axios</button> */}
+        <TitleShortDetails article={pageContent} link={params.link}/>
+        <ArticlePicture article={pageContent} picNr={1}/>
         <ArticleText1 article={pageContent}/>
-        <ArticlePicture article={pageContent}/>
+        <ArticlePicture article={pageContent} picNr={2}/>
         <ArticleText2 article={pageContent}/>
         <ReferenceAndTags article={pageContent}/>
         <Footer article={pageContent}/>
