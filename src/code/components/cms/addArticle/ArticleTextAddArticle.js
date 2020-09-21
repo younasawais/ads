@@ -11,10 +11,15 @@ class ArticleTextAddArticle extends Component {
         e.preventDefault();
         const {reducerType} = this.props;
         if(typeof reducerType !== 'undefined'){
+            let str = e.target.value;
+            str = str.replace(/[.]\n/g,'::');
+            str = str.replace(/\n/g,' ');
+            // console.log(str);
+            // console.log(response);
             this.props.dispatch({
                 type: reducerType,
                 payload:{
-                    input : e.target.value
+                    input : str
                 }
             })
         }

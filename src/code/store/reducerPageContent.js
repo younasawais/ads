@@ -12,8 +12,8 @@ const pageContent = {
                         component : ['ManageArticles', 'ManageMenus', 'SettingsCms', 'AddArticles']
                     },
     articleTags     : ['Pakistan', 'Geography', 'progress', 'space', 'science', 'military'],
-    articleContent1 : articleContent1,
-    articleContent2 : articleContent2,
+    articleContent1 : ['sample1::', 'sample2::', 'sample3::'],
+    articleContent2 : ['sample1::', 'sample2::', 'sample3::'],
     imageName1      : '',
     imageName2      : '',
     articleTitle    : 'Title of the Article',
@@ -31,8 +31,8 @@ function reducerPageContent(state = pageContent, action){
                 articleMenuItems : action.payload.menuItems,
                 imageName1      : articleInfo.imageName1,
                 imageName2      : articleInfo.imageName2,
-                articleContent1 : articleInfo.text1,
-                articleContent2 : articleInfo.text2,
+                articleContent1 : articleInfo.text1.match(/[^:]+::/g),
+                articleContent2 : articleInfo.text2.match(/[^:]+::/g),
                 articleTitle    : articleInfo.title,
                 articleTitle2   : articleInfo.title2,
                 articleReference: articleInfo.reference,
@@ -42,8 +42,8 @@ function reducerPageContent(state = pageContent, action){
             articleInfo = action.payload.articleInfo;
             return {
                 ...state, 
-                articleContent1 : articleInfo.text1,
-                articleContent2 : articleInfo.text2,
+                articleContent1 : articleInfo.text1.match(/[^:]+::/g),
+                articleContent2 : articleInfo.text2.match(/[^:]+::/g),
                 imageName1      : articleInfo.imageName1,
                 imageName2      : articleInfo.imageName2,
                 articleTitle    : articleInfo.title,
