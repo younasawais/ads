@@ -37,7 +37,7 @@ class ManageArticlesTable extends Component {
                 </div>
             </div>
                 :
-                <table className="table table-bordered">
+                <table className="table table-bordered" style={{marginLeft: 5}}>
                     <thead>
                         <tr>
                             {columnNames.map((article, index)=> {return(
@@ -63,8 +63,7 @@ class ManageArticlesTable extends Component {
                             </tr>
                         )})}
                     </tbody>
-                </table>
-            }
+                </table>}
            </Fragment>
         );
     }

@@ -5,6 +5,8 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import AlertMessage from '../elements/AlertMessage';
 import {checkCredentials} from '../../generalFunctions';
+import Filter from './Filter';
+import Pagination from './Pagination';
 
 class ManageArticles extends Component {
     constructor(props){
@@ -92,8 +94,7 @@ class ManageArticles extends Component {
         return (
             <Fragment>
                 {alertMessage !== "" ? 
-                    <AlertMessage text={alertMessage}/> : ''
-                }
+                    <AlertMessage text={alertMessage}/> : ''}
                 <div  className="row" style={{paddingLeft:10, paddingRight:10}}>
                     <Link type="button" to='/admin' className="btn col btn-dark">Back</Link>
                     <Link type="button" to='/add-article' className="btn col btn-primary">New Article</Link>
@@ -102,7 +103,9 @@ class ManageArticles extends Component {
                     <button type="button" onClick={()=>{this.handlePublishButton(false)}} className="btn col btn-primary">Unpublish</button>
                     <button type="button" onClick={this.handleDeleteButton} className="btn col btn-danger">Delete</button>
                 </div>
+                <Filter />
                 <ManageArticlesTable {...this.props}/>
+                <Pagination />
             </Fragment>
         );
     }

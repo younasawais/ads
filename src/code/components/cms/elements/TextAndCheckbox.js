@@ -27,7 +27,11 @@ class TextAndCheckbox extends Component {
                 <div className="input-group-prepend">
                 <div className="input-group-text">
                     <p style={{marginBottom:0, marginRight:10}}>{text}</p>
-                    <input onChange={this.handleCheckbox} checked={checked} type="checkbox" aria-label="Checkbox for following text input"/>
+                    <input 
+                        onChange={this.handleCheckbox} 
+                        checked={checked} 
+                        type="checkbox" 
+                        aria-label="Checkbox for following text input"/>
                     {/* { checked ? 
                     <input onClick={this.handleCheckbox} checked type="checkbox" aria-label="Checkbox for following text input"/>
                      : 
