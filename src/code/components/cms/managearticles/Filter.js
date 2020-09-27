@@ -32,16 +32,16 @@ class Filter extends Component {
                     <div className="col">
                         <DropDown 
                         items={['Children', 'Parents', 'All']} 
-                        reducerType='childOrParentStatus'
+                        reducerType='childParentSelect'
                         defaultText='All'
-                        text={'Type?'}/>
+                        text='Type?'/>
                     </div>
                     <div className="col">
                         <DropDown 
                         items={['Published', 'Not published', 'All']} 
-                        reducerType='publishStatus'
+                        reducerType='publishStatusSelect'
                         defaultText='All'
-                        text={'Published?'}/>
+                        text='Published?'/>
                     </div>
                     <div className="col">
                         <DropDown 

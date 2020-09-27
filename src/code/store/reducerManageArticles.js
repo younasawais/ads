@@ -23,9 +23,8 @@ const manageArticles = {
     alertType           : '',
     loading             : true,
     changes             : [],
-    filterActive        : false,
-    filterParents       : true,
-    filterChildren      : true,
+    filterPublished     : 'All',
+    filterChildParents  : 'All'
     // changes             : [{
     //     id: '',
     //     command : 'delete',
@@ -37,7 +36,18 @@ const manageArticles = {
 function reducerManageArticles(state = manageArticles, action){
     let name = null;
     let input = null;
+    let publishList = null;
     switch(action.type){
+        case 'publishStatusSelect' :
+            input = action.payload.input;
+            console.log(input);
+            publishList = updateFilterPublished(input,state);
+            console.log(publishList);
+            return {...state, ...publishList, filterPublished : input};
+        case 'childParentSelect' :
+            input = action.payload.input;
+            console.log(input);
+            return {...state, filterChildParents : input };
         case 'filterCheckBoxTrigger' : 
             name = action.payload.name;
             input = action.payload.input;
@@ -127,20 +137,6 @@ function objectsToArrays(data){
         newObj.parentItemFiltered   = newObj.parentItem;
         newObj.totalWordFiltered    = newObj.totalWord;
     return newObj;
-        // active: true
-        // creationDate: "16/08/20"
-        // creationTime: "21:37:49"
-        // imageName1: "200816213749-Image-Name19"
-        // imageName2: "200816213749-Image-Name20"
-        // linkId: "200816212749-dat1-sub-of-third"
-        // menu: "Menu 1"
-        // menuItemName: "Dat1 Sub of fourth2"
-        // parentItem: "200816232713-fourth-article"
-        // reference: "Book: reference name"
-        // tags: "tag1, tag2, tag3"
-        // text1: "This is some text stuff"
-        // text2: "More text stuff"
-        // title: "Dat1 Sub of fourth2"
 }
 
 function handleCheckBox(state, payload){
@@ -175,62 +171,220 @@ function handleCheckBox(state, payload){
 /*********************************************************/
 /******************** Filter functions *******************/
 /*********************************************************/
-function updateFilterPublished(state){
-    let filteredList = {
-        idsFiltered         : [],
-        namesFiltered       : [],
-        publishedFiltered   : [],
-        linksFiltered       : [],
-        menuFiltered        : [],
-        dateCreatedFiltered : [],
-        picsFiltered        : [],
-        parentItemFiltered  : [],
-        totalWordFiltered   : []
+function updateFilterPublished(input, state){
+    let listPublished = {
+        ids         : [],
+        names       : [],
+        published   : [],
+        links       : [],
+        menu        : [],
+        dateCreated : [],
+        pics        : [],
+        parentItem  : [],
+        totalWord   : []
     }
     for (let i = 0; i < state.ids.length; i++) {
-        if (state.published[i] === 'true'){
-            filteredList.idsFiltered.push(state.ids[i]);
-            filteredList.namesFiltered.push(state.names[i]);
-            filteredList.publishedFiltered.push(state.published[i]);
-            filteredList.linksFiltered.push(state.links[i]);
-            filteredList.menuFiltered.push(state.menu[i]);
-            filteredList.dateCreatedFiltered.push(state.dateCreated[i]);
-            filteredList.picsFiltered.push(state.pics[i]);
-            filteredList.parentItemFiltered.push(state.parentItem[i]);
-            filteredList.totalWordFiltered.push(state.totalWord[i]);
-            filteredList.publishedFiltered.push(state.published[i]);
-        }            
+        if(input === 'All'){
+            listPublished.ids.push(state.ids[i]);
+            listPublished.names.push(state.names[i]);
+            listPublished.published.push(state.published[i]);
+            listPublished.links.push(state.links[i]);
+            listPublished.menu.push(state.menu[i]);
+            listPublished.dateCreated.push(state.dateCreated[i]);
+            listPublished.pics.push(state.pics[i]);
+            listPublished.parentItem.push(state.parentItem[i]);
+            listPublished.totalWord.push(state.totalWord[i]);
+        }else if(input === 'Published'){
+            if (state.published[i] === 'true'){
+                listPublished.ids.push(state.ids[i]);
+                listPublished.names.push(state.names[i]);
+                listPublished.published.push(state.published[i]);
+                listPublished.links.push(state.links[i]);
+                listPublished.menu.push(state.menu[i]);
+                listPublished.dateCreated.push(state.dateCreated[i]);
+                listPublished.pics.push(state.pics[i]);
+                listPublished.parentItem.push(state.parentItem[i]);
+                listPublished.totalWord.push(state.totalWord[i]);
+            }
+        }else if (input === 'Not published') {
+            if (state.published[i] === 'false'){
+                listPublished.ids.push(state.ids[i]);
+                listPublished.names.push(state.names[i]);
+                listPublished.published.push(state.published[i]);
+                listPublished.links.push(state.links[i]);
+                listPublished.menu.push(state.menu[i]);
+                listPublished.dateCreated.push(state.dateCreated[i]);
+                listPublished.pics.push(state.pics[i]);
+                listPublished.parentItem.push(state.parentItem[i]);
+                listPublished.totalWord.push(state.totalWord[i]);
+            }
+        }     
     }
-    return filteredList;
+    console.log(listPublished);
+
+    let parentsFiltered = updateFilterParents(state.filterChildParents, listPublished);
+    console.log(parentsFiltered);
+    return parentsFiltered;
+    /******************* Filter parent-child *****************/
+    // let filteredList2 = {
+    //     idsFiltered         : [],
+    //     namesFiltered       : [],
+    //     publishedFiltered   : [],
+    //     linksFiltered       : [],
+    //     menuFiltered        : [],
+    //     dateCreatedFiltered : [],
+    //     picsFiltered        : [],
+    //     parentItemFiltered  : [],
+    //     totalWordFiltered   : []
+    // }
+    // for (let i = 0; i < filteredList1.idsFiltered.length; i++) {
+    //     if(state.filterChildParents === 'All'){
+    //         filteredList2.idsFiltered.push(filteredList1.idsFiltered[i]);
+    //         filteredList2.namesFiltered.push(filteredList1.namesFiltered[i]);
+    //         filteredList2.publishedFiltered.push(filteredList1.publishedFiltered[i]);
+    //         filteredList2.linksFiltered.push(filteredList1.linksFiltered[i]);
+    //         filteredList2.menuFiltered.push(filteredList1.menuFiltered[i]);
+    //         filteredList2.dateCreatedFiltered.push(filteredList1.dateCreatedFiltered[i]);
+    //         filteredList2.picsFiltered.push(filteredList1.picsFiltered[i]);
+    //         filteredList2.parentItemFiltered.push(filteredList1.parentItemFiltered[i]);
+    //         filteredList2.totalWordFiltered.push(filteredList1.totalWordFiltered[i]);
+    //     }else if(state.filterChildParents === 'Parents'){
+    //         if (filteredList1.parentItem[i] === ''){
+    //             filteredList2.idsFiltered.push(filteredList1.idsFiltered[i]);
+    //             filteredList2.namesFiltered.push(filteredList1.namesFiltered[i]);
+    //             filteredList2.publishedFiltered.push(filteredList1.publishedFiltered[i]);
+    //             filteredList2.linksFiltered.push(filteredList1.linksFiltered[i]);
+    //             filteredList2.menuFiltered.push(filteredList1.menuFiltered[i]);
+    //             filteredList2.dateCreatedFiltered.push(filteredList1.dateCreatedFiltered[i]);
+    //             filteredList2.picsFiltered.push(filteredList1.picsFiltered[i]);
+    //             filteredList2.parentItemFiltered.push(filteredList1.parentItemFiltered[i]);
+    //             filteredList2.totalWordFiltered.push(filteredList1.totalWordFiltered[i]);
+    //         }
+    //     }else if (state.filterChildParents === 'Children') {
+    //         if (filteredList1.parentItem[i] !== ''){
+    //             filteredList2.idsFiltered.push(filteredList1.idsFiltered[i]);
+    //             filteredList2.namesFiltered.push(filteredList1.namesFiltered[i]);
+    //             filteredList2.publishedFiltered.push(filteredList1.publishedFiltered[i]);
+    //             filteredList2.linksFiltered.push(filteredList1.linksFiltered[i]);
+    //             filteredList2.menuFiltered.push(filteredList1.menuFiltered[i]);
+    //             filteredList2.dateCreatedFiltered.push(filteredList1.dateCreatedFiltered[i]);
+    //             filteredList2.picsFiltered.push(filteredList1.picsFiltered[i]);
+    //             filteredList2.parentItemFiltered.push(filteredList1.parentItemFiltered[i]);
+    //             filteredList2.totalWordFiltered.push(filteredList1.totalWordFiltered[i]);
+    //         }
+    //     }     
+    // }
+
+    // return filteredList2;
 }
 
-function updateFilterParents(state){
-    let filteredList = {
-        idsFiltered         : [],
-        namesFiltered       : [],
-        publishedFiltered   : [],
-        linksFiltered       : [],
-        menuFiltered        : [],
-        dateCreatedFiltered : [],
-        picsFiltered        : [],
-        parentItemFiltered  : [],
-        totalWordFiltered   : []
+// function updateFilterParents(input, state){
+//     let filteredList = {
+//         idsFiltered         : [],
+//         namesFiltered       : [],
+//         publishedFiltered   : [],
+//         linksFiltered       : [],
+//         menuFiltered        : [],
+//         dateCreatedFiltered : [],
+//         picsFiltered        : [],
+//         parentItemFiltered  : [],
+//         totalWordFiltered   : []
+//     }
+//     for (let i = 0; i < state.ids.length; i++) {
+//         if(input === 'All'){
+//             filteredList.idsFiltered.push(state.ids[i]);
+//             filteredList.namesFiltered.push(state.names[i]);
+//             filteredList.publishedFiltered.push(state.published[i]);
+//             filteredList.linksFiltered.push(state.links[i]);
+//             filteredList.menuFiltered.push(state.menu[i]);
+//             filteredList.dateCreatedFiltered.push(state.dateCreated[i]);
+//             filteredList.picsFiltered.push(state.pics[i]);
+//             filteredList.parentItemFiltered.push(state.parentItem[i]);
+//             filteredList.totalWordFiltered.push(state.totalWord[i]);
+//         }else if(input === 'Parents'){
+//             if (state.parentItem[i] === ''){
+//                 filteredList.idsFiltered.push(state.ids[i]);
+//                 filteredList.namesFiltered.push(state.names[i]);
+//                 filteredList.publishedFiltered.push(state.published[i]);
+//                 filteredList.linksFiltered.push(state.links[i]);
+//                 filteredList.menuFiltered.push(state.menu[i]);
+//                 filteredList.dateCreatedFiltered.push(state.dateCreated[i]);
+//                 filteredList.picsFiltered.push(state.pics[i]);
+//                 filteredList.parentItemFiltered.push(state.parentItem[i]);
+//                 filteredList.totalWordFiltered.push(state.totalWord[i]);
+//             }
+//         }else if (input !== '') {
+//             if (state.published[i] === 'false'){
+//                 filteredList.idsFiltered.push(state.ids[i]);
+//                 filteredList.namesFiltered.push(state.names[i]);
+//                 filteredList.publishedFiltered.push(state.published[i]);
+//                 filteredList.linksFiltered.push(state.links[i]);
+//                 filteredList.menuFiltered.push(state.menu[i]);
+//                 filteredList.dateCreatedFiltered.push(state.dateCreated[i]);
+//                 filteredList.picsFiltered.push(state.pics[i]);
+//                 filteredList.parentItemFiltered.push(state.parentItem[i]);
+//                 filteredList.totalWordFiltered.push(state.totalWord[i]);
+//             }
+//         }     
+//     }
+//     return filteredList;
+// }
+
+
+
+
+    /******************* Reusable Filter parent-child *****************/
+    function updateFilterParents(input, state){
+        let listParentChild = {
+            idsFiltered         : [],
+            namesFiltered       : [],
+            publishedFiltered   : [],
+            linksFiltered       : [],
+            menuFiltered        : [],
+            dateCreatedFiltered : [],
+            picsFiltered        : [],
+            parentItemFiltered  : [],
+            totalWordFiltered   : []
+        }
+        for (let i = 0; i < state.ids.length; i++) {
+            if(input === 'All'){
+                listParentChild.idsFiltered.push(state.ids[i]);
+                listParentChild.namesFiltered.push(state.names[i]);
+                listParentChild.publishedFiltered.push(state.published[i]);
+                listParentChild.linksFiltered.push(state.links[i]);
+                listParentChild.menuFiltered.push(state.menu[i]);
+                listParentChild.dateCreatedFiltered.push(state.dateCreated[i]);
+                listParentChild.picsFiltered.push(state.pics[i]);
+                listParentChild.parentItemFiltered.push(state.parentItem[i]);
+                listParentChild.totalWordFiltered.push(state.totalWord[i]);
+            }else if(input === 'Parents'){
+                if (state.parentItem[i] === ''){
+                    listParentChild.idsFiltered.push(state.ids[i]);
+                    listParentChild.namesFiltered.push(state.names[i]);
+                    listParentChild.publishedFiltered.push(state.published[i]);
+                    listParentChild.linksFiltered.push(state.links[i]);
+                    listParentChild.menuFiltered.push(state.menu[i]);
+                    listParentChild.dateCreatedFiltered.push(state.dateCreated[i]);
+                    listParentChild.picsFiltered.push(state.pics[i]);
+                    listParentChild.parentItemFiltered.push(state.parentItem[i]);
+                    listParentChild.totalWordFiltered.push(state.totalWord[i]);
+                }
+            }else if (input !== '') {
+                if (state.published[i] === 'false'){
+                    listParentChild.idsFiltered.push(state.ids[i]);
+                    listParentChild.namesFiltered.push(state.names[i]);
+                    listParentChild.publishedFiltered.push(state.published[i]);
+                    listParentChild.linksFiltered.push(state.links[i]);
+                    listParentChild.menuFiltered.push(state.menu[i]);
+                    listParentChild.dateCreatedFiltered.push(state.dateCreated[i]);
+                    listParentChild.picsFiltered.push(state.pics[i]);
+                    listParentChild.parentItemFiltered.push(state.parentItem[i]);
+                    listParentChild.totalWordFiltered.push(state.totalWord[i]);
+                }
+            }     
+        }
+        return listParentChild;
     }
-    for (let i = 0; i < state.ids.length; i++) {
-        if (state.parentItem[i] === ''){
-            filteredList.idsFiltered.push(state.ids[i]);
-            filteredList.namesFiltered.push(state.names[i]);
-            filteredList.publishedFiltered.push(state.published[i]);
-            filteredList.linksFiltered.push(state.links[i]);
-            filteredList.menuFiltered.push(state.menu[i]);
-            filteredList.dateCreatedFiltered.push(state.dateCreated[i]);
-            filteredList.picsFiltered.push(state.pics[i]);
-            filteredList.parentItemFiltered.push(state.parentItem[i]);
-            filteredList.totalWordFiltered.push(state.totalWord[i]);
-            filteredList.publishedFiltered.push(state.published[i]);
-        }            
-    }
-    return filteredList;
-}
+
 
 export default reducerManageArticles;
