@@ -1,19 +1,31 @@
 const manageArticles = { 
     columnNames         : ['#', 'id', 'Name', 'link', 'Published', 'Menu', 'Date Created', 'Pics', 'ParentItem', 'Total words'],
     ids                 : [],
+    idsFiltered         : [],
     names               : [],
-    publshed            : [],
+    namesFiltered       : [],
+    published           : [],
+    publishedFiltered   : [],
     links               : [],
+    linksFiltered       : [],
     menu                : [],
+    menuFiltered        : [],
     dateCreated         : [],
+    dateCreatedFiltered : [],
     pics                : [],
+    picsFiltered        : [],
     parentItem          : [],
+    parentItemFiltered  : [],
     totalWord           : [],
+    totalWordFiltered   : [],
     checkBox            : [],
     alertMessage        : '',
     alertType           : '',
     loading             : true,
-    changes             : []
+    changes             : [],
+    filterActive        : false,
+    filterParents       : true,
+    filterChildren      : true,
     // changes             : [{
     //     id: '',
     //     command : 'delete',
@@ -23,7 +35,17 @@ const manageArticles = {
 
 
 function reducerManageArticles(state = manageArticles, action){
+    let name = null;
+    let input = null;
     switch(action.type){
+        case 'filterCheckBoxTrigger' : 
+            name = action.payload.name;
+            input = action.payload.input;
+            let checkboxVal = {[name] : input}
+            //let publishedFiltered = updateFilterPublished(state);
+            let parentsFiltered = updateFilterParents(state);
+            console.log(parentsFiltered); 
+            return {...state,...checkboxVal}
         case 'alertManageArticles' :
             return {...state, alertMessage : action.payload.alertMessage}
         case 'selectArticles' :
@@ -34,18 +56,27 @@ function reducerManageArticles(state = manageArticles, action){
         case 'articleListManageArticles' :
             const newObj = objectsToArrays(action.payload.value);
             return {...state, 
-                ids         : newObj.ids, 
-                names       : newObj.names,
-                publshed    : newObj.publshed,
-                links       : newObj.links,
-                menu        : newObj.menu,
-                dateCreated : newObj.dateCreated,
-                pics        : newObj.pics,
-                loading     : false,
-                parentItem  : newObj.parentItem,
-                totalWord   : newObj.totalWord,
-                checkBox    : newObj.checkBox,
-                changes     : newObj.changes
+                ids                 : newObj.ids, 
+                idsFiltered         : newObj.ids, 
+                names               : newObj.names,
+                namesFiltered       : newObj.names,
+                published           : newObj.published,
+                publishedFiltered   : newObj.published,
+                links               : newObj.links,
+                linksFiltered       : newObj.links,
+                menu                : newObj.menu,
+                menuFiltered        : newObj.menu,
+                dateCreated         : newObj.dateCreated,
+                dateCreatedFiltered : newObj.dateCreated,
+                pics                : newObj.pics,
+                picsFiltered        : newObj.pics,
+                parentItem          : newObj.parentItem,
+                parentItemFiltered  : newObj.parentItem,
+                totalWord           : newObj.totalWord,
+                totalWordFiltered   : newObj.totalWord,
+                loading             : false,
+                checkBox            : newObj.checkBox,
+                changes             : newObj.changes
             }
         default: return state
     }
@@ -54,14 +85,23 @@ function reducerManageArticles(state = manageArticles, action){
 function objectsToArrays(data){
     let newObj = {
         ids                 : [],
+        idsFiltered         : [],
         names               : [],
-        publshed            : [],
+        namesFiltered       : [],
+        published           : [],
+        publishedFiltered   : [],
         links               : [],
+        linksFiltered       : [],
         menu                : [],
+        menuFiltered        : [],
         dateCreated         : [],
+        dateCreatedFiltered : [],
         pics                : [],
+        picsFiltered        : [],
         parentItem          : [],
+        parentItemFiltered  : [],
         totalWord           : [],
+        totalWordFiltered   : [],
         checkBox            : [],
         loading             : true,
         changes             : [] }
@@ -69,7 +109,7 @@ function objectsToArrays(data){
     for (let i = 0; i < data.length; i++) {
         newObj.ids.push(data[i].linkId);        
         newObj.names.push(data[i].title);
-        newObj.publshed.push(data[i].active.toString());
+        newObj.published.push(data[i].active.toString());
         newObj.links.push(data[i].linkId);
         newObj.menu.push(data[i].menu);
         newObj.dateCreated.push(data[i].creationDate);
@@ -77,6 +117,15 @@ function objectsToArrays(data){
         newObj.parentItem.push(data[i].parentItem);
         newObj.totalWord.push(data[i].text1.length + data[i].text2.length);
         newObj.checkBox.push(false);}
+        newObj.idsFiltered          = newObj.ids;
+        newObj.namesFiltered        = newObj.names;
+        newObj.publishedFiltered    = newObj.published;
+        newObj.linksFiltered        = newObj.links;
+        newObj.menuFiltered         = newObj.menu;
+        newObj.dateCreatedFiltered  = newObj.dateCreated;
+        newObj.picsFiltered         = newObj.pics;
+        newObj.parentItemFiltered   = newObj.parentItem;
+        newObj.totalWordFiltered    = newObj.totalWord;
     return newObj;
         // active: true
         // creationDate: "16/08/20"
@@ -121,6 +170,67 @@ function handleCheckBox(state, payload){
     let index = newState.links.indexOf(payload.id);
     newState.checkBox[index] = !newState.checkBox[index];
     return newState;
+}
+
+/*********************************************************/
+/******************** Filter functions *******************/
+/*********************************************************/
+function updateFilterPublished(state){
+    let filteredList = {
+        idsFiltered         : [],
+        namesFiltered       : [],
+        publishedFiltered   : [],
+        linksFiltered       : [],
+        menuFiltered        : [],
+        dateCreatedFiltered : [],
+        picsFiltered        : [],
+        parentItemFiltered  : [],
+        totalWordFiltered   : []
+    }
+    for (let i = 0; i < state.ids.length; i++) {
+        if (state.published[i] === 'true'){
+            filteredList.idsFiltered.push(state.ids[i]);
+            filteredList.namesFiltered.push(state.names[i]);
+            filteredList.publishedFiltered.push(state.published[i]);
+            filteredList.linksFiltered.push(state.links[i]);
+            filteredList.menuFiltered.push(state.menu[i]);
+            filteredList.dateCreatedFiltered.push(state.dateCreated[i]);
+            filteredList.picsFiltered.push(state.pics[i]);
+            filteredList.parentItemFiltered.push(state.parentItem[i]);
+            filteredList.totalWordFiltered.push(state.totalWord[i]);
+            filteredList.publishedFiltered.push(state.published[i]);
+        }            
+    }
+    return filteredList;
+}
+
+function updateFilterParents(state){
+    let filteredList = {
+        idsFiltered         : [],
+        namesFiltered       : [],
+        publishedFiltered   : [],
+        linksFiltered       : [],
+        menuFiltered        : [],
+        dateCreatedFiltered : [],
+        picsFiltered        : [],
+        parentItemFiltered  : [],
+        totalWordFiltered   : []
+    }
+    for (let i = 0; i < state.ids.length; i++) {
+        if (state.parentItem[i] === ''){
+            filteredList.idsFiltered.push(state.ids[i]);
+            filteredList.namesFiltered.push(state.names[i]);
+            filteredList.publishedFiltered.push(state.published[i]);
+            filteredList.linksFiltered.push(state.links[i]);
+            filteredList.menuFiltered.push(state.menu[i]);
+            filteredList.dateCreatedFiltered.push(state.dateCreated[i]);
+            filteredList.picsFiltered.push(state.pics[i]);
+            filteredList.parentItemFiltered.push(state.parentItem[i]);
+            filteredList.totalWordFiltered.push(state.totalWord[i]);
+            filteredList.publishedFiltered.push(state.published[i]);
+        }            
+    }
+    return filteredList;
 }
 
 export default reducerManageArticles;

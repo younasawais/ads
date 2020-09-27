@@ -95,7 +95,7 @@ class ManageArticles extends Component {
             <Fragment>
                 {alertMessage !== "" ? 
                     <AlertMessage text={alertMessage}/> : ''}
-                <div  className="row" style={{paddingLeft:10, paddingRight:10}}>
+                <div className="row" style={{paddingLeft:10, paddingRight:10}}>
                     <Link type="button" to='/admin' className="btn col btn-dark">Back</Link>
                     <Link type="button" to='/add-article' className="btn col btn-primary">New Article</Link>
                     <Link type="button" to='/modify-article' className="btn col btn-primary">Modify</Link>
@@ -103,8 +103,8 @@ class ManageArticles extends Component {
                     <button type="button" onClick={()=>{this.handlePublishButton(false)}} className="btn col btn-primary">Unpublish</button>
                     <button type="button" onClick={this.handleDeleteButton} className="btn col btn-danger">Delete</button>
                 </div>
-                <Filter />
-                <ManageArticlesTable {...this.props}/>
+                <Filter/>
+                <ManageArticlesTable/>
                 <Pagination />
             </Fragment>
         );

@@ -13,7 +13,8 @@ class TextAndCheckbox extends Component {
             this.props.dispatch({
                 type: reducerType,
                 payload: {
-                    input : e.target.checked
+                    name    : e.target.name,
+                    input   : e.target.checked
                 }
             })
         }
@@ -28,10 +29,11 @@ class TextAndCheckbox extends Component {
                 <div className="input-group-text">
                     <p style={{marginBottom:0, marginRight:10}}>{text}</p>
                     <input 
-                        onChange={this.handleCheckbox} 
-                        checked={checked} 
-                        type="checkbox" 
-                        aria-label="Checkbox for following text input"/>
+                        onChange = {this.handleCheckbox} 
+                        checked = {checked} 
+                        type = "checkbox" 
+                        name = {this.props.name}
+                        aria-label = "Checkbox for following text input"/>
                     {/* { checked ? 
                     <input onClick={this.handleCheckbox} checked type="checkbox" aria-label="Checkbox for following text input"/>
                      : 
@@ -47,7 +49,8 @@ class TextAndCheckbox extends Component {
 TextAndCheckbox.defaultProps = {
     text        : 'undefined',
     reducerType : 'undefined',
-    checked     : false
+    checked     : false,
+    name        : 'undefined'
 }
 
 function mapStateToProps(state){

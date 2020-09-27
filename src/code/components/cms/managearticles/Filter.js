@@ -5,18 +5,43 @@ import TextAndCheckbox from '../elements/TextAndCheckbox';
 import TextAndLabel from '../elements/TextAndLabel';
 
 class Filter extends Component {
+    constructor(props){
+        super(props);
+
+    }
+
     render() {
+        if(this.props.manageArticles)
         return (
             <div className="container" style={{maxWidth: '97%'}}>
                 <div className="row">
-                    <div className="col">
-                        <TextAndCheckbox text="Active?"/>
+                    {/* <div className="col">
+                        <TextAndCheckbox
+                        name='filterParents' 
+                        reducerType='filterCheckBoxTrigger'
+                        checked={this.props.manageArticles.filterParents}
+                        text="Parents?"/>
                     </div>
                     <div className="col">
-                        <TextAndCheckbox text="Parents?"/>
+                        <TextAndCheckbox 
+                        text="Children?"
+                        name='filterChildren'
+                        checked={this.props.manageArticles.filterChildren}
+                        reducerType='filterCheckBoxTrigger'/>
+                    </div> */}
+                    <div className="col">
+                        <DropDown 
+                        items={['Children', 'Parents', 'All']} 
+                        reducerType='childOrParentStatus'
+                        defaultText='All'
+                        text={'Type?'}/>
                     </div>
                     <div className="col">
-                        <TextAndCheckbox text="Children?"/>
+                        <DropDown 
+                        items={['Published', 'Not published', 'All']} 
+                        reducerType='publishStatus'
+                        defaultText='All'
+                        text={'Published?'}/>
                     </div>
                     <div className="col">
                         <DropDown 
@@ -45,7 +70,7 @@ class Filter extends Component {
 
 function mapStateToProps(state){
     return{
-        addArticle : state.addArticle
+        manageArticles : state.manageArticles
     }
   }
   
