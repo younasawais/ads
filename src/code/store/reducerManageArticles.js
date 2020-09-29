@@ -1,5 +1,6 @@
 const manageArticles = { 
     columnNames         : ['#', 'id', 'Name', 'link', 'Published', 'Menu', 'Date Created', 'Pics', 'ParentItem', 'Total words'],
+    allMenus            : ['menu 1', 'menu 2', 'menu 3'],
     ids                 : [],
     idsFiltered         : [],
     names               : [],
@@ -24,7 +25,8 @@ const manageArticles = {
     loading             : true,
     changes             : [],
     filterPublished     : 'All',
-    filterChildParents  : 'All'
+    filterChildParents  : 'All',
+    filterMenu          : 'All'
     // changes             : [{
     //     id: '',
     //     command : 'delete',
@@ -39,21 +41,30 @@ function reducerManageArticles(state = manageArticles, action){
     let publishList = null;
     let parentChildList = null;
     let filtered = null;
+    let menuList = null;
     switch(action.type){
+        case 'menuFilterSelect' :
+            input = action.payload.input;
+            menuList = updateFilterMenu(input, state);
+            publishList = updateFilterPublished(state.filterPublished, menuList);
+            parentChildList = updateFilterParents(state.filterChildParents, publishList);
+            filtered = toFiltered(parentChildList);
+            //console.log(parentChildList);
+            return {...state, ...filtered, filterMenu : input};
         case 'publishStatusSelect' :
             input = action.payload.input;
             publishList = updateFilterPublished(input,state);
-            console.log(publishList);
             parentChildList = updateFilterParents(state.filterChildParents, publishList);
-            filtered = toFiltered(parentChildList);
-            console.log(parentChildList);
+            menuList = updateFilterMenu(state.filterMenu, parentChildList);
+            filtered = toFiltered(menuList);
+            //console.log(parentChildList);
             return {...state, ...filtered, filterPublished : input};
         case 'childParentSelect' :
             input = action.payload.input;
             parentChildList = updateFilterParents(input, state);
-            console.log(parentChildList);
             publishList = updateFilterPublished(state.filterPublished, parentChildList);
-            filtered = toFiltered(publishList);
+            menuList = updateFilterMenu(state.filterMenu, publishList);
+            filtered = toFiltered(menuList);
             return {...state, ...filtered, filterChildParents : input };
         case 'filterCheckBoxTrigger' : 
             name = action.payload.name;
@@ -69,7 +80,9 @@ function reducerManageArticles(state = manageArticles, action){
             const copyState = Object.assign(state);
             const processState = handleCheckBox(copyState, action.payload);
             console.log(processState);
-            return {...processState}
+            return {...processState}    
+        case 'getAllMenus' :            
+            return {...state, allMenus : action.payload.allMenus}
         case 'articleListManageArticles' :
             const newObj = objectsToArrays(action.payload.value);
             return {...state, 
@@ -281,6 +294,47 @@ function updateFilterParents(input, state){
         }     
     }
     return listParentChild;
+}
+
+/******************* Filter Menu *****************/
+function updateFilterMenu(input, state){
+    let listMenu = {
+        ids         : [],
+        names       : [],
+        published   : [],
+        links       : [],
+        menu        : [],
+        dateCreated : [],
+        pics        : [],
+        parentItem  : [],
+        totalWord   : []
+    }
+    if(input === 'All'){
+        listMenu.ids            = [...state.ids];
+        listMenu.names          = [...state.names];
+        listMenu.published      = [...state.published];
+        listMenu.links          = [...state.links];
+        listMenu.menu           = [...state.menu];
+        listMenu.dateCreated    = [...state.dateCreated];
+        listMenu.pics           = [...state.pics];
+        listMenu.parentItem     = [...state.parentItem];
+        listMenu.totalWord      = [...state.totalWord];
+    }else{
+        for (let i = 0; i < state.ids.length; i++) {
+            if(input === state.menu[i]){
+                listMenu.ids.push(state.ids[i]);
+                listMenu.names.push(state.names[i]);
+                listMenu.published.push(state.published[i]);
+                listMenu.links.push(state.links[i]);
+                listMenu.menu.push(state.menu[i]);
+                listMenu.dateCreated.push(state.dateCreated[i]);
+                listMenu.pics.push(state.pics[i]);
+                listMenu.parentItem.push(state.parentItem[i]);
+                listMenu.totalWord.push(state.totalWord[i]);
+            }
+        }
+    }
+    return listMenu;
 }
 
 function toFiltered(copyState){

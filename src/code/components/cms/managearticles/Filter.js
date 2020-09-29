@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import DropDown from '../elements/DropDown';
 import TextAndCheckbox from '../elements/TextAndCheckbox';
 import TextAndLabel from '../elements/TextAndLabel';
+import axios from 'axios';
 
 class Filter extends Component {
     constructor(props){
@@ -10,25 +11,28 @@ class Filter extends Component {
 
     }
 
+    async componentWillMount(){
+        const response = await axios.post(process.env.REACT_APP_BACKEND + 'getmenunamesandlinks');
+        console.log(response);
+        const { menus } = response.data;
+        let menuNames = [];
+        for (let i = 0; i < menus.length; i++) {
+            menuNames.push(menus[i].name);
+        }
+        this.props.dispatch({
+            type: 'getAllMenus',
+            payload : {
+                allMenus : menuNames
+            }
+        })
+    }
+
     render() {
-        if(this.props.manageArticles)
+        const {manageArticles} = this.props;
+        console.log(manageArticles);
         return (
             <div className="container" style={{maxWidth: '97%'}}>
                 <div className="row">
-                    {/* <div className="col">
-                        <TextAndCheckbox
-                        name='filterParents' 
-                        reducerType='filterCheckBoxTrigger'
-                        checked={this.props.manageArticles.filterParents}
-                        text="Parents?"/>
-                    </div>
-                    <div className="col">
-                        <TextAndCheckbox 
-                        text="Children?"
-                        name='filterChildren'
-                        checked={this.props.manageArticles.filterChildren}
-                        reducerType='filterCheckBoxTrigger'/>
-                    </div> */}
                     <div className="col">
                         <DropDown 
                         items={['Children', 'Parents', 'All']} 
@@ -45,10 +49,10 @@ class Filter extends Component {
                     </div>
                     <div className="col">
                         <DropDown 
-                        items={['Menu 1', 'Menu 2', 'Menu 3']} 
-                        reducerType='selectedMenuAddArticle'
-                        defaultText='menu'
-                        text={'Select menu'}/>
+                        items={['All', ...manageArticles.allMenus]}
+                        reducerType='menuFilterSelect'
+                        defaultText='All'
+                        text='Select menu'/>
                     </div>
                     <div className="col">
                         <TextAndLabel labelName={'From :'} placeholder={'YYYY/MM/DD'}/>
