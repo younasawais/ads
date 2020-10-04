@@ -15,6 +15,7 @@ class Article extends Component {
     const response = await axios.post(process.env.REACT_APP_BACKEND + 'getarticleinfowithmenuitems', {
       'linkId': this.props.match.params.link
     }, {timeout: 5000});
+    if(response.status === 204){window.location = '/'};
     this
       .props
       .dispatch({
@@ -29,18 +30,18 @@ class Article extends Component {
   render() {
     const {pageContent} = this.props;
     const {params} = this.props.match;
-    console.log(process.env.REACT_APP_BACKEND);
+    //console.log(process.env.REACT_APP_BACKEND);
     //console.log(params.link); console.log(this.props.match.path);
     return (
       <Fragment>
         <Menu {...this.props}/>
-        <TitleShortDetails article={pageContent} link={params.link}/>
-        <ArticlePicture article={pageContent} picNr={1}/>
-        <ArticleText1 article={pageContent}/>
-        {(pageContent.imageName2!=="") ? <ArticlePicture article={pageContent} picNr={2}/> : ""}
-        <ArticleText2 article={pageContent}/>
-        <ReferenceAndTags article={pageContent}/>
-        <Footer article={pageContent}/>
+        <TitleShortDetails article = {pageContent} link = {params.link}/>
+        <ArticlePicture article = {pageContent} picNr = {1}/>
+        <ArticleText1 article = {pageContent}/>
+        {(pageContent.imageName2 !== "") ? <ArticlePicture article = {pageContent} picNr = {2}/> : ""}
+        <ArticleText2 article = {pageContent}/>
+        <ReferenceAndTags article = {pageContent}/>
+        <Footer article = {pageContent}/>
       </Fragment>
     );
   }

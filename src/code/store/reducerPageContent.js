@@ -1,4 +1,4 @@
-import {articleContent1, articleContent2, articleMenuItems} from './initialize';
+import {articleMenuItems} from './initialize';
 
 const pageContent = {
     articleMenuItems   :   articleMenuItems,
@@ -11,14 +11,14 @@ const pageContent = {
                         links: ['manage-articles', 'manage-menus', 'settings', 'add-article'],
                         component : ['ManageArticles', 'ManageMenus', 'SettingsCms', 'AddArticles']
                     },
-    articleTags     : ['Pakistan', 'Geography', 'progress', 'space', 'science', 'military'],
-    articleContent1 : ['sample1::', 'sample2::', 'sample3::'],
-    articleContent2 : ['sample1::', 'sample2::', 'sample3::'],
+    articleTags     : ['...'],
+    articleContent1 : ['...::'],
+    articleContent2 : ['...::'],
     imageName1      : '',
     imageName2      : '',
-    articleTitle    : 'Title of the Article',
-    articleTitle2   : 'Short description article. Around 1 - 2 paragraphs',
-    articleReference: 'The establishment of the devine idea'
+    articleTitle    : '...',
+    articleTitle2   : '...',
+    articleReference: '...'
 }
 
 function reducerPageContent(state = pageContent, action){
