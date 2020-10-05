@@ -15,6 +15,7 @@ class Article extends Component {
     const response = await axios.post(process.env.REACT_APP_BACKEND + 'getarticleinfowithmenuitems', {
       'linkId': this.props.match.params.link
     }, {timeout: 5000});
+    console.log(response);
     if(response.status === 204){window.location = '/'};
     this
       .props

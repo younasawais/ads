@@ -23,16 +23,20 @@ const pageContent = {
 
 function reducerPageContent(state = pageContent, action){
     let articleInfo = null;
+    let articleContent1 = null;
+    let articleContent2 = null;
     switch(action.type){
         case 'updateArticlePageWithMenu' :
             articleInfo = action.payload.articleInfo;
+            articleContent1 = checkDoubleDot(articleInfo.text1);
+            articleContent2 = checkDoubleDot(articleInfo.text2);
             return {
                 ...state, 
                 articleMenuItems : action.payload.menuItems,
                 imageName1      : articleInfo.imageName1,
                 imageName2      : articleInfo.imageName2,
-                articleContent1 : articleInfo.text1.match(/[^:]+::/g),
-                articleContent2 : articleInfo.text2.match(/[^:]+::/g),
+                articleContent1 : articleContent1,
+                articleContent2 : articleContent2,
                 articleTitle    : articleInfo.title,
                 articleTitle2   : articleInfo.title2,
                 articleReference: articleInfo.reference,
@@ -40,10 +44,12 @@ function reducerPageContent(state = pageContent, action){
             }
         case 'updateArticlePage' :
             articleInfo = action.payload.articleInfo;
+            articleContent1 = checkDoubleDot(articleInfo.text1);
+            articleContent2 = checkDoubleDot(articleInfo.text2);
             return {
                 ...state, 
-                articleContent1 : articleInfo.text1.match(/[^:]+::/g),
-                articleContent2 : articleInfo.text2.match(/[^:]+::/g),
+                articleContent1 : articleContent1,
+                articleContent2 : articleContent2,
                 imageName1      : articleInfo.imageName1,
                 imageName2      : articleInfo.imageName2,
                 articleTitle    : articleInfo.title,
@@ -61,6 +67,21 @@ function reducerPageContent(state = pageContent, action){
 function tagsStringToArray(stringTags){
     let arrayTags = stringTags.split(';');
     return arrayTags;
+}
+
+/*****************************************************/
+/***************** Check if no :: **************/
+/*****************************************************/
+function checkDoubleDot(str){
+    const reg = /::/;
+    let result = reg.test(str);
+    let arr = [];
+    if(result){
+        arr = str.match(/[^:]+::/g);
+    }else{
+        arr[0] = str;
+    }
+    return arr;
 }
 
 export default reducerPageContent;
