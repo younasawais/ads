@@ -12,7 +12,7 @@ class Filter extends Component {
     }
 
     async componentWillMount(){
-        const response = await axios.post(process.env.REACT_APP_BACKEND + 'getmenunamesandlinks');
+        const response = await axios.post(process.env.REACT_APP_BACKEND + 'getmenunamesandlinksManageArticles');
         console.log(response);
         const { menus } = response.data;
         let menuNames = [];

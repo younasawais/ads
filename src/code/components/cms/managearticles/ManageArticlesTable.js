@@ -22,7 +22,7 @@ class ManageArticlesTable extends Component {
 
     render() {
         const {idsFiltered, linksFiltered, publishedFiltered, menuFiltered, dateCreatedFiltered, picsFiltered, 
-                parentItemFiltered, totalWordFiltered, columnNames, names, checkBox, loading } = this.props.manageArticles;
+                parentItemFiltered, totalWordFiltered, columnNames, namesFiltered, checkBox, loading } = this.props.manageArticles;
         // let clearCheckBoxes;
         // if(changes.length < 1){
         //     clearCheckBoxes = false;
@@ -52,7 +52,7 @@ class ManageArticlesTable extends Component {
                                 <input onChange={this.handelCheckBox} id={idsFiltered[i]} type="checkbox" checked={checkBox[i]}/>
                                 </th>
                                 <td>{idsFiltered[i]}</td>
-                                <td><Link type="button" to={'/modifyarticle/'+linksFiltered[i]}>{names[i]}</Link></td>
+                                <td><Link type="button" to={'/modifyarticle/'+linksFiltered[i]}>{namesFiltered[i]}</Link></td>
                                 <td>{linksFiltered[i]}</td>
                                 <td>{publishedFiltered[i]}</td>
                                 <td>{menuFiltered[i]}</td>

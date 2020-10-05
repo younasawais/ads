@@ -298,6 +298,7 @@ function updateFilterParents(input, state){
 
 /******************* Filter Menu *****************/
 function updateFilterMenu(input, state){
+    console.log(input);
     let listMenu = {
         ids         : [],
         names       : [],
