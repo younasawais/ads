@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 
 class TitleShortDetails extends Component {
 
@@ -6,6 +7,10 @@ class TitleShortDetails extends Component {
         const {articleTitle, articleTitle2} = this.props.article;
         return (
             <section className="mbr-section content4 cid-s4p9RW4dTj" id="content4-a">  
+            <Helmet>
+            <meta charSet="utf-8" />
+            <title>{articleTitle}</title>
+            </Helmet>
             <div className="container">
                 <div className="media-container-row">
                     <div className="title col-12 col-md-8">
