@@ -15,11 +15,11 @@ class ArticlePicture extends Component {
                     {(picNr === 1) ? 
                     
                     <div className="img-item item1" style={{width: '177%'}}>
-                        {(imageName1 !== "") ? <img alt='' src={process.env.REACT_APP_BACKEND + "images/" + imageName1}/> : ""}                            
+                        {(imageName1 !== "") ? <img alt='' src={process.env.REACT_APP_PICTURES + "images/" + imageName1}/> : ""}                            
                     </div>
                     :
                     <div className="img-item">
-                        {(imageName2 !== "") ? <img alt='' src={process.env.REACT_APP_BACKEND + "images/" + imageName2}/> : ""}
+                        {(imageName2 !== "") ? <img alt='' src={process.env.REACT_APP_PICTURES + "images/" + imageName2}/> : ""}
                     </div>
                     }
                 </div>
