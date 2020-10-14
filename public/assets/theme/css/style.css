@@ -732,11 +732,11 @@ blockquote {
 @media (min-width: 1024px) {
   .menu .navbar-nav.nav-dropdown {
     display: -webkit-flex;
+    max-height: 80px;
+    overflow-y: scroll;
   }
   .menu .navbar-toggleable-sm .navbar-collapse {
     display: -webkit-flex !important;
-    max-height: 80px;
-    overflow-y: scroll;
   }
   .menu .collapsed .navbar-collapse {
     max-height: 93.5vh;
