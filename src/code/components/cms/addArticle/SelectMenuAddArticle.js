@@ -15,7 +15,7 @@ class SelectMenuAddArticle extends Component {
         menus : menus,
         parentArticles: parentArticles
        }})
-    //console.log(response.data);
+    console.log(response.data);
   }
 
   render() {

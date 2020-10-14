@@ -6,6 +6,8 @@ const addArticle = {
     allParents              : [],
     allParentsIds           : [],
     allParentsMenus         : [],
+    allTags                 : [],
+    allReferences           : [],
     title                   : '',
     title2                  : '',
     menuItemName            : '',
@@ -23,7 +25,7 @@ const addArticle = {
     reference               : '',
     statusArticle           : '',
     alertType               : '',
-    active                  : false,
+    active                  : true,
     checkBoxCreateMenu      : false,
     //addSubItemToParent      : false,
     checkBoxCreateParent    : false
@@ -36,6 +38,8 @@ function reducerAddArticle(state = addArticle, action){
     let allParents        = null;
     let allParentsIds     = null;
     let allParentsMenus   = null;
+    let allTags           = null;
+    let allReferences     = null;
     switch(action.type){
         case 'updateMenuAddArticle' :
             menuNames         = action.payload.menus.map(menu=>{return( menu.name)});
@@ -43,13 +47,18 @@ function reducerAddArticle(state = addArticle, action){
             allParents        = action.payload.parentArticles.map(parent=>{return(parent.title)});
             allParentsIds     = action.payload.parentArticles.map(parent=>{return(parent.linkId)});
             allParentsMenus   = action.payload.parentArticles.map(parent=>{return(parent.menu)});
+            allTags           = action.payload.parentArticles.map(parent=>{return(parent.tags)});
+            allReferences     = action.payload.parentArticles.map(parent=>{return(parent.reference)});
             return {
                 ...state, 
-                menus : menuNames, 
-                menuIds : menuIds, 
-                allParents: allParents, 
-                allParentsIds: allParentsIds, 
-                allParentsMenus: allParentsMenus}
+                menus           : menuNames, 
+                menuIds         : menuIds, 
+                allParents      : allParents, 
+                allParentsIds   : allParentsIds, 
+                allParentsMenus : allParentsMenus,
+                allTags         : allTags,
+                allReferences   : allReferences            
+            }
         case 'updateAlertAddArticle' :            
             return {...state, 
                 statusArticle : action.payload.input, 
@@ -58,8 +67,19 @@ function reducerAddArticle(state = addArticle, action){
                 currentParentsId : []}
         case 'selectedMenuAddArticle' :
             const {input} = action.payload;
+            console.log('selectedMenuAddArticle running..' + input);
             let currentParents      = [];
             let currentParentsId    = [];
+            let reference           = null;
+            let tags                = null;
+            for (let i = 0; i < state.allParentsMenus.length; i++) {
+               if(state.allParentsMenus[i] === input){
+                    reference   = state.allReferences[i];
+                    tags        = state.allTags[i];
+                    break;
+               }
+            }
+
             for (let i = 0; i < state.allParents.length; i++) {
                 if(state.allParentsMenus[i] === input){
                     currentParents.push(state.allParents[i]);
@@ -68,10 +88,12 @@ function reducerAddArticle(state = addArticle, action){
             }
 
             return {...state, 
-                selectedMenu : input, 
-                currentParents: currentParents, 
-                currentParentsId: currentParentsId,
-                parentItemSelected: '',
+                selectedMenu        : input, 
+                currentParents      : currentParents, 
+                currentParentsId    : currentParentsId,
+                reference           : reference,
+                tags                : tags,
+                parentItemSelected  : '',
                 parentItemSelectedId: ''
             }
 
