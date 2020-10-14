@@ -19,7 +19,7 @@ class ArticlePicture extends Component {
                     </div>
                     :
                     <div className="img-item">
-                        {(imageName2 !== "") ? <img alt='' src={process.env.REACT_APP_PICTURES + "images/" + imageName2}/> : ""}
+                        {(imageName2 !== "") ? <img alt='' src={process.env.REACT_APP_PICTURES + imageName2}/> : ""}
                     </div>
                     }
                 </div>

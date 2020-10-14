@@ -77,7 +77,7 @@ function checkDoubleDot(str){
     let result = reg.test(str);
     let arr = [];
     if(result){
-        arr = str.match(/[^:]+::/g);
+        arr = str.match(/.+?(::)/g);
     }else{
         arr[0] = str;
     }

@@ -735,6 +735,8 @@ blockquote {
   }
   .menu .navbar-toggleable-sm .navbar-collapse {
     display: -webkit-flex !important;
+    max-height: 80px;
+    overflow-y: scroll;
   }
   .menu .collapsed .navbar-collapse {
     max-height: 93.5vh;
@@ -985,6 +987,7 @@ input[type='range'] {
   }
   .navbar-toggleable-sm .navbar-toggler {
     display: none;
+    /* display: block; */
   }
 }
 
@@ -1140,3 +1143,11 @@ body {
 	top: 0;
 	left: -2400px;
 }
+
+
+/* @media (min-width:1024px){
+  .collapse navbar-collapse{
+    max-height: 180px;
+    overflow-y: scroll;
+  }
+} */

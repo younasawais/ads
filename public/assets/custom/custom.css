@@ -8,3 +8,15 @@ div, p, .btn, button, h1, h2, h3, h4, h5, h6, table, hr, a, select, li, ul, dl, 
     from {opacity: 0;}
     to {opacity: 1;}
   }
+
+  /* .nav-item > a {
+    border-radius: 10px;
+    background: #e8e8e8;
+  } */
+  /* .navbar-nav{
+    visibility: collapse;
+  } */
+
+  /* button.navbar-toggler{
+    display: block;
+  } */
