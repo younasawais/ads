@@ -40,7 +40,6 @@ function reducerAddArticle(state = addArticle, action){
     let allParentsMenus   = null;
     let allTags           = null;
     let allReferences     = null;
-    let input             = null;
     switch(action.type){
         case 'updateMenuAddArticle' :
             menuNames         = action.payload.menus.map(menu=>{return( menu.name)});
@@ -134,7 +133,7 @@ function reducerAddArticle(state = addArticle, action){
             let fixedString = fixCapitalLetters(action.payload.input);
 
             //let input = input.replace(/(^\w)/, "$1".toUpperCase());
-            return {...state,title : fixedString.join(''), menuItemName : fixedString.join('')}
+            return {...state,title : fixedString, menuItemName : fixedString}
         case 'title2AddArticle' :
             return {...state,title2 : action.payload.input}
         case 'createNewMenu' :
@@ -180,7 +179,7 @@ function reducerAddArticle(state = addArticle, action){
                 reference               : '',
                 statusArticle           : action.payload.input,
                 alertType               : action.payload.alertType,
-                active                  : false,
+                active                  : true,
                 checkBoxCreateMenu      : false,
                 addSubItemToParent      : false,
                 checkBoxCreateParent    : false
@@ -191,6 +190,9 @@ function reducerAddArticle(state = addArticle, action){
 }
 
 function fixCapitalLetters(str){
+    // console.log(str);
+    // let str2 = str.replace(/\n/, " ");
+    // console.log(str2);
     let reg = /\w+(\s|\.|,|-)?\s?/g;
     let arr = str.match(reg);
     let arr2 = [];
@@ -207,6 +209,7 @@ function fixCapitalLetters(str){
       word = word.join('');
       arr2.push(word);
     }
+    arr2 = arr2.join('');
     return arr2;
 }
 
