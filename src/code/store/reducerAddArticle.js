@@ -40,6 +40,7 @@ function reducerAddArticle(state = addArticle, action){
     let allParentsMenus   = null;
     let allTags           = null;
     let allReferences     = null;
+    let input             = null;
     switch(action.type){
         case 'updateMenuAddArticle' :
             menuNames         = action.payload.menus.map(menu=>{return( menu.name)});
@@ -79,7 +80,7 @@ function reducerAddArticle(state = addArticle, action){
                     break;
                }
             }
-
+            
             for (let i = 0; i < state.allParents.length; i++) {
                 if(state.allParentsMenus[i] === input){
                     currentParents.push(state.allParents[i]);
@@ -130,7 +131,25 @@ function reducerAddArticle(state = addArticle, action){
         case 'menuItemNameAddArticle' :
             return {...state,menuItemName : action.payload.input}
         case 'titleAddArticle' :
-            return {...state,title : action.payload.input}
+            let str = action.payload.input;
+            let reg = /\w+(\s|\.|\,)?\s?/g;
+            let arr = str.match(reg);
+            let arr2 = [];
+            console.log(arr);
+            for (let i = 0; i < arr.length; i++) {
+              let word = [];
+              for (let j = 0; j < arr[i].length; j++) {
+                if(j === 0){
+                  word.push(arr[i][j].toUpperCase());
+                }else{
+                  word.push(arr[i][j].toLowerCase());
+                }
+              }
+              word = word.join('');
+              arr2.push(word);
+            }
+            //let input = input.replace(/(^\w)/, "$1".toUpperCase());
+            return {...state,title : arr2.join(''), menuItemName : arr2.join('')}
         case 'title2AddArticle' :
             return {...state,title2 : action.payload.input}
         case 'createNewMenu' :
