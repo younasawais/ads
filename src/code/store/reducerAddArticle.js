@@ -152,6 +152,8 @@ function reducerAddArticle(state = addArticle, action){
             allParents        = action.payload.parentArticles.map(parent=>{return(parent.title)});
             allParentsIds     = action.payload.parentArticles.map(parent=>{return(parent.linkId)});
             allParentsMenus   = action.payload.parentArticles.map(parent=>{return(parent.menu)});  
+            allTags           = action.payload.parentArticles.map(parent=>{return(parent.tags)});
+            allReferences     = action.payload.parentArticles.map(parent=>{return(parent.reference)});
             const resetState = { 
                 menus                   : menuNames,
                 menuIds                 : menuIds,
@@ -160,6 +162,8 @@ function reducerAddArticle(state = addArticle, action){
                 allParents              : allParents,
                 allParentsIds           : allParentsIds,
                 allParentsMenus         : allParentsMenus,
+                allTags                 : allTags,
+                allReferences           : allReferences,
                 title                   : '',
                 title2                  : '',
                 menuItemName            : '',
@@ -187,7 +191,7 @@ function reducerAddArticle(state = addArticle, action){
 }
 
 function fixCapitalLetters(str){
-    let reg = /\w+(\s|\.|\,)?\s?/g;
+    let reg = /\w+(\s|\.|,|-)?\s?/g;
     let arr = str.match(reg);
     let arr2 = [];
     console.log(arr);

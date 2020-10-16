@@ -56,7 +56,9 @@ class AddArticle extends Component {
                 type :'updateAlertAddArticle', 
                 payload : {
                     input : 'Item succesfully added, check console for details. ',
-                    alertType : 'success'
+                    alertType : 'success',
+                    menus : response.data.resultAddMenu,
+                    parentArticles : response.data.resultaddArticle
                 }
             });
                 this.alertTimeOut(dispatch);
