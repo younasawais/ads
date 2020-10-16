@@ -131,25 +131,10 @@ function reducerAddArticle(state = addArticle, action){
         case 'menuItemNameAddArticle' :
             return {...state,menuItemName : action.payload.input}
         case 'titleAddArticle' :
-            let str = action.payload.input;
-            let reg = /\w+(\s|\.|\,)?\s?/g;
-            let arr = str.match(reg);
-            let arr2 = [];
-            console.log(arr);
-            for (let i = 0; i < arr.length; i++) {
-              let word = [];
-              for (let j = 0; j < arr[i].length; j++) {
-                if(j === 0){
-                  word.push(arr[i][j].toUpperCase());
-                }else{
-                  word.push(arr[i][j].toLowerCase());
-                }
-              }
-              word = word.join('');
-              arr2.push(word);
-            }
+            let fixedString = fixCapitalLetters(action.payload.input);
+
             //let input = input.replace(/(^\w)/, "$1".toUpperCase());
-            return {...state,title : arr2.join(''), menuItemName : arr2.join('')}
+            return {...state,title : fixedString.join(''), menuItemName : fixedString.join('')}
         case 'title2AddArticle' :
             return {...state,title2 : action.payload.input}
         case 'createNewMenu' :
@@ -199,6 +184,26 @@ function reducerAddArticle(state = addArticle, action){
             return {...resetState}
         default: return state
     }
+}
+
+function fixCapitalLetters(str){
+    let reg = /\w+(\s|\.|\,)?\s?/g;
+    let arr = str.match(reg);
+    let arr2 = [];
+    console.log(arr);
+    for (let i = 0; i < arr.length; i++) {
+      let word = [];
+      for (let j = 0; j < arr[i].length; j++) {
+        if(j === 0){
+          word.push(arr[i][j].toUpperCase());
+        }else{
+          word.push(arr[i][j].toLowerCase());
+        }
+      }
+      word = word.join('');
+      arr2.push(word);
+    }
+    return arr2;
 }
 
 export default reducerAddArticle;

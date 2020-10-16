@@ -14,6 +14,8 @@ class ArticleTextAddArticle extends Component {
             let str = e.target.value;
             str = str.replace(/[.]\n/g,'::');
             str = str.replace(/\n/g,' ');
+            str = str.replace(/(.+)/g,"$1" +'::');
+            str = str.replace(/(.::$)/g,'::');
             // console.log(str);
             // console.log(response);
             this.props.dispatch({
